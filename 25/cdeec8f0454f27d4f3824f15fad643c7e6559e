@@ -1,0 +1,31 @@
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  s_4c7f6c5d26156b::t_7215a6cdc071eb 17,23-37
+Sources/TankfulSync/HTTP/HTTPClient.swift
+  s_4c7f6c5d26156b::t_7215a6cdc071eb 164,167-175
+Sources/TankfulSync/Sync/SyncEngine.swift
+  s_4c7f6c5d26156b::t_365d923f661702 104,148
+  s_4c7f6c5d26156b::t_7215a6cdc071eb 73,80,84,94-98,100,140
+Sources/TankfulSync/Backends/Tracktor/TracktorModels+Parse.swift
+  s_4c7f6c5d26156b::t_7215a6cdc071eb 12,17-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "25cdeec8f0454f27d4f3824f15fad643c7e6559e",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_4c7f6c5d26156b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a62c-e625-74d2-9d6f-d24de4720637",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
