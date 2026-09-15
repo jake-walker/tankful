@@ -1,0 +1,33 @@
+Sources/TankfulSync/Sync/SyncingRepositories.swift
+  s_4c7f6c5d26156b::t_8c2199963fb7ee 76-83
+  s_4c7f6c5d26156b::t_f4b7069c219c10 1-75,84-101
+Sources/TankfulSync/Sync/SyncEngine.swift
+  s_4c7f6c5d26156b::t_f4b7069c219c10 44,65,76-78,81,190-193
+Sources/TankfulSync/Backends/SyncBackend.swift
+  s_4c7f6c5d26156b::t_4de4bf8b61d6ef 10
+Tests/TankfulSyncTests/SyncEngineTests.swift
+  s_4c7f6c5d26156b::t_e6377a1cfc0d40 56-64,67-71,74-75,78
+  s_4c7f6c5d26156b::t_7e43ddb702bee3 50,108
+  s_4c7f6c5d26156b::t_cb2b98f3d3d499 65-66,72-73,76-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "433796796909d7a45b982a50160d7841e9de211a",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_4c7f6c5d26156b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a62c-e625-74d2-9d6f-d24de4720637",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
