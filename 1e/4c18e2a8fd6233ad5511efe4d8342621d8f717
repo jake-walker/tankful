@@ -1,0 +1,48 @@
+Sources/TankfulPersistence/Mapping/DBSyncRecord+Domain.swift
+  s_4c7f6c5d26156b::t_218bbdb12d185d 18,38
+Sources/TankfulPersistence/Repositories/SQLiteSyncRecordRepository.swift
+  s_4c7f6c5d26156b::t_e9da9ad32b93b7 33,35
+Sources/TankfulDomain/Repositories/SyncRecordRepository.swift
+  s_4c7f6c5d26156b::t_e9da9ad32b93b7 23
+Sources/TankfulSync/Backends/SyncBackend.swift
+  s_4c7f6c5d26156b::t_e9da9ad32b93b7 14,18-20
+Sources/TankfulPersistence/Migrations.swift
+  s_4c7f6c5d26156b::t_218bbdb12d185d 52-70
+Tests/TankfulSyncTests/SyncEngineTests.swift
+  s_4c7f6c5d26156b::t_6ba2b44c802ce6 1-24,26,28-49,52-84,86-105
+  s_4c7f6c5d26156b::t_71ca78ba5f0174 25,27,85
+  s_4c7f6c5d26156b::t_f814c19aa31cbd 50-51
+Sources/TankfulDomain/Sync/SyncRecord.swift
+  s_4c7f6c5d26156b::t_218bbdb12d185d 16-18,24,29
+Sources/TankfulSync/Sync/SyncEngine.swift
+  s_4c7f6c5d26156b::t_904c0a91c594e8 1-2,4-147,149-194,203-208,212,215-236,238-252,254-256,258-259,261-268,270-275
+  s_4c7f6c5d26156b::t_97c1a96b958360 148,195-202,209-211,213-214,237,253,257,260,269
+Sources/TankfulPersistence/Records/DBSyncRecord.swift
+  s_4c7f6c5d26156b::t_218bbdb12d185d 22-24,35,42,51,65,76
+Sources/TankfulSync/Backends/RemoteEntity.swift
+  s_4c7f6c5d26156b::t_6ce0ec0189c2ca 1-2
+  s_4c7f6c5d26156b::t_e9da9ad32b93b7 13,15,18
+Package.swift
+  s_4c7f6c5d26156b::t_6ba2b44c802ce6 36-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1e4c18e2a8fd6233ad5511efe4d8342621d8f717",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_4c7f6c5d26156b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a62c-e625-74d2-9d6f-d24de4720637",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
