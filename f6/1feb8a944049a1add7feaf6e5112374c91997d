@@ -1,0 +1,22 @@
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 27-29,90-92
+Sources/TankfulApp/Controllers/FuelLogController.swift
+  h_2463f6ed1216b2 1-34
+Sources/TankfulApp/Controllers/VehicleController.swift
+  h_2463f6ed1216b2 1-34
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  h_2463f6ed1216b2 129
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 15-18,132-133,152-154,158-163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f61feb8a944049a1add7feaf6e5112374c91997d",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
