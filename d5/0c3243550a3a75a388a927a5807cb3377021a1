@@ -1,0 +1,33 @@
+Sources/TankfulApp/App/AppEnvironment.swift
+  s_34b9c4423512eb::t_7ef3c340827c63 23,27,38-84,86-100
+  s_34b9c4423512eb::t_e63a30524ea6eb 85
+  s_34b9c4423512eb::t_8f1af1c5d2f70a 20-22
+  s_34b9c4423512eb::t_bfe0a2afc85057 24-26
+  s_34b9c4423512eb::t_79ce6ef016e638 28-30,35-37
+  s_34b9c4423512eb::t_a03842a258775f 101-103
+Sources/TankfulPersistence/Repositories/SQLiteVehicleRepository.swift
+  s_34b9c4423512eb::t_7ef3c340827c63 1-36
+  s_34b9c4423512eb::t_3271c7c0cae968 37-39
+Sources/TankfulPersistence/Repositories/SQLiteFuelLogRepository.swift
+  s_34b9c4423512eb::t_7ef3c340827c63 1-42
+Sources/TankfulPersistence/TankfulDatabase.swift
+  s_34b9c4423512eb::t_7ef3c340827c63 1-55,57-58
+  s_34b9c4423512eb::t_fcfee9ca4c6cb3 56
+  s_34b9c4423512eb::t_cabb617272d548 59-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d50c3243550a3a75a388a927a5807cb3377021a1",
+  "prompts": {},
+  "sessions": {
+    "s_34b9c4423512eb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a1f6-f61f-7430-8567-237234853c3b",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
