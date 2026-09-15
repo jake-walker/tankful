@@ -1,0 +1,28 @@
+Tests/TankfulSyncTests/SyncEngineTests.swift
+  s_4c7f6c5d26156b::t_9f9cf86a7145db 9-29
+  s_4c7f6c5d26156b::t_cb036660eb1c72 8
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  s_4c7f6c5d26156b::t_e27128e4515a31 327-331
+  s_4c7f6c5d26156b::t_8192c2bb2a0b72 276-326,332,335-346,349-375
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ee80cdb8da03f4a8cd0e75e4c3c0ddf2397b8a34",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_4c7f6c5d26156b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a62c-e625-74d2-9d6f-d24de4720637",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
