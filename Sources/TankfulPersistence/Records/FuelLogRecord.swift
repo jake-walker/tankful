@@ -38,19 +38,27 @@ public struct FuelLogRecord: SQLCodable, Equatable {
     public var notes: String?
     static let notes = SQLColumn(name: "notes", type: .text, nullable: true)
     
-    public static let table = SQLTable(name: "fuelLog", columns: [id, vehicleID, date, odometerMetres, volumeLitres, costMinorUnits, currencyCode, filled, missedLast, notes])
+    public var remoteID: String?
+    static let remoteID = SQLColumn(name: "remoteID", type: .text, nullable: true)
+    
+    public var syncState: String
+    static let syncState = SQLColumn(name: "syncState", type: .text, nullable: false)
+    
+    public static let table = SQLTable(name: "fuelLog", columns: [id, vehicleID, date, odometerMetres, volumeLitres, costMinorUnits, currencyCode, filled, missedLast, notes, remoteID, syncState])
     
     public init(
         id: String,
         vehicleID: String,
         date: String,
-        odometerMetres: Int64? = nil,
-        volumeLitres: Double? = nil,
+        odometerMetres: Int64?,
+        volumeLitres: Double?,
         costMinorUnits: Int64,
         currencyCode: String,
         filled: Int64,
         missedLast: Int64,
-        notes: String? = nil
+        notes: String?,
+        remoteID: String?,
+        syncState: String
     ) {
         self.id = id
         self.vehicleID = vehicleID
@@ -62,6 +70,8 @@ public struct FuelLogRecord: SQLCodable, Equatable {
         self.filled = filled
         self.missedLast = missedLast
         self.notes = notes
+        self.remoteID = remoteID
+        self.syncState = syncState
     }
     
     public init(
@@ -78,6 +88,8 @@ public struct FuelLogRecord: SQLCodable, Equatable {
         self.filled = try Self.filled.longValueRequired(in: row)
         self.missedLast = try Self.missedLast.longValueRequired(in: row)
         self.notes = Self.notes.textValue(in: row)
+        self.remoteID = Self.remoteID.textValue(in: row)
+        self.syncState = try Self.syncState.textValueRequired(in: row)
     }
     
     public func encode(row: inout SQLRow) throws {
@@ -91,5 +103,7 @@ public struct FuelLogRecord: SQLCodable, Equatable {
         row[Self.filled] = SQLValue(self.filled)
         row[Self.missedLast] = SQLValue(self.missedLast)
         row[Self.notes] = SQLValue(self.notes)
+        row[Self.remoteID] = SQLValue(self.remoteID)
+        row[Self.syncState] = SQLValue(self.syncState)
     }
 }

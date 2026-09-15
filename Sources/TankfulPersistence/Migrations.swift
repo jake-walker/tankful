@@ -48,8 +48,25 @@ enum Migrations {
         ]
     )
     
+    static let v2 = Migration(
+        version: 2,
+        up: [
+            "ALTER TABLE vehicle ADD COLUMN remoteID TEXT",
+            "ALTER TABLE vehicle ADD COLUMN syncState TEXT NOT NULL DEFAULT 'created'",
+            "ALTER TABLE fuelLog ADD COLUMN remoteID TEXT",
+            "ALTER TABLE fuelLog ADD COLUMN syncState TEXT NOT NULL DEFAULT 'created'"
+        ],
+        down: [
+            "ALTER TABLE fuelLog DROP COLUMN syncState",
+            "ALTER TABLE fuelLog DROP COLUMN remoteID",
+            "ALTER TABLE vehicle DROP COLUMN syncState",
+            "ALTER TABLE vehicle DROP COLUMN remoteID"
+        ]
+    )
+    
     static let all: [Migration] = [
-        v1
+        v1,
+        v2
     ]
 }
 

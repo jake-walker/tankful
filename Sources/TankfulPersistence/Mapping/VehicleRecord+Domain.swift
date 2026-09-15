@@ -15,7 +15,9 @@ extension VehicleRecord {
             make: vehicle.make,
             model: vehicle.model,
             year: vehicle.year,
-            fuelType: vehicle.fuelType.rawValue
+            fuelType: vehicle.fuelType.rawValue,
+            remoteID: vehicle.remoteID,
+            syncState: vehicle.syncState.rawValue
         )
     }
     
@@ -29,7 +31,9 @@ extension VehicleRecord {
             make: self.make,
             model: self.model,
             year: self.year,
-            fuelType: try decodeEnum(FuelType.self, from: self.fuelType)
+            fuelType: try decodeEnum(FuelType.self, from: self.fuelType),
+            remoteID: self.remoteID,
+            syncState: try decodeEnum(SyncState.self, from: self.syncState)
         )
     }
 }

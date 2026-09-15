@@ -70,6 +70,9 @@
     "%lld mpg" : {
 
     },
+    "Actions" : {
+
+    },
     "Add" : {
       "comment" : "Button in items list that will cause a new item to be added",
       "extractionState" : "stale",
@@ -110,6 +113,9 @@
 
     },
     "Add Fuel Log" : {
+
+    },
+    "Add one header per line, for example: `X-API-Key: abcdef`" : {
 
     },
     "Add the first fill-up for this vehicle to start tracking its fuel usage." : {
@@ -153,6 +159,9 @@
           }
         }
       }
+    },
+    "Backend" : {
+
     },
     "Cancel" : {
       "comment" : "Button title indicating that the operation should be cancelled",
@@ -260,6 +269,9 @@
     "Distance" : {
 
     },
+    "Enable sync" : {
+
+    },
     "Favorite" : {
       "comment" : "Item editor title label for marking the item as a favorite",
       "extractionState" : "stale",
@@ -297,6 +309,9 @@
 
     },
     "Fuel Type" : {
+
+    },
+    "Headers" : {
 
     },
     "Hello [%@](https://skip.dev)!" : {
@@ -359,10 +374,16 @@
         }
       }
     },
+    "https://tracktor.example.com" : {
+
+    },
     "Imperial Gallons" : {
 
     },
     "Kilometres" : {
+
+    },
+    "Last synced %@" : {
 
     },
     "Light" : {
@@ -446,6 +467,9 @@
     "No Fill-Ups Yet" : {
 
     },
+    "Not yet synced" : {
+
+    },
     "Notes" : {
       "comment" : "Item editor form label for the Notes field",
       "localizations" : {
@@ -482,6 +506,9 @@
 
     },
     "Partial fill" : {
+
+    },
+    "Password" : {
 
     },
     "Powered by [Skip](https://skip.dev)" : {
@@ -546,6 +573,15 @@
         }
       }
     },
+    "Save Changes" : {
+
+    },
+    "Server" : {
+
+    },
+    "Server URL" : {
+
+    },
     "Settings" : {
       "comment" : "Tab bar item title for the Settings tab",
       "localizations" : {
@@ -576,6 +612,18 @@
       }
     },
     "Show More" : {
+
+    },
+    "Sync Disabled" : {
+
+    },
+    "Sync Now" : {
+
+    },
+    "Sync Settings" : {
+
+    },
+    "Sync Status" : {
 
     },
     "System" : {
@@ -644,6 +692,9 @@
     "Total Cost" : {
 
     },
+    "Tracktor" : {
+
+    },
     "Unable to Delete Fill-Up" : {
 
     },
@@ -660,6 +711,9 @@
 
     },
     "US Gallons" : {
+
+    },
+    "Username" : {
 
     },
     "Vehicle" : {

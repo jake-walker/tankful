@@ -8,6 +8,7 @@
 import Foundation
 import TankfulDomain
 import TankfulPersistence
+import TankfulSync
 import Currency
 
 @MainActor
@@ -15,11 +16,16 @@ final class AppEnvironment: Observable {
     private static let currentVehicleKey = "currentVehicleID"
     private static let distanceUnitKey = "distanceUnit"
     private static let volumeUnitKey = "volumeUnit"
+    private static let syncConfigurationKey = "syncConfiguration"
+    private static let lastSuccessfulSyncKey = "lastSuccessfulSync"
     
     let router: AppRouter
     
     let vehicleRepository: any VehicleRepository
     let fuelLogRepository: any FuelLogRepository
+    
+    let vehicleController: VehicleController
+    let fuelLogController: FuelLogController
     
     var distanceUnit: DistanceUnit = .miles {
         didSet {
@@ -29,6 +35,26 @@ final class AppEnvironment: Observable {
     var volumeUnit: VolumeUnit = .litres {
         didSet {
             UserDefaults.standard.set(volumeUnit.rawValue, forKey: Self.volumeUnitKey)
+        }
+    }
+
+    /// The selected backend configuration, used to create a sync coordinator at launch.
+    var syncConfiguration: SyncConfiguration? {
+        didSet {
+            if let syncConfiguration,
+               let data = try? JSONEncoder().encode(syncConfiguration) {
+                UserDefaults.standard.set(data, forKey: Self.syncConfigurationKey)
+            } else {
+                UserDefaults.standard.removeObject(forKey: Self.syncConfigurationKey)
+            }
+        }
+    }
+
+    private(set) var syncStatus: SyncEngine.Status = .idle(lastSuccessfulSync: nil) {
+        didSet {
+            if let lastSuccessfulSync = syncStatus.lastSuccessfulSync {
+                UserDefaults.standard.set(lastSuccessfulSync, forKey: Self.lastSuccessfulSyncKey)
+            }
         }
     }
 
@@ -56,11 +82,14 @@ final class AppEnvironment: Observable {
     init(
         router: AppRouter,
         vehicleRepository: any VehicleRepository,
-        fuelLogRepository: any FuelLogRepository
+        fuelLogRepository: any FuelLogRepository,
     ) {
         self.router = router
         self.vehicleRepository = vehicleRepository
         self.fuelLogRepository = fuelLogRepository
+        
+        self.vehicleController = VehicleController(repository: vehicleRepository)
+        self.fuelLogController = FuelLogController(repository: fuelLogRepository)
 
         if let rawDistanceUnit = UserDefaults.standard.string(forKey: Self.distanceUnitKey),
            let distanceUnit = DistanceUnit(rawValue: rawDistanceUnit) {
@@ -76,6 +105,19 @@ final class AppEnvironment: Observable {
             forKey: Self.currentVehicleKey
         ) {
             self.currentVehicleID = Vehicle.ID(uuidString: id)
+        }
+
+        if let data = UserDefaults.standard.data(forKey: Self.syncConfigurationKey) {
+            self.syncConfiguration = try? JSONDecoder().decode(
+                SyncConfiguration.self,
+                from: data
+            )
+        }
+
+        if let lastSuccessfulSync = UserDefaults.standard.object(
+            forKey: Self.lastSuccessfulSyncKey
+        ) as? Date {
+            self.syncStatus = .idle(lastSuccessfulSync: lastSuccessfulSync)
         }
     }
     
@@ -93,6 +135,43 @@ final class AppEnvironment: Observable {
     func selectVehicle(id: Vehicle.ID) {
         currentVehicleID = id
         vehicleChangeVersion += 1
+    }
+
+    /// Runs a user-initiated sync. This is deliberately not called automatically.
+    func syncNow() async throws {
+        guard let syncConfiguration else {
+            throw SyncActionError.configurationMissing
+        }
+
+        let backend: any SyncBackend
+        switch syncConfiguration.type {
+        case .tracktor:
+            backend = TracktorBackend(client: HTTPClient(configuration: syncConfiguration), credentials: syncConfiguration.authentication)
+        }
+
+        let engine = SyncEngine(
+            backend: backend,
+            vehicleRepository: vehicleRepository,
+            fuelLogRepository: fuelLogRepository,
+            lastSuccessfulSync: syncStatus.lastSuccessfulSync
+        )
+
+        syncStatus = .syncing
+        do {
+            try await engine.sync()
+            syncStatus = engine.status
+        } catch {
+            syncStatus = engine.status
+            throw error
+        }
+    }
+}
+
+private enum SyncActionError: LocalizedError {
+    case configurationMissing
+
+    var errorDescription: String? {
+        "Configure a sync backend before starting a sync."
     }
 }
 
@@ -149,7 +228,7 @@ extension AppEnvironment {
         let env = AppEnvironment(
             router: AppRouter(),
             vehicleRepository: vehicleRepository,
-            fuelLogRepository: fuelLogRepository
+            fuelLogRepository: fuelLogRepository,
         )
         
         env.currentVehicleID = vehicles[0].id

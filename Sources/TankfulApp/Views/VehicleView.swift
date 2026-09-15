@@ -12,6 +12,10 @@ struct VehicleView: View {
     @Environment(AppEnvironment.self) internal var env
 
     let vehicleID: Vehicle.ID?
+    
+    // TODO: improve this
+    @State internal var remoteID: String?
+    @State internal var syncState: SyncState = .created
 
     @State internal var make: String = ""
     @State internal var model: String = ""
@@ -125,6 +129,8 @@ struct VehicleView: View {
             model = vehicle.model ?? ""
             year = vehicle.year.map(String.init) ?? ""
             fuelType = vehicle.fuelType
+            remoteID = vehicle.remoteID
+            syncState = vehicle.syncState
         } catch {
             showError(error)
         }
@@ -143,11 +149,18 @@ struct VehicleView: View {
             make: make.isEmpty ? nil : make,
             model: model.isEmpty ? nil : model,
             year: Int64(year),
-            fuelType: fuelType
+            fuelType: fuelType,
+            remoteID: remoteID,
+            syncState: syncState
         )
 
         do {
-            try await env.vehicleRepository.save(vehicle)
+            if vehicleID != nil {
+                try await env.vehicleController.update(vehicle)
+            } else {
+                try await env.vehicleController.create(vehicle)
+            }
+           
             env.selectVehicle(id: vehicle.id)
             env.router.pop()
         } catch {

@@ -126,7 +126,7 @@ struct AddFuelLogView: View {
                 notes: notes.isEmpty ? nil : notes
             )
 
-            try await env.fuelLogRepository.save(fuelLog)
+            try await env.fuelLogController.create(fuelLog)
             env.selectVehicle(id: vehicleID)
             env.router.pop()
         } catch {

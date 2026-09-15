@@ -39,4 +39,14 @@ public final class SQLiteFuelLogRepository: FuelLogRepository {
         let predicate = FuelLogRecord.id.equals(SQLValue(id.uuidString))
         try database.ctx.delete(FuelLogRecord.self, where: predicate)
     }
+    
+    public func pendingSync() async throws -> [FuelLog] {
+        let predicate = FuelLogRecord.syncState.notEquals(SQLValue(SyncState.synced.rawValue))
+        return try database.ctx.fetchAll(FuelLogRecord.self, where: predicate)
+            .map { try $0.toDomain() }
+    }
+    
+    public func deleteAll() async throws {
+        try database.ctx.deleteAll(FuelLogRecord.self)
+    }
 }

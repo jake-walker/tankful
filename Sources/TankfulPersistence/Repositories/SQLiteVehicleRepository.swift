@@ -37,4 +37,14 @@ public final class SQLiteVehicleRepository: VehicleRepository {
         let vehiclePredicate = VehicleRecord.id.equals(vehicleID)
         try database.ctx.delete(VehicleRecord.self, where: vehiclePredicate)
     }
+    
+    public func pendingSync() async throws -> [Vehicle] {
+        let predicate = VehicleRecord.syncState.notEquals(SQLValue(SyncState.synced.rawValue))
+        return try database.ctx.fetchAll(VehicleRecord.self, where: predicate)
+            .map { try $0.toDomain() }
+    }
+    
+    public func deleteAll() async throws {
+        try database.ctx.deleteAll(VehicleRecord.self)
+    }
 }

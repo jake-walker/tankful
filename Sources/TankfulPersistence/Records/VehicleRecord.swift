@@ -23,20 +23,30 @@ public struct VehicleRecord: SQLCodable, Equatable {
     public var fuelType: String
     static let fuelType = SQLColumn(name: "fuelType", type: .text, nullable: false)
     
-    public static let table = SQLTable(name: "vehicle", columns: [id, make, model, year, fuelType])
+    public var remoteID: String?
+    static let remoteID = SQLColumn(name: "remoteID", type: .text, nullable: true)
+    
+    public var syncState: String
+    static let syncState = SQLColumn(name: "syncState", type: .text, nullable: false)
+    
+    public static let table = SQLTable(name: "vehicle", columns: [id, make, model, year, fuelType, remoteID, syncState])
     
     public init(
         id: String,
-        make: String? = nil,
-        model: String? = nil,
-        year: Int64? = nil,
-        fuelType: String
+        make: String?,
+        model: String?,
+        year: Int64?,
+        fuelType: String,
+        remoteID: String?,
+        syncState: String
     ) {
         self.id = id
         self.make = make
         self.model = model
         self.year = year
         self.fuelType = fuelType
+        self.remoteID = remoteID
+        self.syncState = syncState
     }
     
     public init(
@@ -48,6 +58,8 @@ public struct VehicleRecord: SQLCodable, Equatable {
         self.model = Self.model.textValue(in: row)
         self.year = Self.year.longValue(in: row)
         self.fuelType = try Self.fuelType.textValueRequired(in: row)
+        self.remoteID = Self.remoteID.textValue(in: row)
+        self.syncState = try Self.syncState.textValueRequired(in: row)
     }
     
     public func encode(row: inout SQLRow) throws {
@@ -56,5 +68,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
         row[Self.model] = SQLValue(self.model)
         row[Self.year] = SQLValue(self.year)
         row[Self.fuelType] = SQLValue(self.fuelType)
+        row[Self.remoteID] = SQLValue(self.remoteID)
+        row[Self.syncState] = SQLValue(self.syncState)
     }
 }

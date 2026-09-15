@@ -5,6 +5,7 @@ import Foundation
 import SkipFuse
 import SwiftUI
 import TankfulPersistence
+import TankfulSync
 
 /// A logger for the TankfulApp module.
 let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "TankfulApp")

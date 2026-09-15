@@ -21,7 +21,9 @@ extension FuelLogRecord {
             currencyCode: fuelLog.cost.descriptor.alphabeticCode,
             filled: fuelLog.filled ? 1 : 0,
             missedLast: fuelLog.missedLast ? 1 : 0,
-            notes: fuelLog.notes
+            notes: fuelLog.notes,
+            remoteID: fuelLog.remoteID,
+            syncState: fuelLog.syncState.rawValue
         )
     }
     
@@ -50,7 +52,9 @@ extension FuelLogRecord {
             cost: cost,
             filled: self.filled == 1,
             missedLast: self.missedLast == 1,
-            notes: self.notes
+            notes: self.notes,
+            remoteID: self.remoteID,
+            syncState: try decodeEnum(SyncState.self, from: self.syncState)
         )
     }
 }

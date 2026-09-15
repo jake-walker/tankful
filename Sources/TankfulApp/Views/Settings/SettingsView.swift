@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TankfulSync
 
 struct SettingsView: View {
     @Environment(AppEnvironment.self) internal var env
@@ -24,6 +25,12 @@ struct SettingsView: View {
                     Text("Litres").tag(VolumeUnit.litres)
                     Text("Imperial Gallons").tag(VolumeUnit.imperialGallons)
                     Text("US Gallons").tag(VolumeUnit.usGallons)
+                }
+            }
+            
+            Section {
+                NavigationLink(value: AppRoute.syncSettings) {
+                    Text("Sync Settings")
                 }
             }
         }

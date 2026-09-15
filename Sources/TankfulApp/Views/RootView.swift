@@ -23,6 +23,8 @@ struct RootView: View {
                         VehicleView(vehicleID: id)
                     case .settings:
                         SettingsView()
+                    case .syncSettings:
+                        SyncSettingsView()
                     case .addVehicle:
                         VehicleView()
                     case .fuelLogs:

@@ -13,4 +13,7 @@ public protocol FuelLogRepository {
     
     func save(_ fuelLog: FuelLog) async throws
     func delete(id: FuelLog.ID) async throws
+    
+    func pendingSync() async throws -> [FuelLog]
+    func deleteAll() async throws
 }

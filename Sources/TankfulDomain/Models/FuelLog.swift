@@ -19,7 +19,10 @@ public struct FuelLog: Identifiable {
     public var missedLast: Bool
     public var notes: String?
     
-    public init(id: UUID, vehicleID: Vehicle.ID, date: Date, odometer: Measurement<UnitLength>? = nil, volume: Measurement<UnitVolume>? = nil, cost: any CurrencyValue, filled: Bool, missedLast: Bool, notes: String? = nil) {
+    public var remoteID: String?
+    public var syncState: SyncState
+    
+    public init(id: UUID, vehicleID: Vehicle.ID, date: Date, odometer: Measurement<UnitLength>? = nil, volume: Measurement<UnitVolume>? = nil, cost: any CurrencyValue, filled: Bool, missedLast: Bool, notes: String? = nil, remoteID: String? = nil, syncState: SyncState = .synced) {
         self.id = id
         self.vehicleID = vehicleID
         self.date = date
@@ -29,6 +32,8 @@ public struct FuelLog: Identifiable {
         self.filled = filled
         self.missedLast = missedLast
         self.notes = notes
+        self.remoteID = remoteID
+        self.syncState = syncState
     }
     
     public var unitCost: any CurrencyValue? {
@@ -39,5 +44,9 @@ public struct FuelLog: Identifiable {
         var unitCost = self.cost
         unitCost.divide(by: Decimal(volume.converted(to: .liters).value))
         return unitCost
+    }
+    
+    public func with(id newUUID: UUID, vehicleID: UUID) -> Self {
+        .init(id: newUUID, vehicleID: vehicleID, date: date, odometer: odometer, volume: volume, cost: cost, filled: filled, missedLast: missedLast, notes: notes, remoteID: remoteID, syncState: syncState)
     }
 }
