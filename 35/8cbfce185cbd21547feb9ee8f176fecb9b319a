@@ -1,0 +1,30 @@
+Sources/TankfulApp/TankfulApp.swift
+  s_4c7f6c5d26156b::t_fa56c047101e2a 36-37
+Sources/TankfulApp/App/AppEnvironment.swift
+  s_4c7f6c5d26156b::t_fa56c047101e2a 20,26,51-58,83-84,89,113-118,136-213,230,270-271
+Sources/TankfulApp/Views/SettingsView.swift
+  s_4c7f6c5d26156b::t_29d879176dfe2e 86-108
+  s_4c7f6c5d26156b::t_586b7ac2b73392 20-21
+  s_4c7f6c5d26156b::t_24fc9759f105fa 85,109-111,118-150,200,226-250
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "358cbfce185cbd21547feb9ee8f176fecb9b319a",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_4c7f6c5d26156b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a62c-e625-74d2-9d6f-d24de4720637",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
