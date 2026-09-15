@@ -1,0 +1,35 @@
+Sources/TankfulSync/Backends/Tracktor/TracktorModels.g.swift
+  s_4c7f6c5d26156b::t_6a6da72ffc5fe7 160,206
+  s_4c7f6c5d26156b::t_5bf04754cef394 163,209,346
+Sources/TankfulSync/generate.ts
+  s_4c7f6c5d26156b::t_f62a4ef1641140 50-56
+Tests/TankfulSyncTests/SyncEngineTests.swift
+  s_4c7f6c5d26156b::t_92a9e7408319a9 9-21
+  s_4c7f6c5d26156b::t_9fcb76db7f5c34 8
+Sources/TankfulSync/Backends/Tracktor/Schemas/fuelLogsResponse.schema.json
+  s_4c7f6c5d26156b::t_baa28276ed55e3 54
+  s_4c7f6c5d26156b::t_198d7fc76828ee 42
+Sources/TankfulSync/Backends/Tracktor/TracktorModels+Parse.swift
+  s_4c7f6c5d26156b::t_198d7fc76828ee 85-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f263f31f86fdfba5aaf5327eeaf0f2658f157a50",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_4c7f6c5d26156b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a62c-e625-74d2-9d6f-d24de4720637",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
