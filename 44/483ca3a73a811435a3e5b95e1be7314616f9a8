@@ -1,0 +1,24 @@
+Sources/TankfulApp/TankfulApp.swift
+  s_4c7f6c5d26156b::t_fcef1a58bb5fb9 8,22-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "44483ca3a73a811435a3e5b95e1be7314616f9a8",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_4c7f6c5d26156b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a62c-e625-74d2-9d6f-d24de4720637",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
