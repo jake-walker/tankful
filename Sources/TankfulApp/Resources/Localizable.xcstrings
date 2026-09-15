@@ -1,8 +1,45 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "-" : {
+
+    },
+    "%@" : {
+
+    },
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%@/%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@/%2$@"
+          }
+        }
+      }
+    },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
     "%lld Items" : {
       "comment" : "Header title for a list that contains the number of items",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -30,8 +67,12 @@
         }
       }
     },
+    "%lld mpg" : {
+
+    },
     "Add" : {
       "comment" : "Button in items list that will cause a new item to be added",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -59,8 +100,33 @@
         }
       }
     },
+    "Add a vehicle before recording fill-ups and tracking fuel economy." : {
+
+    },
+    "Add fill-up" : {
+
+    },
+    "Add Fill-Up" : {
+
+    },
+    "Add Fuel Log" : {
+
+    },
+    "Add the first fill-up for this vehicle to start tracking its fuel usage." : {
+
+    },
+    "Add Vehicle" : {
+
+    },
+    "Add Your First Vehicle" : {
+
+    },
+    "All fill-ups for this vehicle will also be deleted. This action cannot be undone." : {
+
+    },
     "Appearance" : {
       "comment" : "Settings select label for the interface style of the controls (light, dark, or default)",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -117,8 +183,12 @@
         }
       }
     },
+    "Cost per mile" : {
+
+    },
     "Dark" : {
       "comment" : "Menu item indicating that the appearance should be in dark mode",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -175,8 +245,24 @@
         }
       }
     },
+    "Delete Fill-Up" : {
+
+    },
+    "Delete this fill-up?" : {
+
+    },
+    "Delete this vehicle?" : {
+
+    },
+    "Delete Vehicle" : {
+
+    },
+    "Distance" : {
+
+    },
     "Favorite" : {
       "comment" : "Item editor title label for marking the item as a favorite",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -204,8 +290,18 @@
         }
       }
     },
+    "Filled Tank" : {
+
+    },
+    "Fuel Economy" : {
+
+    },
+    "Fuel Type" : {
+
+    },
     "Hello [%@](https://skip.dev)!" : {
       "comment" : "Welcome tab contents",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -235,6 +331,7 @@
     },
     "Home" : {
       "comment" : "Tab bar item title for the Home tab",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -262,8 +359,15 @@
         }
       }
     },
+    "Imperial Gallons" : {
+
+    },
+    "Kilometres" : {
+
+    },
     "Light" : {
       "comment" : "Menu item indicating that the appearance should be in light mode",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -291,8 +395,27 @@
         }
       }
     },
+    "Litres" : {
+
+    },
+    "Make" : {
+
+    },
+    "Miles" : {
+
+    },
+    "Missed Last" : {
+
+    },
+    "Model" : {
+
+    },
+    "mpg" : {
+
+    },
     "Name" : {
       "comment" : "Placeholder title for the Name field in a form",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -319,6 +442,9 @@
           }
         }
       }
+    },
+    "No Fill-Ups Yet" : {
+
     },
     "Notes" : {
       "comment" : "Item editor form label for the Notes field",
@@ -349,8 +475,18 @@
         }
       }
     },
+    "Odometer" : {
+
+    },
+    "OK" : {
+
+    },
+    "Partial fill" : {
+
+    },
     "Powered by [Skip](https://skip.dev)" : {
       "comment" : "Link markdown text for the Powered by… label",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -377,6 +513,9 @@
           }
         }
       }
+    },
+    "Recent fill-ups" : {
+
     },
     "Save" : {
       "comment" : "Button title indicating that the current contents should be saved",
@@ -436,8 +575,12 @@
         }
       }
     },
+    "Show More" : {
+
+    },
     "System" : {
       "comment" : "Menu item indicating that the appearance should be in the default system mode",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -465,8 +608,12 @@
         }
       }
     },
+    "This action cannot be undone." : {
+
+    },
     "Title" : {
       "comment" : "Label for the item editor form indicating the title of the item",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -494,8 +641,36 @@
         }
       }
     },
+    "Total Cost" : {
+
+    },
+    "Unable to Delete Fill-Up" : {
+
+    },
+    "Unable to Save Fill-Up" : {
+
+    },
+    "Unable to Update Vehicle" : {
+
+    },
+    "Unit Cost" : {
+
+    },
+    "Units" : {
+
+    },
+    "US Gallons" : {
+
+    },
+    "Vehicle" : {
+
+    },
+    "Vehicle Settings" : {
+
+    },
     "Version %@ (%@)" : {
       "comment" : "Settings label showing the current version of the app",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -529,8 +704,15 @@
         }
       }
     },
+    "Volume" : {
+
+    },
+    "Volume of Fuel" : {
+
+    },
     "Welcome" : {
       "comment" : "Tab bar item title for the Welcome tab",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -557,6 +739,9 @@
           }
         }
       }
+    },
+    "Year" : {
+
     }
   },
   "version" : "1.0"

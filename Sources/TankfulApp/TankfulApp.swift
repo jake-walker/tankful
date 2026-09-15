@@ -4,6 +4,7 @@
 import Foundation
 import SkipFuse
 import SwiftUI
+import TankfulPersistence
 
 /// A logger for the TankfulApp module.
 let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "TankfulApp")
@@ -12,13 +13,28 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
 ///
 /// The default implementation merely loads the `ContentView` for the app and logs a message.
 /* SKIP @bridge */public struct TankfulAppRootView : View {
+    @State internal var env: AppEnvironment
+    
     /* SKIP @bridge */public init() {
+        let database = try! TankfulDatabase.live()
+        
+        let vehicleRepository = SQLiteVehicleRepository(database: database)
+        let fuelLogRepository = SQLiteFuelLogRepository(database: database)
+        
+        _env = State(
+            initialValue: AppEnvironment(
+                router: AppRouter(),
+                vehicleRepository: vehicleRepository,
+                fuelLogRepository: fuelLogRepository
+            )
+        )
     }
 
     public var body: some View {
-        ContentView()
+        RootView()
+            .environment(env)
             .task {
-                logger.info("Skip app logs are viewable in the Xcode console for iOS; Android logs can be viewed in Studio or using adb logcat")
+                try? await env.resolveCurrentVehicle()
             }
     }
 }
