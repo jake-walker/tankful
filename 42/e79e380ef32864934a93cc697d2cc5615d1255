@@ -1,0 +1,28 @@
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  s_e7e7f90d60519c::t_c56167ead72b34 241,253
+  s_e7e7f90d60519c::t_632bcbc82de216 13,23,33,37,43-54,56,59,67,79,83,88,98,104,123,154,171,190,198,209,216,226,235,244,248,258,273,276,283,291
+  s_e7e7f90d60519c::t_f329b1932977c3 14,20-22,103,105-109,114,116-122,129,134,138-149,162-170,172-174,202-206,220-222,224,228-234,265,267,270,296-300
+  s_e7e7f90d60519c::t_eebfe162860116 175
+  s_e7e7f90d60519c::t_21d56997998998 301-303
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "42e79e380ef32864934a93cc697d2cc5615d1255",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_e7e7f90d60519c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0aae7-fae1-7840-b02c-46500a39298f",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
