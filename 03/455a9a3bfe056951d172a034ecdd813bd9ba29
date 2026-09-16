@@ -1,0 +1,24 @@
+Sources/TankfulPersistence/Migrations.swift
+  s_f23eade1667acb::t_f2498e7aad7fb8 60-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "03455a9a3bfe056951d172a034ecdd813bd9ba29",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_f23eade1667acb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a780-ed84-7340-a59c-61b832c190df",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
