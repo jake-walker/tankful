@@ -1,0 +1,22 @@
+Sources/TankfulApp/App/AppRoute.swift
+  h_2463f6ed1216b2 12
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 72-74,117-119,313-315,576-579,617-620,623,626
+Sources/TankfulApp/Views/RootView.swift
+  h_2463f6ed1216b2 26-27
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 1-46
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 2,5,11,13-14,20,23-38,41,43-45,50-51,56-70,74,76-92,94-102,105-107,116,124,126-128,130,133,135,138-146,149,152-153,159,165,174,178,187,199,202,209,217,228,234-235
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "aa2bd12455add0c80d28a3f611df76c8dce48f62",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
