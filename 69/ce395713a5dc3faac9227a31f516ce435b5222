@@ -1,0 +1,37 @@
+Package.swift
+  h_2463f6ed1216b2 10,16,26,38,44-45
+  h_2463f6ed1216b2 19-25,27-37,39-43
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 149
+Sources/TankfulDomain/Models/FuelLog.swift
+  h_2463f6ed1216b2 49
+Sources/TankfulSync/Backends/Tracktor/TracktorAuth.swift
+  h_2463f6ed1216b2 1-15
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  h_2463f6ed1216b2 13-20,24-38,42,44-52,54,56,58,60,62,66-68,70,72-74,77,79,83-85,87,89,92,94-103,105,107-111,113-114,116-119,121,123-125,127-130,132,134-136,139-143,145-151,153-154,156,158-164,166-171,173-176,178,180,182,184-187,192-235,237-241,244-248,251-254,256-258,260-263,265-275,277-283,285-304
+Sources/TankfulSync/Backends/Tracktor/TracktorConfig.swift
+  h_2463f6ed1216b2 1-11
+Sources/TankfulSync/Backends/Tracktor/TracktorFuelLog.swift
+  h_2463f6ed1216b2 2,5,9,12-36,38-69,126-160
+Sources/TankfulSync/Backends/Tracktor/TracktorResponse.swift
+  h_2463f6ed1216b2 1-11
+Sources/TankfulSync/Backends/Tracktor/TracktorUnits.swift
+  h_2463f6ed1216b2 1-15
+Sources/TankfulSync/Backends/Tracktor/TracktorVehicle.swift
+  h_2463f6ed1216b2 1-7,11-27,29-45,47-66,70-76,78-92
+Sources/TankfulSync/HTTP/HTTPClient.swift
+  h_2463f6ed1216b2 27-35,45-46,72,76-81,99,129,132,135-136,146,153-154
+Sources/TankfulSync/Sync/SyncEngine.swift
+  h_2463f6ed1216b2 164,168-173
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "69ce395713a5dc3faac9227a31f516ce435b5222",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
