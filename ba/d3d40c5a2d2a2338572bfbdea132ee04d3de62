@@ -1,0 +1,52 @@
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  h_2463f6ed1216b2 13,16,28,35,41,47-48,52,54
+  h_2463f6ed1216b2 18,49-51
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 8,12,14,200
+  h_2463f6ed1216b2 11,27-31,172,174,206,208,221-222,240-242,279,286
+Sources/TankfulApp/Extensions/ViewModifiers/CardStyleViewModifier.swift
+  h_2463f6ed1216b2 14,16,32,38-39,46
+  h_2463f6ed1216b2 11,13,21,24,40-44
+Sources/TankfulApp/Components/FuelLogItem.swift
+  h_2463f6ed1216b2 45,65,76,99-100,106
+  h_2463f6ed1216b2 14,17,22,27,35,37,41-44,46,58,67,74,78,87-98,101-102,104-105,107-108
+Android/app/build.gradle.kts
+  h_2463f6ed1216b2 87
+Package.swift
+  h_2463f6ed1216b2 13-16,37
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 13-14,17
+Sources/TankfulApp/App/AppRouter.swift
+  h_2463f6ed1216b2 10,12
+Sources/TankfulApp/TankfulApp.swift
+  h_2463f6ed1216b2 22-29
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  h_2463f6ed1216b2 139,146
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  h_2463f6ed1216b2 150,159
+Sources/TankfulApp/Views/RootView.swift
+  h_2463f6ed1216b2 40,45
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 41,48
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 315,322
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 204,220
+Sources/TankfulDomain/Models/CalculatedFuelLog.swift
+  h_2463f6ed1216b2 84,102-112
+Sources/TankfulPersistence/TankfulDatabase.swift
+  h_2463f6ed1216b2 9,27,39
+Sources/TankfulSync/HTTP/HTTPClient.swift
+  h_2463f6ed1216b2 9-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bad3d40c5a2d2a2338572bfbdea132ee04d3de62",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
