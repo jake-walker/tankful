@@ -1,0 +1,18 @@
+Darwin/TankfulApp.xcodeproj/project.pbxproj
+  h_2463f6ed1216b2 211,225
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 162-164,271-276,391-393,590-592,814-816
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 13-14,20-23,33,37,43-54,56,59,67,79,83,88,98,103-109,114,116-123,129,134,138-149,154,162-175,190,198,202-206,209,216,220-222,224,226,228-235,241,244,248,253,258,265,267,270,273,276,283,291,296-303
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f1a03b404acf815ceaa461e9c4e6b4b10d08b109",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
