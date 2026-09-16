@@ -1,7 +1,6 @@
-# TankfulApp
+# Tankful
 
-This is a free and open-source [Skip](https://skip.dev) dual-platform app project.
-
+Tankful is a free and open-source fuel tracking app for iOS and Android. It helps keep track of fuel economy for your vehicles and can optionally sync the data to self-hosted services like [Tracktor](https://github.com/javedh-dev/tracktor).
 
 <!-- TODO: add iOS screenshots to fastlane metadata
 ## iPhone Screenshots
