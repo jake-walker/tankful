@@ -19,7 +19,14 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
     @State internal var env: AppEnvironment
     
     /* SKIP @bridge */public init() {
-        let database = try! TankfulDatabase.live()
+        let directory = URL.applicationSupportDirectory.appendingPathComponent("Tankful", isDirectory: true)
+        
+        try! FileManager.default.createDirectory(
+            at: directory,
+            withIntermediateDirectories: true
+        )
+        
+        let database = try! TankfulDatabase.live(at: directory.appendingPathComponent("Tankful.sqlite"))
         
         let vehicleRepository = SQLiteVehicleRepository(database: database)
         let fuelLogRepository = SQLiteFuelLogRepository(database: database)

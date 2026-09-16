@@ -6,7 +6,7 @@
 //
 
 import SkipSQLCore
-import SkipSQL
+import SkipSQLPlus
 import Foundation
 
 public final class TankfulDatabase {
@@ -18,24 +18,13 @@ public final class TankfulDatabase {
 }
 
 public extension TankfulDatabase {
-    static func defaultDatabaseURL() throws -> URL {
-        let directory = URL.applicationSupportDirectory.appendingPathComponent("Tankful", isDirectory: true)
-        
-        try FileManager.default.createDirectory(
-            at: directory,
-            withIntermediateDirectories: true
-        )
-        
-        return directory.appendingPathComponent("Tankful.sqlite")
-    }
-    
     static func live(at databaseURL: URL) throws -> TankfulDatabase {
         print("Using database at \(databaseURL.path(percentEncoded: false))")
         
         let ctx = try SQLContext(
             path: databaseURL.path(percentEncoded: false),
             flags: [.create, .readWrite],
-            configuration: .platform
+            configuration: .plus
         )
         
         let database = TankfulDatabase(ctx: ctx)
@@ -43,16 +32,11 @@ public extension TankfulDatabase {
         return database
     }
     
-    static func live() throws -> TankfulDatabase {
-        let databaseURL = try defaultDatabaseURL()
-        return try live(at: databaseURL)
-    }
-    
     static func inMemory() throws -> TankfulDatabase {
         let ctx = try SQLContext(
             path: ":memory:",
             flags: [.create, .readWrite],
-            configuration: .platform
+            configuration: .plus
         )
         
         let database = TankfulDatabase(ctx: ctx)

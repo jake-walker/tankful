@@ -10,12 +10,12 @@ import TankfulDomain
 
 struct FuelHistoryView: View {
     @Environment(AppEnvironment.self) internal var env
-    
+
     @State internal var logs: [CalculatedFuelLog] = []
     @State internal var vehicle: Vehicle?
-    
+
     var body: some View {
-        List(logs.reversed()) { log in
+        List(logs) { log in
             NavigationLink(value: AppRoute.fuelLog(log.id)) {
                 FuelLogItem(fuelLog: log)
             }
@@ -25,28 +25,30 @@ struct FuelHistoryView: View {
             await load()
         }
     }
-    
+
     private func load() async {
         guard let id = env.currentVehicleID else {
             vehicle = nil
             logs = []
             return
         }
-        
+
         guard let loadedVehicle = try? await env.vehicleRepository.vehicle(id: id) else {
             vehicle = nil
             logs = []
             return
         }
-        
+
         vehicle = loadedVehicle
         logs = (try? await env.fuelLogRepository.fuelLogs(for: loadedVehicle.id).calculated()) ?? []
     }
 }
 
-#Preview {
-    NavigationView {
-        FuelHistoryView()
-            .environment(AppEnvironment.preview())
+#if !os(Android)
+    #Preview {
+        NavigationView {
+            FuelHistoryView()
+                .environment(AppEnvironment.preview())
+        }
     }
-}
+#endif

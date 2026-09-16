@@ -81,7 +81,7 @@ extension Array where Element == FuelLog {
     public func calculated() -> [CalculatedFuelLog] {
         let sortedLogs = sorted { $0.date < $1.date }
 
-        return sortedLogs.enumerated()
+        let calculatedLogs = sortedLogs.enumerated()
             .map { index, log in
                 guard index > 0 else {
                     return CalculatedFuelLog(
@@ -99,6 +99,17 @@ extension Array where Element == FuelLog {
                     distance: distance
                 )
             }
+        
+        // reverse the list so newest entries are first
+        var newestFirst: [CalculatedFuelLog] = []
+        var index = calculatedLogs.count
+        
+        while index > 0 {
+            index -= 1
+            newestFirst.append(calculatedLogs[index])
+        }
+        
+        return newestFirst
     }
 }
 

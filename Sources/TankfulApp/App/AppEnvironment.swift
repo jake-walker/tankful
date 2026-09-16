@@ -10,9 +10,11 @@ import TankfulDomain
 import TankfulPersistence
 import TankfulSync
 import Currency
+import SkipFuse
+import Observation
 
 @MainActor
-final class AppEnvironment: Observable {
+@Observable final class AppEnvironment {
     private static let currentVehicleKey = "currentVehicleID"
     private static let distanceUnitKey = "distanceUnit"
     private static let volumeUnitKey = "volumeUnit"

@@ -38,9 +38,11 @@ struct SettingsView: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     NavigationStack {
         SettingsView()
             .environment(AppEnvironment.preview())
     }
 }
+#endif

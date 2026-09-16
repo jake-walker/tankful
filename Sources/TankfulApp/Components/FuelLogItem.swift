@@ -11,20 +11,20 @@ import Currency
 
 struct FuelLogItem: View {
     @Environment(AppEnvironment.self) internal var env
-    
+
     let fuelLog: CalculatedFuelLog
     let showChevron: Bool
-    
+
     init(fuelLog: CalculatedFuelLog) {
         self.fuelLog = fuelLog
         self.showChevron = false
     }
-    
+
     init(fuelLog: CalculatedFuelLog, showChevron: Bool) {
         self.fuelLog = fuelLog
         self.showChevron = showChevron
     }
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
@@ -32,16 +32,18 @@ struct FuelLogItem: View {
                     Text("\(fuelLog.log.date.formatted(date: .abbreviated, time: .omitted))")
                         .font(.headline)
                         .fontWeight(.medium)
-                    
+
                     Spacer()
-                    
+
                     if let economy = fuelLog.economy {
                         HStack(alignment: .firstTextBaseline, spacing: 3) {
                             Text(economy.milesPerImperialGallon.formatted(.number.precision(.fractionLength(1))))
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .monospacedDigit()
-                            
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            #if !os(Android)
+                            .monospacedDigit()
+                            #endif
+
                             Text("mpg")
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
@@ -53,25 +55,27 @@ struct FuelLogItem: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                
+
                 HStack(alignment: .firstTextBaseline) {
                     if let volume = fuelLog.log.volume {
                         Text("\(fuelLog.log.cost.localizedString()) · \(env.formatter.volume(volume))")
                     } else {
                         Text(fuelLog.log.cost.description)
                     }
-                    
+
                     Spacer()
-                    
+
                     if let distance = fuelLog.distance {
                         Text(env.formatter.distance(distance))
                     }
                 }
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
+#if !os(Android)
                 .monospacedDigit()
+                #endif
             }
-            
+
             if showChevron {
                 Image(systemName: "chevron.right")
             }
@@ -80,23 +84,25 @@ struct FuelLogItem: View {
     }
 }
 
-#Preview {
-    FuelLogItem(
-        fuelLog: CalculatedFuelLog(
-            log: FuelLog(
-                id: UUID(),
-                vehicleID: Vehicle.ID(),
-                date: .now,
-                odometer: Measurement(value: 59226, unit: .miles),
-                volume: Measurement(value: 41.5, unit: .liters),
-                cost: GBP(minorUnits: 5723),
-                filled: true,
-                missedLast: false,
-                notes: nil
+#if !os(Android)
+    #Preview {
+        FuelLogItem(
+            fuelLog: CalculatedFuelLog(
+                log: FuelLog(
+                    id: UUID(),
+                    vehicleID: Vehicle.ID(),
+                    date: .now,
+                    odometer: Measurement(value: 59226, unit: .miles),
+                    volume: Measurement(value: 41.5, unit: .liters),
+                    cost: GBP(minorUnits: 5723),
+                    filled: true,
+                    missedLast: false,
+                    notes: nil
+                ),
+                distance: Measurement(value: 384, unit: .miles)
             ),
-            distance: Measurement(value: 384, unit: .miles)
-        ),
-        showChevron: true
-    )
-    .environment(AppEnvironment.preview())
-}
+            showChevron: true
+        )
+        .environment(AppEnvironment.preview())
+    }
+#endif

@@ -7,9 +7,9 @@
 
 import TankfulDomain
 import SkipFuse
+import Observation
 
-@Observable
-final class AppRouter {
+@Observable final class AppRouter {
     var path: [AppRoute] = []
     
     func push(_ route: AppRoute) {

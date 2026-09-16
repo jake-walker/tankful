@@ -312,9 +312,11 @@ private enum HeaderParsingError: LocalizedError {
     }
 }
 
+#if !os(Android)
 #Preview {
     NavigationView {
         SyncSettingsView()
             .environment(AppEnvironment.preview())
     }
 }
+#endif

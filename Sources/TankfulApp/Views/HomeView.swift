@@ -5,10 +5,13 @@
 //  Created by Jake Walker on 14/09/2026.
 //
 
+import Currency
 import SwiftUI
 import TankfulDomain
+
+#if canImport(Charts)
 import Charts
-import Currency
+#endif
 
 struct HomeView: View {
     @Environment(AppEnvironment.self) internal var env
@@ -21,7 +24,11 @@ struct HomeView: View {
     @State internal var isLoading: Bool = true
     
     private var lastCostPerMile: (any CurrencyValue)? {
-        fuelLogs.last?.costPerDistance(unit: env.distanceUnit.unit)
+        guard !fuelLogs.isEmpty else {
+            return nil
+        }
+        
+        return fuelLogs[0].costPerDistance(unit: env.distanceUnit.unit)
     }
     
     var body: some View {
@@ -162,7 +169,9 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(value)
                 .font(.system(size: 20, weight: .semibold))
+#if !os(Android)
                 .monospacedDigit()
+            #endif
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
             
@@ -188,13 +197,15 @@ struct HomeView: View {
             }
             .padding([.horizontal, .top])
             
-            ForEach(fuelLogs.reversed().prefix(recentCount)) { log in
+            ForEach(fuelLogs.prefix(recentCount)) { log in
                 Divider()
                 
                 NavigationLink(value: AppRoute.fuelLog(log.log.id)) {
                     FuelLogItem(fuelLog: log, showChevron: true)
                         .padding(.horizontal)
+#if !os(Android)
                         .foregroundStyle(Color(uiColor: .label))
+                    #endif
                 }
             }
             
@@ -207,7 +218,8 @@ struct HomeView: View {
     }
     
     private var chart: some View {
-        Chart(fuelLogs.dropFirst()) { log in
+        #if canImport(Charts)
+        Chart(fuelLogs.reversed().dropFirst()) { log in
             LineMark(
                 x: .value("Date", log.log.date),
                 y: .value("Fuel Economy", log.economy?.milesPerImperialGallon ?? 0)
@@ -225,6 +237,9 @@ struct HomeView: View {
                 }
             }
         }
+        #else
+            EmptyView()
+        #endif
     }
     
     private func fillUpValueText(_ value: String?) -> some View {
@@ -261,9 +276,11 @@ struct HomeView: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     NavigationView {
         HomeView()
             .environment(AppEnvironment.preview())
     }
 }
+#endif

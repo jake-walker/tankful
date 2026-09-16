@@ -201,6 +201,7 @@ private enum VehicleViewError: LocalizedError {
     }
 }
 
+#if !os(Android)
 #Preview("Add Vehicle") {
     NavigationStack {
         VehicleView()
@@ -216,3 +217,4 @@ private enum VehicleViewError: LocalizedError {
             .environment(env)
     }
 }
+#endif

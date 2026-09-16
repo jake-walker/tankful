@@ -136,9 +136,11 @@ struct AddFuelLogView: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     NavigationView {
         AddFuelLogView()
             .environment(AppEnvironment.preview())
     }
 }
+#endif

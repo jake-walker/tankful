@@ -10,10 +10,10 @@ let package = Package(
         .library(name: "TankfulApp", type: .dynamic, targets: ["TankfulApp"])
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.7.2"),
-        .package(url: "https://source.skip.tools/skip-fuse-ui.git", from: "1.0.0"),
-        .package(url: "https://source.skip.tools/skip-sql.git", from: "0.16.0"),
-        .package(url: "https://github.com/Peek-Travel/swift-currency.git", from: "1.1.0"),
+        .package(url: "https://github.com/skiptools/skip.git", from: "1.9.9"),
+        .package(url: "https://github.com/skiptools/skip-fuse-ui.git", from: "1.18.2"),
+        .package(url: "https://github.com/skiptools/skip-sql.git", from: "0.16.0"),
+        .package(url: "https://github.com/jake-walker/swift-currency.git", branch: "generated"),
     ],
     targets: [
         .target(
@@ -34,7 +34,7 @@ let package = Package(
         .target(
             name: "TankfulPersistence",
             dependencies: [
-                .product(name: "SkipSQL", package: "skip-sql"),
+                .product(name: "SkipSQLPlus", package: "skip-sql"),
                 "TankfulDomain",
             ]),
         .target(
