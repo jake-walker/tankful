@@ -90,6 +90,10 @@ struct HomeView: View {
         .task(id: env.vehicleChangeVersion) {
             await loadVehicle()
         }
+        .refreshable {
+            try? await env.syncNow()
+            await loadVehicle()
+        }
     }
     
     private var summaryMetrics: some View {

@@ -137,7 +137,6 @@ final class AppEnvironment: Observable {
         vehicleChangeVersion += 1
     }
 
-    /// Runs a user-initiated sync. This is deliberately not called automatically.
     func syncNow() async throws {
         guard let syncConfiguration else {
             throw SyncActionError.configurationMissing
@@ -163,6 +162,19 @@ final class AppEnvironment: Observable {
         } catch {
             syncStatus = engine.status
             throw error
+        }
+    }
+    
+    func backgroundSyncIfNeeded() async {
+        if let lastSuccessfulSync = syncStatus.lastSuccessfulSync,
+           Date.now.timeIntervalSince(lastSuccessfulSync) < 60 {
+            return
+        }
+        
+        do {
+            try await syncNow()
+        } catch {
+            print("Failed to sync: \(error.localizedDescription)")
         }
     }
 }

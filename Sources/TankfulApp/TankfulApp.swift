@@ -14,6 +14,8 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
 ///
 /// The default implementation merely loads the `ContentView` for the app and logs a message.
 /* SKIP @bridge */public struct TankfulAppRootView : View {
+    @Environment(\.scenePhase) internal var scenePhase
+    
     @State internal var env: AppEnvironment
     
     /* SKIP @bridge */public init() {
@@ -36,6 +38,12 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
             .environment(env)
             .task {
                 try? await env.resolveCurrentVehicle()
+            }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active {
+                    print("Running background sync")
+                    Task { await env.backgroundSyncIfNeeded() }
+                }
             }
     }
 }
