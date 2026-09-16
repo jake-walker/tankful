@@ -208,6 +208,7 @@
 			baseConfigurationReference = 496EB72F2A6AE4DE00C1253B /* TankfulApp.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				DEVELOPMENT_TEAM = N93X7GBDAQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tankful;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
@@ -221,6 +222,7 @@
 			baseConfigurationReference = 496EB72F2A6AE4DE00C1253B /* TankfulApp.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				DEVELOPMENT_TEAM = N93X7GBDAQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tankful;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;

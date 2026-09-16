@@ -160,6 +160,9 @@
         }
       }
     },
+    "Back" : {
+
+    },
     "Backend" : {
 
     },
@@ -264,6 +267,12 @@
 
     },
     "Delete Vehicle" : {
+
+    },
+    "Discard Changes" : {
+
+    },
+    "Discard unsaved changes?" : {
 
     },
     "Distance" : {
@@ -378,6 +387,9 @@
 
     },
     "Imperial Gallons" : {
+
+    },
+    "Keep Editing" : {
 
     },
     "Kilometres" : {
@@ -574,6 +586,9 @@
       }
     },
     "Save Changes" : {
+
+    },
+    "Save or discard your changes before syncing." : {
 
     },
     "Server" : {
@@ -795,6 +810,9 @@
       }
     },
     "Year" : {
+
+    },
+    "Your sync settings will remain unchanged." : {
 
     }
   },
