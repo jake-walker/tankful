@@ -1,0 +1,20 @@
+Darwin/AppIcon.icon/icon.json
+  h_2463f6ed1216b2 2,4-64,67-71,73
+Darwin/Assets.xcassets/AccentColor.colorset/Contents.json
+  h_2463f6ed1216b2 4-12
+Darwin/TankfulApp.xcconfig
+  h_2463f6ed1216b2 18
+Darwin/TankfulApp.xcodeproj/project.pbxproj
+  h_2463f6ed1216b2 10,33,78,164,210,212-213,223,225-226,257
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "694d9898a5ce0dba153f35864a190c059127c7a0",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
