@@ -1,0 +1,14 @@
+README.md
+  h_2463f6ed1216b2 1,3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "28352931761cf9534e6ab4d05ba10fa5a9354f46",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
