@@ -1,0 +1,32 @@
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 247
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 507-509
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 20,38-44,141,163
+Sources/TankfulDomain/Models/Vehicle.swift
+  h_2463f6ed1216b2 12,21,23,33-36,54-69,71
+Sources/TankfulIntents/Entities/VehicleEntity.swift
+  h_2463f6ed1216b2 25-34,44-49,59-60
+Sources/TankfulPersistence/Mapping/VehicleRecord+Domain.swift
+  h_2463f6ed1216b2 15,32
+Sources/TankfulPersistence/Migrations.swift
+  h_2463f6ed1216b2 142-147,151-152
+Sources/TankfulPersistence/Records/VehicleRecord.swift
+  h_2463f6ed1216b2 14-16,35,39,48,62,73
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  h_2463f6ed1216b2 137-138,143,190,311,328
+Sources/TankfulSync/Backends/Tracktor/TracktorVehicle.swift
+  h_2463f6ed1216b2 11-12,47-52,86-93,101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6d6bcb201fd076df30b1fc51ca0e9bfd379df5eb",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}

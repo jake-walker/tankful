@@ -1,0 +1,14 @@
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  h_2463f6ed1216b2 8,14,16,19-21,29-49,60-73,75-85,88-93,96-106,108,116,133,140-143,148-150,152,155,161-168,177-182,187-189,206-210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "73f558b22cc1bc78f45fe20ce1a91ac91317979a",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}

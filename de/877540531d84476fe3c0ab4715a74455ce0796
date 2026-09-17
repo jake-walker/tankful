@@ -1,0 +1,26 @@
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 37,42,48,53-61,198
+Sources/TankfulApp/App/UnitPreferences.swift
+  h_2463f6ed1216b2 36-43,68-75,100-108
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 194-199,559-561,758-760,874-876,879
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 18,36-45
+Sources/TankfulIntents/TankfulIntentsEnvironment.swift
+  h_2463f6ed1216b2 100-111,127,134
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  h_2463f6ed1216b2 20,58-63
+Sources/TankfulSync/Backends/Tracktor/TracktorFuelLog.swift
+  h_2463f6ed1216b2 43-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "de877540531d84476fe3c0ab4715a74455ce0796",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}

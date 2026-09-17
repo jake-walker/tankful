@@ -1,0 +1,26 @@
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 100,498-500,503,512-514,665-667
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 18-19,25-30,117,126,133,166,170,178-179,217,240,292-296
+Sources/TankfulDomain/Repositories/FuelLogRepository.swift
+  h_2463f6ed1216b2 8-9,14,22-27
+Sources/TankfulPersistence/Mapping/FuelLogRecord+Domain.swift
+  h_2463f6ed1216b2 17,43
+Sources/TankfulPersistence/Migrations.swift
+  h_2463f6ed1216b2 66-140,144-145
+Sources/TankfulPersistence/Records/FuelLogRecord.swift
+  h_2463f6ed1216b2 17-18,52,83
+Sources/TankfulPersistence/Repositories/SQLiteFuelLogRepository.swift
+  h_2463f6ed1216b2 8,29-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "df65312c502572345eff9b290cb36a2d2db3f060",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
