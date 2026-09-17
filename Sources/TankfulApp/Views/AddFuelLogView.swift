@@ -5,20 +5,20 @@
 //  Created by Jake Walker on 15/09/2026.
 //
 
+import Currency
 import SwiftUI
 import TankfulDomain
-import Currency
 
 struct AddFuelLogView: View {
     @Environment(AppEnvironment.self) internal var env
-    
+
     @State internal var vehicles: [Vehicle] = []
-    
+
     @State internal var vehicleID: Vehicle.ID?
     @State internal var date: Date = .now
-    @State internal var odometer: String = ""
-    @State internal var volume: String = ""
-    @State internal var cost: String = ""
+    @State internal var odometer: Int?
+    @State internal var volume: Double?
+    @State internal var cost: Decimal?
     @State internal var filled: Bool = true
     @State internal var missedLast: Bool = false
     @State internal var notes: String = ""
@@ -26,6 +26,27 @@ struct AddFuelLogView: View {
     @State internal var isShowingError: Bool = false
     @State internal var errorMessage: String = ""
     
+    private var unitCost: (any CurrencyValue)? {
+        guard let volume,
+              let cost,
+              volume > 0 else {
+            return nil
+        }
+        
+        return CurrencyMint.standard.make(
+            identifier: .alphaCode(env.currency.alphabeticCode),
+            exactAmount: cost / Decimal(volume)
+        )
+    }
+    
+    private var currencySymbol: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = env.currency.alphabeticCode
+        
+        return formatter.currencySymbol ?? env.currency.alphabeticCode
+    }
+
     var body: some View {
         Form {
             if vehicles.count > 1 {
@@ -36,18 +57,55 @@ struct AddFuelLogView: View {
                     }
                 }
             }
-            
-            DatePicker("Date", selection: $date, displayedComponents: [.date])
-            
+
+            DatePicker("Date", selection: $date)
+
             LabeledContent {
-                TextField("Odometer", text: $odometer)
+                TextField(
+                    "-",
+                    value: $odometer,
+                    format: .number.grouping(.never)
+                )
+                .keyboardType(.numberPad)
                     .multilineTextAlignment(.trailing)
             } label: {
-                Text("Odometer")
+                Text("Odometer (\(env.distanceUnit.unit.symbol))")
             }
-                
-            TextField("Volume of Fuel", text: $volume)
-            TextField("Total Cost", text: $cost)
+            
+            LabeledContent {
+                TextField(
+                    "-",
+                    value: $volume,
+                    format: .number.grouping(.never)
+                )
+                .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            } label: {
+                Text("Volume (\(env.volumeUnit.unit.symbol))")
+            }
+            
+            LabeledContent {
+                TextField(
+                    "-",
+                    value: $cost,
+                    format: .number.grouping(.never)
+                )
+                .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            } label: {
+                Text("Total Cost (\(currencySymbol))")
+            }
+            
+            LabeledContent {
+                if let unitCost {
+                    Text("\(unitCost.localizedString())/\(env.volumeUnit.unit.symbol)")
+                } else {
+                    Text("-")
+                }
+            } label: {
+                Text("Unit Cost")
+            }
+            
             Toggle("Filled Tank", isOn: $filled)
             Toggle("Missed Last", isOn: $missedLast)
             TextField("Notes", text: $notes)
@@ -55,7 +113,7 @@ struct AddFuelLogView: View {
         .navigationTitle("Add Fill-Up")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                if #available(iOS 26.0, *) {
+                if #available(anyAppleOS 26.0, *) {
                     Button("Save", systemImage: "checkmark", role: .confirm) {
                         Task { await save() }
                     }
@@ -72,40 +130,42 @@ struct AddFuelLogView: View {
             await load()
         }
         .alert("Unable to Save Fill-Up", isPresented: $isShowingError) {
-            Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {}
         } message: {
             Text(errorMessage)
         }
     }
 
     private var isFormValid: Bool {
-        guard let odometerValue = Double(odometer),
-              let volumeValue = Double(volume),
-              let costValue = Decimal(string: cost) else {
+        guard let odometer,
+            let volume,
+            let cost
+        else {
             return false
         }
 
         return vehicleID != nil
-            && odometerValue >= 0
-            && volumeValue > 0
-            && costValue >= .zero
+            && odometer >= 0
+            && volume > 0
+            && cost >= .zero
     }
-    
+
     private func load() async {
         vehicleID = env.currentVehicleID
-        
+
         vehicles = (try? await env.vehicleRepository.vehicles()) ?? []
     }
 
     private func save() async {
         guard !isSaving,
-              let vehicleID,
-              let odometerValue = Double(odometer),
-              let volumeValue = Double(volume),
-              let costValue = Decimal(string: cost),
-              odometerValue >= 0,
-              volumeValue > 0,
-              costValue >= .zero else {
+            let vehicleID,
+            let odometer,
+            let volume,
+            let cost,
+            odometer >= 0,
+            volume > 0,
+            cost >= .zero
+        else {
             return
         }
 
@@ -114,13 +174,19 @@ struct AddFuelLogView: View {
 
         do {
             let existingLogs = try await env.fuelLogRepository.fuelLogs(for: vehicleID)
+            
+            let currencyValue = CurrencyMint.standard.make(
+                identifier: .alphaCode(env.currency.alphabeticCode),
+                exactAmount: cost
+            ) ?? USD(exactAmount: cost)
+            
             let fuelLog = FuelLog(
                 id: FuelLog.ID(),
                 vehicleID: vehicleID,
                 date: date,
-                odometer: Measurement(value: odometerValue, unit: env.distanceUnit.unit),
-                volume: Measurement(value: volumeValue, unit: env.volumeUnit.unit),
-                cost: GBP(exactAmount: costValue),
+                odometer: Measurement(value: Double(odometer), unit: env.distanceUnit.unit),
+                volume: Measurement(value: volume, unit: env.volumeUnit.unit),
+                cost: currencyValue,
                 filled: filled,
                 missedLast: existingLogs.isEmpty || missedLast,
                 notes: notes.isEmpty ? nil : notes
@@ -137,10 +203,10 @@ struct AddFuelLogView: View {
 }
 
 #if !os(Android)
-#Preview {
-    NavigationView {
-        AddFuelLogView()
-            .environment(AppEnvironment.preview())
+    #Preview {
+        NavigationStack {
+            AddFuelLogView()
+                .environment(AppEnvironment.preview())
+        }
     }
-}
 #endif
