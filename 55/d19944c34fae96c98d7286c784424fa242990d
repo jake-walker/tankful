@@ -1,0 +1,36 @@
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 213-216
+Sources/TankfulApp/App/UnitPreferences.swift
+  h_2463f6ed1216b2 25-26,32-33,55-57,79-81
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 80,131,161-163,195-203,205,215-217,219,290,310-321,332-334,336,346-348,410,431,442,453,463-468,490,520-525,536-541,543,697,707-709,731,741-746,828,849,860
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  h_2463f6ed1216b2 24
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  h_2463f6ed1216b2 53,91,126-138
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 62,112-115,126-129,203,234-238
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 35-39,184-187,189,192,194-197,242,250-253,265-268,283,326-332
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 65-69,207
+Sources/TankfulDomain/Models/FuelType.swift
+  h_2463f6ed1216b2 8-9,17-22
+Sources/TankfulDomain/Models/Vehicle.swift
+  h_2463f6ed1216b2 43-46
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  h_2463f6ed1216b2 24-27,29-32,34-37,39-42,44,46-49,51-54,56
+Sources/TankfulSync/HTTP/HTTPClient.swift
+  h_2463f6ed1216b2 185,187-193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "55d19944c34fae96c98d7286c784424fa242990d",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
