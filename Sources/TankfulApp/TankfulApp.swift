@@ -7,6 +7,10 @@ import SwiftUI
 import TankfulPersistence
 import TankfulSync
 
+#if canImport(TankfulIntents)
+import TankfulIntents
+#endif
+
 /// A logger for the TankfulApp module.
 let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "TankfulApp")
 
@@ -30,14 +34,28 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
         
         let vehicleRepository = SQLiteVehicleRepository(database: database)
         let fuelLogRepository = SQLiteFuelLogRepository(database: database)
+        let router = AppRouter()
         
         _env = State(
             initialValue: AppEnvironment(
-                router: AppRouter(),
+                router: router,
                 vehicleRepository: vehicleRepository,
                 fuelLogRepository: fuelLogRepository
             )
         )
+        
+        #if os(iOS) || os(macOS)
+        TankfulIntentsEnvironment.configure(
+            vehicleRepository: vehicleRepository,
+            fuelLogRepository: fuelLogRepository,
+            openFuelLog: { id in
+                router.push(.fuelLog(id))
+            },
+            openVehicle: { id in
+                router.push(.vehicle(id))
+            }
+        )
+        #endif
     }
 
     public var body: some View {
@@ -45,6 +63,7 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
             .environment(env)
             .task {
                 try? await env.resolveCurrentVehicle()
+                await env.refreshVehicleSpotlightIndex()
             }
             .onChange(of: scenePhase) { _, phase in
                 if phase == .active {

@@ -24,6 +24,7 @@ let package = Package(
                 "TankfulPersistence",
                 "TankfulSync",
                 .product(name: "Currency", package: "swift-currency"),
+                .byNameItem(name: "TankfulIntents", condition: .when(platforms: [.iOS, .macOS]))
             ], resources: [.process("Resources")],
             plugins: [.plugin(name: "skipstone", package: "skip")]),
         .target(
@@ -43,5 +44,14 @@ let package = Package(
                 "TankfulDomain",
                 .product(name: "Currency", package: "swift-currency"),
             ]),
+        .target(
+            name: "TankfulIntents",
+            dependencies: [
+                "TankfulDomain",
+                "TankfulPersistence",
+                .product(name: "Currency", package: "swift-currency"),
+            ],
+            resources: [.process("Resources")]
+        )
     ]
 )

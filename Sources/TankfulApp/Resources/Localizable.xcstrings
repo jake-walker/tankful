@@ -320,6 +320,15 @@
     "Fuel Type" : {
 
     },
+    "Get the average fuel economy for ${vehicle}" : {
+
+    },
+    "Get the latest fuel log for ${vehicle}" : {
+
+    },
+    "Get the odometer for ${vehicle}" : {
+
+    },
     "Headers" : {
 
     },
@@ -431,6 +440,9 @@
     "Litres" : {
 
     },
+    "Log ${volume} for ${vehicle}" : {
+
+    },
     "Make" : {
 
     },
@@ -515,6 +527,9 @@
 
     },
     "OK" : {
+
+    },
+    "Open ${target}" : {
 
     },
     "Partial fill" : {

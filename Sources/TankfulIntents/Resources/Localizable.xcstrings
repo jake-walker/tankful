@@ -1,0 +1,150 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "%lld fuel logs" : {
+
+    },
+    "%lld vehicles" : {
+
+    },
+    "Add Fuel" : {
+
+    },
+    "Add Fuel Log" : {
+
+    },
+    "Added a fuel log for %@." : {
+
+    },
+    "Adds a fill-up to a vehicle in Tankful." : {
+
+    },
+    "Calculates a vehicle's average fuel economy from all valid fuel logs." : {
+
+    },
+    "Cost" : {
+
+    },
+    "Date" : {
+
+    },
+    "Fuel Economy" : {
+
+    },
+    "Fuel Log" : {
+
+    },
+    "Get Average Fuel Economy" : {
+
+    },
+    "Get Latest Fuel Log" : {
+
+    },
+    "Get Odometer" : {
+
+    },
+    "Get the average fuel economy for ${vehicle}" : {
+
+    },
+    "Get the latest fuel log for ${vehicle}" : {
+
+    },
+    "Get the odometer for ${vehicle}" : {
+
+    },
+    "Gets the most recent fuel log for a vehicle." : {
+
+    },
+    "Gets the odometer reading from a vehicle's latest fuel log." : {
+
+    },
+    "Latest Fuel Log" : {
+
+    },
+    "Log ${volume} for ${vehicle}" : {
+
+    },
+    "Notes" : {
+
+    },
+    "Odometer" : {
+
+    },
+    "Open ${target}" : {
+
+    },
+    "Open Fuel Log" : {
+
+    },
+    "Open Vehicle" : {
+
+    },
+    "Opens a fuel log in Tankful." : {
+
+    },
+    "Opens a vehicle in Tankful." : {
+
+    },
+    "Tankful couldn't open its database." : {
+
+    },
+    "Tankful couldn't open that fuel log." : {
+
+    },
+    "Tankful couldn't open that vehicle." : {
+
+    },
+    "That fuel log no longer exists." : {
+
+    },
+    "The average fuel economy for %@ is %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The average fuel economy for %1$@ is %2$@."
+          }
+        }
+      }
+    },
+    "The latest fuel log for %@ doesn't include an odometer reading." : {
+
+    },
+    "The latest fuel log for %@ was on %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The latest fuel log for %1$@ was on %2$@."
+          }
+        }
+      }
+    },
+    "The latest odometer reading for %@ is %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The latest odometer reading for %1$@ is %2$@."
+          }
+        }
+      }
+    },
+    "There are no fuel logs for %@." : {
+
+    },
+    "There isn't enough information to calculate fuel economy for %@." : {
+
+    },
+    "Vehicle" : {
+
+    },
+    "Volume" : {
+
+    }
+  },
+  "version" : "1.0"
+}

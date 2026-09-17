@@ -18,6 +18,7 @@ struct FuelHistoryView: View {
         List(logs) { log in
             NavigationLink(value: AppRoute.fuelLog(log.id)) {
                 FuelLogItem(fuelLog: log)
+                    .fuelLogEntity(id: log.id)
             }
         }
         .navigationTitle(vehicle?.displayName ?? "Fuel History")

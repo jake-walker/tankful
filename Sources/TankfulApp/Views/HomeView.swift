@@ -42,15 +42,18 @@ struct HomeView: View {
                 } else if fuelLogs.isEmpty {
                     noFuelLogsView
                 } else {
-                    VStack(spacing: 18) {
-                        chart
+                    Group {
+                        VStack(spacing: 18) {
+                            chart
                             
-                        summaryMetrics
+                            summaryMetrics
+                        }
+                        .cardStyle()
+                        
+                        recentFillUpsSection
+                            .cardStyle(padding: false)
                     }
-                    .cardStyle()
-
-                    recentFillUpsSection
-                        .cardStyle(padding: false)
+                    .vehicleEntity(id: vehicle?.id)
                 }
             }
             .padding()
@@ -202,6 +205,7 @@ struct HomeView: View {
                 
                 NavigationLink(value: AppRoute.fuelLog(log.log.id)) {
                     FuelLogItem(fuelLog: log, showChevron: true)
+                        .fuelLogEntity(id: log.id)
                         .padding(.horizontal)
 #if !os(Android)
                         .foregroundStyle(Color(uiColor: .label))

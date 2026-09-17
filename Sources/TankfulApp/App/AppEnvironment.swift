@@ -13,6 +13,10 @@ import Currency
 import SkipFuse
 import Observation
 
+#if canImport(TankfulIntents)
+import TankfulIntents
+#endif
+
 @MainActor
 @Observable final class AppEnvironment {
     private static let currentVehicleKey = "currentVehicleID"
@@ -161,10 +165,19 @@ import Observation
         do {
             try await engine.sync()
             syncStatus = engine.status
+            await refreshVehicleSpotlightIndex()
         } catch {
             syncStatus = engine.status
             throw error
         }
+    }
+
+    func refreshVehicleSpotlightIndex() async {
+        #if canImport(TankfulIntents)
+        if #available(iOS 26.0, macOS 26.0, *) {
+            try? await TankfulIntentsEnvironment.refreshVehicleIndex()
+        }
+        #endif
     }
     
     func backgroundSyncIfNeeded() async {

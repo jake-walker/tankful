@@ -40,7 +40,7 @@ public struct Vehicle: Identifiable, Equatable, Codable, Sendable {
             return components.joined(separator: " ")
         }
         
-        return String(id.uuidString.suffix(6)).uppercased()
+        return "Vehicle \(String(id.uuidString.suffix(6)).uppercased())"
     }
     
     public func with(id newUUID: UUID) -> Self {

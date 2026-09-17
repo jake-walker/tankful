@@ -87,6 +87,7 @@ struct FuelLogDetailView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .fuelLogEntity(id: fuelLog?.id)
         .navigationTitle(fuelLog?.date.formatted(date: .abbreviated, time: .omitted) ?? "Loading")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {

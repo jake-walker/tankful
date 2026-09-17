@@ -61,6 +61,7 @@ struct VehicleView: View {
                 }
             }
         }
+        .vehicleEntity(id: vehicleID)
         .navigationTitle(vehicleID == nil ? "Add Vehicle" : "Vehicle Settings")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -160,6 +161,8 @@ struct VehicleView: View {
             } else {
                 try await env.vehicleController.create(vehicle)
             }
+
+            await env.refreshVehicleSpotlightIndex()
            
             env.selectVehicle(id: vehicle.id)
             env.router.pop()
@@ -176,6 +179,7 @@ struct VehicleView: View {
 
         do {
             try await env.vehicleRepository.delete(id: vehicleID)
+            await env.refreshVehicleSpotlightIndex()
             try await env.resolveCurrentVehicle()
             env.vehicleChangeVersion += 1
             env.router.popToRoot()
