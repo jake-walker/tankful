@@ -69,7 +69,7 @@ struct VehicleView: View {
         )
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                if #available(iOS 26.0, *) {
+                if #available(anyAppleOS 26.0, *) {
                     Button("Save", systemImage: "checkmark", role: .confirm) {
                         Task { await save() }
                     }

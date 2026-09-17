@@ -10,33 +10,34 @@ import SwiftUI
 import TankfulDomain
 
 #if canImport(Charts)
-import Charts
+    import Charts
 #endif
 
 struct HomeView: View {
     @Environment(AppEnvironment.self) internal var env
 
     private let recentFillUpLimit = 5
-    
+
     @State internal var vehicles: [Vehicle] = []
     @State internal var vehicle: Vehicle?
     @State internal var fuelLogs: [CalculatedFuelLog] = []
     @State internal var isLoading: Bool = true
 
     private var chartFuelLogs: [CalculatedFuelLog] {
-        return fuelLogs
+        return
+            fuelLogs
             .filter { $0.economy != nil }
             .reversed()
     }
-    
+
     private var lastCostPerMile: (any CurrencyValue)? {
         guard !fuelLogs.isEmpty else {
             return nil
         }
-        
+
         return fuelLogs[0].costPerDistance(unit: env.distanceUnit.unit)
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -65,7 +66,10 @@ struct HomeView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         }
-        .navigationTitle(vehicle?.displayName ?? NSLocalizedString("Vehicle", comment: "Fallback vehicle screen title"))
+        .navigationTitle(
+            vehicle?.displayName
+                ?? NSLocalizedString("Vehicle", comment: "Fallback vehicle screen title")
+        )
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
@@ -75,24 +79,27 @@ struct HomeView: View {
                                 Button {
                                     selectVehicle(vehicle)
                                 } label: {
-                                    Label(vehicle.displayName, systemImage: env.currentVehicleID == vehicle.id ? "checkmark.circle" : "circle")
+                                    Label(
+                                        vehicle.displayName,
+                                        systemImage: env.currentVehicleID == vehicle.id
+                                            ? "checkmark.circle" : "circle")
                                 }
                             }
                         }
                     }
-                    
+
                     Section {
                         if let vehicleID = env.currentVehicleID {
                             NavigationLink(value: AppRoute.vehicle(vehicleID)) {
                                 Label("Vehicle Settings", systemImage: "car")
                             }
                         }
-                        
+
                         Button("Add Vehicle", systemImage: "plus") {
                             env.router.push(AppRoute.addVehicle)
                         }
                     }
-                    
+
                     Section {
                         NavigationLink(value: AppRoute.settings) {
                             Label("Settings", systemImage: "gear")
@@ -111,24 +118,30 @@ struct HomeView: View {
             await loadVehicle()
         }
     }
-    
+
     private var summaryMetrics: some View {
         HStack(spacing: 8) {
             if let economy = fuelLogs.averageFuelEconomy {
                 metricView(
                     value: env.formatter.economy(economy).description,
-                    label: NSLocalizedString("Avg. Economy", comment: "Average fuel economy metric label")
+                    label: NSLocalizedString(
+                        "Avg. Economy", comment: "Average fuel economy metric label")
                 )
-                
+
                 Divider()
             }
-            
-            if let averageCostPerDistance = fuelLogs.averageCostPerDistance(unit: env.distanceUnit.unit) {
-                metricView(value: "\(averageCostPerDistance.localizedString())/\(env.distanceUnit.unit.symbol)", label: env.distanceUnit.costPerDisplayName)
-                
+
+            if let averageCostPerDistance = fuelLogs.averageCostPerDistance(
+                unit: env.distanceUnit.unit)
+            {
+                metricView(
+                    value:
+                        "\(averageCostPerDistance.localizedString())/\(env.distanceUnit.unit.symbol)",
+                    label: env.distanceUnit.costPerDisplayName)
+
                 Divider()
             }
-            
+
             metricView(
                 value: env.formatter.distance(fuelLogs.totalDistance).description,
                 label: NSLocalizedString("Distance", comment: "Total distance metric label")
@@ -181,52 +194,52 @@ struct HomeView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
     }
-    
+
     private func metricView(value: String, label: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(value)
                 .font(.system(size: 20, weight: .semibold))
-#if !os(Android)
-                .monospacedDigit()
-            #endif
+                #if !os(Android)
+                    .monospacedDigit()
+                #endif
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
-            
+
             Text(label)
                 .font(.caption)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
+
     private var recentFillUpsSection: some View {
         VStack {
             HStack {
                 Text("Recent fill-ups")
                     .font(.title3)
                     .fontWeight(.semibold)
-                
+
                 Spacer()
-                
+
                 NavigationLink(value: AppRoute.addFuelLog) {
                     Label("Add Fill-Up", systemImage: "plus")
                 }
                 .labelStyle(.iconOnly)
             }
             .padding([.horizontal, .top])
-            
+
             ForEach(fuelLogs.prefix(recentFillUpLimit)) { log in
                 Divider()
-                
+
                 NavigationLink(value: AppRoute.fuelLog(log.log.id)) {
                     FuelLogItem(fuelLog: log, showChevron: true)
                         .fuelLogEntity(id: log.id)
                         .padding(.horizontal)
-#if !os(Android)
-                        .foregroundStyle(Color(uiColor: .label))
-                    #endif
+                        #if !os(Android) && !os(macOS)
+                            .foregroundStyle(Color(uiColor: .label))
+                        #endif
                 }
             }
-            
+
             NavigationLink(value: AppRoute.fuelLogs) {
                 Label("Show More", systemImage: "chevron.right")
             }
@@ -234,42 +247,47 @@ struct HomeView: View {
             .padding(.bottom)
         }
     }
-    
+
     private var chart: some View {
         #if canImport(Charts)
-        Chart(chartFuelLogs) { log in
-            if let economy = log.economy {
-                LineMark(
-                    x: .value(NSLocalizedString("Date", comment: "Fuel economy chart date axis label"), log.log.date),
-                    y: .value(
-                        NSLocalizedString("Fuel Economy", comment: "Fuel economy chart value label"),
-                        economy.converted(to: env.fuelEconomyUnit.unit).value
+            Chart(chartFuelLogs) { log in
+                if let economy = log.economy {
+                    LineMark(
+                        x: .value(
+                            NSLocalizedString(
+                                "Date", comment: "Fuel economy chart date axis label"), log.log.date
+                        ),
+                        y: .value(
+                            NSLocalizedString(
+                                "Fuel Economy", comment: "Fuel economy chart value label"),
+                            economy.converted(to: env.fuelEconomyUnit.unit).value
+                        )
                     )
-                )
+                }
             }
-        }
-        .chartYScale(domain: .automatic(includesZero: false))
-        .chartYAxis {
-            AxisMarks(position: .leading) { value in
-                AxisGridLine()
-                
-                AxisValueLabel {
-                    if let v = value.as(Double.self) {
-                        Text("\(Int(v)) \(env.fuelEconomyUnit.unit.symbol)")
+            .chartYScale(domain: .automatic(includesZero: false))
+            .chartYAxis {
+                AxisMarks(position: .leading) { value in
+                    AxisGridLine()
+
+                    AxisValueLabel {
+                        if let v = value.as(Double.self) {
+                            Text("\(Int(v)) \(env.fuelEconomyUnit.unit.symbol)")
+                        }
                     }
                 }
             }
-        }
+            .frame(minHeight: 120, idealHeight: 160, maxHeight: 280)
         #else
             EmptyView()
         #endif
     }
-    
+
     private func fillUpValueText(_ value: String?) -> some View {
         Text(value ?? "-")
             .frame(maxWidth: .infinity)
     }
-    
+
     private func loadVehicle() async {
         isLoading = true
         defer { isLoading = false }
@@ -287,13 +305,14 @@ struct HomeView: View {
         if env.currentVehicleID != loadedVehicle.id {
             env.currentVehicleID = loadedVehicle.id
         }
-        
+
         vehicle = loadedVehicle
 
         let cutoffDate = Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date()
-        fuelLogs = (try? await env.fuelLogRepository
-            .fuelLogs(for: loadedVehicle.id, startingAt: cutoffDate)
-            .calculated()) ?? []
+        fuelLogs =
+            (try? await env.fuelLogRepository
+                .fuelLogs(for: loadedVehicle.id, startingAt: cutoffDate)
+                .calculated()) ?? []
     }
 
     private func selectVehicle(_ selectedVehicle: Vehicle) {
@@ -304,10 +323,10 @@ struct HomeView: View {
 }
 
 #if !os(Android)
-#Preview {
-    NavigationView {
-        HomeView()
-            .environment(AppEnvironment.preview())
+    #Preview {
+        NavigationStack {
+            HomeView()
+                .environment(AppEnvironment.preview())
+        }
     }
-}
 #endif

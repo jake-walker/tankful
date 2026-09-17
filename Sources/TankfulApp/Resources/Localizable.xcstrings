@@ -178,6 +178,9 @@
     "Configure a sync backend before starting a sync." : {
       "comment" : "Error shown when sync is started before it is configured"
     },
+    "Cost" : {
+
+    },
     "Cost per kilometre" : {
       "comment" : "Metric label for cost per unit of distance"
     },

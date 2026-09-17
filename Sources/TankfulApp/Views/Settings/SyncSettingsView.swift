@@ -25,26 +25,31 @@ struct SyncSettingsView: View {
         Form {
             Section {
                 HStack(spacing: 16) {
-                    Image(systemName: syncEnabled ? "arrow.trianglehead.2.clockwise.rotate.90" : "circle.slash")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .fontWeight(.semibold)
-                        .frame(width: 32, height: 32)
+                    Image(
+                        systemName: syncEnabled
+                            ? "arrow.trianglehead.2.clockwise.rotate.90" : "circle.slash"
+                    )
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .fontWeight(.semibold)
+                    .frame(width: 32, height: 32)
 
                     VStack(alignment: .leading) {
                         Text(
                             syncEnabled
-                                ? NSLocalizedString("Sync Status", comment: "Sync status section heading")
-                                : NSLocalizedString("Sync Disabled", comment: "Sync status section heading")
+                                ? NSLocalizedString(
+                                    "Sync Status", comment: "Sync status section heading")
+                                : NSLocalizedString(
+                                    "Sync Disabled", comment: "Sync status section heading")
                         )
-                            .font(.headline)
+                        .font(.headline)
 
                         if syncEnabled {
                             Text(syncText)
                         }
                     }
                 }
-                
+
                 if let validationMessage {
                     Text(validationMessage)
                         .font(.footnote)
@@ -72,18 +77,25 @@ struct SyncSettingsView: View {
             if syncEnabled {
                 Section {
                     LabeledContent {
-                        TextField("Server URL", text: $serverURL, prompt: Text("https://tracktor.example.com"))
-                            .multilineTextAlignment(.trailing)
-                            .textInputAutocapitalization(.never)
-                            .autocorrectionDisabled()
-                            .keyboardType(.URL)
+                        TextField(
+                            "Server URL", text: $serverURL,
+                            prompt: Text("https://tracktor.example.com")
+                        )
+                        .multilineTextAlignment(.trailing)
+                        .autocorrectionDisabled()
+#if !os(macOS)
+.textInputAutocapitalization(.never)
+.keyboardType(.URL)
+#endif
                     } label: {
                         Text("Server URL")
                     }
 
                     TextField("Username", text: $username)
-                        .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
+                    #if !os(macOS)
+                        .textInputAutocapitalization(.never)
+                    #endif
 
                     SecureField("Password", text: $password)
                 } header: {
@@ -126,7 +138,7 @@ struct SyncSettingsView: View {
             }
 
             ToolbarItem(placement: .primaryAction) {
-                if #available(iOS 26.0, *) {
+                if #available(anyAppleOS 26.0, *) {
                     Button("Save Changes", systemImage: "checkmark", role: .confirm) {
                         saveSyncConfiguration()
                     }
@@ -147,7 +159,7 @@ struct SyncSettingsView: View {
             Button("Discard Changes", role: .destructive) {
                 env.router.pop()
             }
-            Button("Keep Editing", role: .cancel) { }
+            Button("Keep Editing", role: .cancel) {}
         } message: {
             Text("Your sync settings will remain unchanged.")
         }
@@ -182,17 +194,20 @@ struct SyncSettingsView: View {
         case .idle(let lastSync):
             if let lastSync {
                 return String(
-                    format: NSLocalizedString("Last synced %@", comment: "Sync status followed by the last sync date"),
+                    format: NSLocalizedString(
+                        "Last synced %@", comment: "Sync status followed by the last sync date"),
                     lastSync.formatted(date: .abbreviated, time: .shortened)
                 )
             } else {
-                return NSLocalizedString("Not yet synced", comment: "Sync status when no sync has completed")
+                return NSLocalizedString(
+                    "Not yet synced", comment: "Sync status when no sync has completed")
             }
         case .syncing:
             return NSLocalizedString("Syncing...", comment: "Sync status while a sync is running")
         case .failed(_, let message):
             return String(
-                format: NSLocalizedString("Failed: %@", comment: "Sync failure status followed by an error message"),
+                format: NSLocalizedString(
+                    "Failed: %@", comment: "Sync failure status followed by an error message"),
                 message
             )
         }
@@ -224,7 +239,7 @@ struct SyncSettingsView: View {
             .map { "\($0.key): \($0.value)" }
             .joined(separator: "\n")
 
-        if case let .credentials(savedUsername, savedPassword) = configuration.authentication {
+        if case .credentials(let savedUsername, let savedPassword) = configuration.authentication {
             username = savedUsername
             password = savedPassword
         } else {
@@ -239,14 +254,16 @@ struct SyncSettingsView: View {
             env.syncConfiguration = nil
             savedDraft = draft
             validationMessage = nil
-            saveMessage = NSLocalizedString("Sync disabled.", comment: "Confirmation shown after disabling sync")
+            saveMessage = NSLocalizedString(
+                "Sync disabled.", comment: "Confirmation shown after disabling sync")
             return
         }
 
         guard let baseURL = URL(string: serverURL),
-              let scheme = baseURL.scheme?.lowercased(),
-              ["http", "https"].contains(scheme),
-              baseURL.host != nil else {
+            let scheme = baseURL.scheme?.lowercased(),
+            ["http", "https"].contains(scheme),
+            baseURL.host != nil
+        else {
             validationMessage = NSLocalizedString(
                 "Enter a valid HTTP or HTTPS server URL.",
                 comment: "Validation error for an invalid sync server URL"
@@ -280,7 +297,8 @@ struct SyncSettingsView: View {
             )
             savedDraft = draft
             validationMessage = nil
-            saveMessage = NSLocalizedString("Changes saved.", comment: "Confirmation shown after saving sync settings")
+            saveMessage = NSLocalizedString(
+                "Changes saved.", comment: "Confirmation shown after saving sync settings")
         } catch {
             validationMessage = error.localizedDescription
             saveMessage = nil
@@ -326,7 +344,8 @@ private enum HeaderParsingError: LocalizedError {
             String(
                 format: NSLocalizedString(
                     "Custom header on line %lld must use \"Name: value\" format.",
-                    comment: "Validation error for a malformed custom HTTP header; argument is the line number"
+                    comment:
+                        "Validation error for a malformed custom HTTP header; argument is the line number"
                 ),
                 Int64(line)
             )
@@ -335,10 +354,10 @@ private enum HeaderParsingError: LocalizedError {
 }
 
 #if !os(Android)
-#Preview {
-    NavigationView {
-        SyncSettingsView()
-            .environment(AppEnvironment.preview())
+    #Preview {
+        NavigationStack {
+            SyncSettingsView()
+                .environment(AppEnvironment.preview())
+        }
     }
-}
 #endif
