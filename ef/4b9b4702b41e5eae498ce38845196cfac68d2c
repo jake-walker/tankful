@@ -1,0 +1,32 @@
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 176-177
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 769
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 15,71-75,183,231,241,299,337
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerBackend.swift
+  h_2463f6ed1216b2 1-164
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerExtraFields.swift
+  h_2463f6ed1216b2 1-11
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerGasRecord.swift
+  h_2463f6ed1216b2 1-92
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerVehicle.swift
+  h_2463f6ed1216b2 1-115
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  h_2463f6ed1216b2 132
+Sources/TankfulSync/HTTP/SyncConfiguration.swift
+  h_2463f6ed1216b2 34,36-43
+Tests/services/compose.yml
+  h_2463f6ed1216b2 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ef4b9b4702b41e5eae498ce38845196cfac68d2c",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
