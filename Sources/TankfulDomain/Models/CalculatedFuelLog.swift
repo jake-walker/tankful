@@ -11,17 +11,19 @@ import Currency
 public struct CalculatedFuelLog: Identifiable {
     public let log: FuelLog
     public let distance: Measurement<UnitLength>?
+    fileprivate let economyVolume: Measurement<UnitVolume>?
     
     public var id: FuelLog.ID { log.id }
     
     public var economy: Measurement<UnitFuelEfficiency>? {
-        guard !log.missedLast,
+        guard log.filled,
+              !log.missedLast,
               let distance,
-              let volume = log.volume else {
+              let economyVolume else {
             return nil
         }
         
-        return calculateFuelEconomy(distance: distance, volume: volume)
+        return calculateFuelEconomy(distance: distance, volume: economyVolume)
     }
     
     public func costPerDistance(unit: UnitLength) -> (any CurrencyValue)? {
@@ -44,6 +46,17 @@ public struct CalculatedFuelLog: Identifiable {
     public init(log: FuelLog, distance: Measurement<UnitLength>?) {
         self.log = log
         self.distance = distance
+        self.economyVolume = log.volume
+    }
+
+    fileprivate init(
+        log: FuelLog,
+        distance: Measurement<UnitLength>?,
+        economyVolume: Measurement<UnitVolume>?
+    ) {
+        self.log = log
+        self.distance = distance
+        self.economyVolume = economyVolume
     }
 }
 
@@ -66,36 +79,55 @@ extension Array where Element == FuelLog {
         )
     }
     
-    private func calculateEconomy(from previous: FuelLog, to current: FuelLog) -> Measurement<UnitFuelEfficiency>? {
-        guard let distance = calculateDistance(from: previous, to: current),
-              let volume = current.volume else {
-            return nil
-        }
-        
-        return calculateFuelEconomy(distance: distance, volume: volume)
-    }
-    
     public func calculated() -> [CalculatedFuelLog] {
         let sortedLogs = sorted { $0.date < $1.date }
+        var calculatedLogs: [CalculatedFuelLog] = []
+        var previousLog: FuelLog?
+        var previousFilledLog: FuelLog?
+        var accumulatedVolume = Measurement(value: 0, unit: UnitVolume.liters)
+        var intervalIsComplete = true
 
-        let calculatedLogs = sortedLogs.enumerated()
-            .map { index, log in
-                guard index > 0 else {
-                    return CalculatedFuelLog(
-                        log: log,
-                        distance: nil,
-                    )
-                }
-                
-                let previous = sortedLogs[index - 1]
-                
-                let distance = calculateDistance(from: previous, to: log)
-                
-                return CalculatedFuelLog(
-                    log: log,
-                    distance: distance
-                )
+        for log in sortedLogs {
+            let adjacentDistance = previousLog.flatMap {
+                calculateDistance(from: $0, to: log)
             }
+
+            if log.missedLast || log.volume == nil {
+                intervalIsComplete = false
+            } else if let volume = log.volume {
+                accumulatedVolume = accumulatedVolume + volume.converted(to: .liters)
+            }
+
+            let distance: Measurement<UnitLength>?
+            let economyVolume: Measurement<UnitVolume>?
+
+            if log.filled {
+                if intervalIsComplete, let previousFilledLog {
+                    distance = calculateDistance(from: previousFilledLog, to: log)
+                    economyVolume = distance == nil ? nil : accumulatedVolume
+                } else {
+                    distance = nil
+                    economyVolume = nil
+                }
+            } else {
+                distance = adjacentDistance
+                economyVolume = nil
+            }
+
+            calculatedLogs.append(CalculatedFuelLog(
+                log: log,
+                distance: distance,
+                economyVolume: economyVolume
+            ))
+
+            if log.filled {
+                previousFilledLog = log.odometer == nil ? nil : log
+                accumulatedVolume = Measurement(value: 0, unit: .liters)
+                intervalIsComplete = true
+            }
+
+            previousLog = log
+        }
         
         // reverse the list so newest entries are first
         var newestFirst: [CalculatedFuelLog] = []
@@ -130,16 +162,14 @@ extension Collection where Element == CalculatedFuelLog {
     }
     
     public var averageFuelEconomy: Measurement<UnitFuelEfficiency>? {
-        let validLogs = filter {
-            !$0.log.missedLast && $0.distance != nil && $0.log.volume != nil
-        }
+        let validLogs = filter { $0.economy != nil }
         
         let distance = validLogs.compactMap(\.distance)
             .reduce(0) {
                 $0 + $1.converted(to: .meters).value
             }
         
-        let volume = validLogs.compactMap(\.log.volume)
+        let volume = validLogs.compactMap(\.economyVolume)
             .reduce(0) {
                 $0 + $1.converted(to: .liters).value
             }

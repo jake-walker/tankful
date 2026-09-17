@@ -52,6 +52,10 @@ let package = Package(
                 .product(name: "Currency", package: "swift-currency"),
             ],
             resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "TankfulDomainTests",
+            dependencies: ["TankfulDomain"]
         )
     ]
 )

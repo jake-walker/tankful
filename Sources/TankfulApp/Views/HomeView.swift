@@ -230,13 +230,15 @@ struct HomeView: View {
     private var chart: some View {
         #if canImport(Charts)
         Chart(fuelLogs.reversed().dropFirst()) { log in
-            LineMark(
-                x: .value(NSLocalizedString("Date", comment: "Fuel economy chart date axis label"), log.log.date),
-                y: .value(
-                    NSLocalizedString("Fuel Economy", comment: "Fuel economy chart value label"),
-                    log.economy?.converted(to: env.fuelEconomyUnit.unit).value ?? 0
+            if let economy = log.economy {
+                LineMark(
+                    x: .value(NSLocalizedString("Date", comment: "Fuel economy chart date axis label"), log.log.date),
+                    y: .value(
+                        NSLocalizedString("Fuel Economy", comment: "Fuel economy chart value label"),
+                        economy.converted(to: env.fuelEconomyUnit.unit).value
+                    )
                 )
-            )
+            }
         }
         .chartYScale(domain: .automatic(includesZero: false))
         .chartYAxis {
