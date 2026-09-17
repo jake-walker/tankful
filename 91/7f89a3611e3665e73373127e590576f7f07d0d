@@ -1,0 +1,60 @@
+Package.swift
+  h_2463f6ed1216b2 27,47-55
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 16-19,168,174-181
+Sources/TankfulApp/Extensions/ViewModifiers/AppEntityViewModifier.swift
+  h_2463f6ed1216b2 1-66
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 322-330,442-444,531-533
+Sources/TankfulApp/TankfulApp.swift
+  h_2463f6ed1216b2 10-13,37,41,46-58,66
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  h_2463f6ed1216b2 21
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  h_2463f6ed1216b2 90
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 45-47,49-54,56,208
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 64,164-165,182
+Sources/TankfulDomain/Models/Vehicle.swift
+  h_2463f6ed1216b2 43
+Sources/TankfulIntents/Entities/FuelLogEntity.swift
+  h_2463f6ed1216b2 1-58
+Sources/TankfulIntents/Entities/VehicleEntity.swift
+  h_2463f6ed1216b2 1-49
+Sources/TankfulIntents/Intents/AddFuelLogIntent.swift
+  h_2463f6ed1216b2 1-53
+Sources/TankfulIntents/Intents/GetFuelEconomyIntent.swift
+  h_2463f6ed1216b2 1-30
+Sources/TankfulIntents/Intents/GetLastFuelLogIntent.swift
+  h_2463f6ed1216b2 1-30
+Sources/TankfulIntents/Intents/GetOdometerIntent.swift
+  h_2463f6ed1216b2 1-34
+Sources/TankfulIntents/Intents/OpenFuelLogIntent.swift
+  h_2463f6ed1216b2 1-26
+Sources/TankfulIntents/Intents/OpenVehicleIntent.swift
+  h_2463f6ed1216b2 1-28
+Sources/TankfulIntents/Queries/FuelLogEntityQuery.swift
+  h_2463f6ed1216b2 1-20
+Sources/TankfulIntents/Queries/VehicleEntityQuery.swift
+  h_2463f6ed1216b2 1-23
+Sources/TankfulIntents/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 1-150
+Sources/TankfulIntents/TankfulIntentsEnvironment.swift
+  h_2463f6ed1216b2 1-185
+Sources/TankfulIntents/TankfulIntentsError.swift
+  h_2463f6ed1216b2 1-37
+Sources/TankfulIntents/TankfulShortcuts.swift
+  h_2463f6ed1216b2 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "917f89a3611e3665e73373127e590576f7f07d0d",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
