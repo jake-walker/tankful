@@ -210,7 +210,10 @@ private enum SyncActionError: LocalizedError {
     case configurationMissing
 
     var errorDescription: String? {
-        "Configure a sync backend before starting a sync."
+        NSLocalizedString(
+            "Configure a sync backend before starting a sync.",
+            comment: "Error shown when sync is started before it is configured"
+        )
     }
 }
 

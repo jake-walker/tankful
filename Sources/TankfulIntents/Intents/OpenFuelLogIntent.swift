@@ -2,11 +2,11 @@ import AppIntents
 
 @available(anyAppleOS 26.0, *)
 struct OpenFuelLogIntent: OpenIntent {
-    static let title: LocalizedStringResource = "Open Fuel Log"
-    static let description = IntentDescription("Opens a fuel log in Tankful.")
+    static let title: LocalizedStringResource = "Open Fill-Up"
+    static let description = IntentDescription("Opens a fill-up in Tankful.")
     static var supportedModes: IntentModes { .foreground }
 
-    @Parameter(title: "Fuel Log")
+    @Parameter(title: "Fill-Up")
     var target: FuelLogEntity
 
     static var parameterSummary: some ParameterSummary {

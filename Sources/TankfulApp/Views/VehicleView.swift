@@ -62,7 +62,11 @@ struct VehicleView: View {
             }
         }
         .vehicleEntity(id: vehicleID)
-        .navigationTitle(vehicleID == nil ? "Add Vehicle" : "Vehicle Settings")
+        .navigationTitle(
+            vehicleID == nil
+                ? NSLocalizedString("Add Vehicle", comment: "Title for creating a vehicle")
+                : NSLocalizedString("Vehicle Settings", comment: "Title for editing a vehicle")
+        )
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 if #available(iOS 26.0, *) {
@@ -200,7 +204,7 @@ private enum VehicleViewError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .vehicleNotFound:
-            "The vehicle could not be found."
+            NSLocalizedString("The vehicle could not be found.", comment: "Error shown when a vehicle no longer exists")
         }
     }
 }

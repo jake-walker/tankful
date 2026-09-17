@@ -1,282 +1,883 @@
 {
-  "sourceLanguage" : "en",
+  "sourceLanguage" : "en-GB",
   "strings" : {
     "-" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "-"
+          }
+        }
+      },
+      "shouldTranslate" : false
     },
     "%@" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%@"
+          }
+        }
+      },
+      "shouldTranslate" : false
     },
     "%@ · %@" : {
       "localizations" : {
-        "en" : {
+        "en-GB" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "needs_review",
             "value" : "%1$@ · %2$@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%@/%@" : {
       "localizations" : {
-        "en" : {
+        "en-GB" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "needs_review",
             "value" : "%1$@/%2$@"
           }
         }
-      }
-    },
-    "%@%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@%2$@"
-          }
-        }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%lld %@" : {
       "localizations" : {
-        "en" : {
+        "en-GB" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "needs_review",
             "value" : "%1$lld %2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "Actions" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actions"
           }
         }
       }
     },
-    "Actions" : {
-
-    },
     "Add a vehicle before recording fill-ups and tracking fuel economy." : {
-
-    },
-    "Add fill-up" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a vehicle before recording fill-ups and tracking fuel economy."
+          }
+        }
+      }
     },
     "Add Fill-Up" : {
-
-    },
-    "Add Fuel Log" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Fill-Up"
+          }
+        }
+      }
     },
     "Add one header per line, for example: `X-API-Key: abcdef`" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add one header per line, for example: `X-API-Key: abcdef`"
+          }
+        }
+      }
     },
     "Add the first fill-up for this vehicle to start tracking its fuel usage." : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add the first fill-up for this vehicle to start tracking its fuel usage."
+          }
+        }
+      }
     },
     "Add Vehicle" : {
-
+      "comment" : "Title for creating a vehicle",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Vehicle"
+          }
+        }
+      }
     },
     "Add Your First Vehicle" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Your First Vehicle"
+          }
+        }
+      }
     },
     "All fill-ups for this vehicle will also be deleted. This action cannot be undone." : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All fill-ups for this vehicle will also be deleted. This action cannot be undone."
+          }
+        }
+      }
+    },
+    "Avg. Economy" : {
+      "comment" : "Average fuel economy metric label"
     },
     "Back" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
     },
     "Backend" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backend"
+          }
+        }
+      }
     },
     "Cancel" : {
-      "comment" : "Button title indicating that the operation should be cancelled"
+      "comment" : "Button title indicating that the operation should be cancelled",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Changes saved." : {
+      "comment" : "Confirmation shown after saving sync settings"
+    },
+    "Configure a sync backend before starting a sync." : {
+      "comment" : "Error shown when sync is started before it is configured"
+    },
+    "Cost per kilometre" : {
+      "comment" : "Metric label for cost per unit of distance"
     },
     "Cost per mile" : {
-
+      "comment" : "Metric label for cost per unit of distance",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cost per mile"
+          }
+        }
+      }
+    },
+    "Custom header on line %lld must use \"Name: value\" format." : {
+      "comment" : "Validation error for a malformed custom HTTP header; argument is the line number"
     },
     "Date" : {
-      "comment" : "Item editor form label for the Date field"
+      "comment" : "Fuel economy chart date axis label",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
     },
     "Delete Fill-Up" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Fill-Up"
+          }
+        }
+      }
     },
     "Delete this fill-up?" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete this fill-up?"
+          }
+        }
+      }
     },
     "Delete this vehicle?" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete this vehicle?"
+          }
+        }
+      }
     },
     "Delete Vehicle" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Vehicle"
+          }
+        }
+      }
     },
     "Discard Changes" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discard Changes"
+          }
+        }
+      }
     },
     "Discard unsaved changes?" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discard unsaved changes?"
+          }
+        }
+      }
     },
     "Distance" : {
-
+      "comment" : "Total distance metric label",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance"
+          }
+        }
+      }
     },
     "Enable sync" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable sync"
+          }
+        }
+      }
+    },
+    "Enter a valid HTTP or HTTPS server URL." : {
+      "comment" : "Validation error for an invalid sync server URL"
+    },
+    "Enter both a username and password, or leave both blank." : {
+      "comment" : "Validation error for incomplete sync credentials"
+    },
+    "Failed: %@" : {
+      "comment" : "Sync failure status followed by an error message"
+    },
+    "Filled" : {
+      "comment" : "Fill-up status"
     },
     "Filled Tank" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filled Tank"
+          }
+        }
+      }
+    },
+    "Filled, Missed Last" : {
+      "comment" : "Fill-up status"
     },
     "Fuel Economy" : {
-
+      "comment" : "Fuel economy chart value label",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuel Economy"
+          }
+        }
+      }
+    },
+    "Fuel History" : {
+      "comment" : "Fuel history screen title"
     },
     "Fuel Type" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuel Type"
+          }
+        }
+      }
     },
     "Get the average fuel economy for ${vehicle}" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get the average fuel economy for ${vehicle}"
+          }
+        }
+      }
     },
-    "Get the latest fuel log for ${vehicle}" : {
+    "Get the latest fill-up for ${vehicle}" : {
 
     },
     "Get the odometer for ${vehicle}" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get the odometer for ${vehicle}"
+          }
+        }
+      }
     },
     "Headers" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Headers"
+          }
+        }
+      }
     },
     "https://tracktor.example.com" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://tracktor.example.com"
+          }
+        }
+      }
     },
     "Imperial Gallons" : {
-
+      "comment" : "Volume unit name",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imperial Gallons"
+          }
+        }
+      }
     },
     "Keep Editing" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep Editing"
+          }
+        }
+      }
     },
     "Kilometres" : {
-
+      "comment" : "Distance unit name",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilometres"
+          }
+        }
+      }
     },
     "Last synced %@" : {
-
+      "comment" : "Sync status followed by the last sync date",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last synced %@"
+          }
+        }
+      }
     },
     "Litres" : {
-
+      "comment" : "Volume unit name",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litres"
+          }
+        }
+      }
+    },
+    "Litres per 100km" : {
+      "comment" : "Fuel economy unit name"
+    },
+    "Loading" : {
+      "comment" : "Title shown while a fill-up is loading"
     },
     "Log ${volume} for ${vehicle}" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log ${volume} for ${vehicle}"
+          }
+        }
+      }
     },
     "Make" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make"
+          }
+        }
+      }
     },
     "Miles" : {
-
+      "comment" : "Distance unit name",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miles"
+          }
+        }
+      }
     },
     "Missed Last" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missed Last"
+          }
+        }
+      }
     },
     "Model" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Model"
+          }
+        }
+      }
+    },
+    "MPG (Imperial)" : {
+      "comment" : "Fuel economy unit name"
+    },
+    "MPG (US)" : {
+      "comment" : "Fuel economy unit name"
     },
     "No Fill-Ups Yet" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Fill-Ups Yet"
+          }
+        }
+      }
+    },
+    "Not filled" : {
+      "comment" : "Fill-up status"
+    },
+    "Not filled, Missed Last" : {
+      "comment" : "Fill-up status"
     },
     "Not yet synced" : {
-
+      "comment" : "Sync status when no sync has completed",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not yet synced"
+          }
+        }
+      }
     },
     "Notes" : {
-      "comment" : "Item editor form label for the Notes field"
+      "comment" : "Item editor form label for the Notes field",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
+          }
+        }
+      }
     },
     "Odometer" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odometer"
+          }
+        }
+      }
     },
     "OK" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Open ${target}" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open ${target}"
+          }
+        }
+      }
     },
     "Partial fill" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partial fill"
+          }
+        }
+      }
     },
     "Password" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        }
+      }
     },
     "Recent fill-ups" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent fill-ups"
+          }
+        }
+      }
     },
     "Save" : {
-      "comment" : "Button title indicating that the current contents should be saved"
+      "comment" : "Button title indicating that the current contents should be saved",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
     },
     "Save Changes" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Changes"
+          }
+        }
+      }
     },
     "Save or discard your changes before syncing." : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save or discard your changes before syncing."
+          }
+        }
+      }
     },
     "Server" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
+          }
+        }
+      }
     },
     "Server URL" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server URL"
+          }
+        }
+      }
     },
     "Settings" : {
-      "comment" : "Tab bar item title for the Settings tab"
+      "comment" : "Tab bar item title for the Settings tab",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
     },
     "Show More" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show More"
+          }
+        }
+      }
     },
     "Sync Disabled" : {
-
+      "comment" : "Sync status section heading",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync Disabled"
+          }
+        }
+      }
+    },
+    "Sync disabled." : {
+      "comment" : "Confirmation shown after disabling sync"
     },
     "Sync Now" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync Now"
+          }
+        }
+      }
     },
     "Sync Settings" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync Settings"
+          }
+        }
+      }
     },
     "Sync Status" : {
-
+      "comment" : "Sync status section heading",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync Status"
+          }
+        }
+      }
+    },
+    "Syncing..." : {
+      "comment" : "Sync status while a sync is running"
+    },
+    "The vehicle could not be found." : {
+      "comment" : "Error shown when a vehicle no longer exists"
     },
     "This action cannot be undone." : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action cannot be undone."
+          }
+        }
+      }
     },
     "Total Cost" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Cost"
+          }
+        }
+      }
     },
     "Tracktor" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tracktor"
+          }
+        }
+      }
     },
     "Unable to Delete Fill-Up" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Delete Fill-Up"
+          }
+        }
+      }
     },
     "Unable to Save Fill-Up" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Save Fill-Up"
+          }
+        }
+      }
     },
     "Unable to Update Vehicle" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Update Vehicle"
+          }
+        }
+      }
     },
     "Unit Cost" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unit Cost"
+          }
+        }
+      }
     },
     "Units" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Units"
+          }
+        }
+      }
     },
     "US Gallons" : {
-
+      "comment" : "Volume unit name",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "US Gallons"
+          }
+        }
+      }
     },
     "Username" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username"
+          }
+        }
+      }
     },
     "Vehicle" : {
-
+      "comment" : "Fallback vehicle screen title",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vehicle"
+          }
+        }
+      }
     },
     "Vehicle Settings" : {
-
+      "comment" : "Title for editing a vehicle",
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vehicle Settings"
+          }
+        }
+      }
     },
     "Volume" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume"
+          }
+        }
+      }
     },
     "Volume of Fuel" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume of Fuel"
+          }
+        }
+      }
     },
     "Year" : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Year"
+          }
+        }
+      }
     },
     "Your sync settings will remain unchanged." : {
-
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your sync settings will remain unchanged."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

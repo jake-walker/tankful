@@ -4,25 +4,25 @@
     "%@" : {
 
     },
-    "%lld fuel logs" : {
+    "%lld fill-ups" : {
 
     },
     "%lld vehicles" : {
 
     },
+    "Add Fill-Up" : {
+
+    },
     "Add Fuel" : {
 
     },
-    "Add Fuel Log" : {
-
-    },
-    "Added a fuel log for %@." : {
+    "Added a fill-up for %@." : {
 
     },
     "Adds a fill-up to a vehicle in Tankful." : {
 
     },
-    "Calculates a vehicle's average fuel economy from all valid fuel logs." : {
+    "Calculates a vehicle's average fuel economy from all valid fill-ups." : {
 
     },
     "Cost" : {
@@ -31,16 +31,16 @@
     "Date" : {
 
     },
-    "Fuel Economy" : {
+    "Fill-Up" : {
 
     },
-    "Fuel Log" : {
+    "Fuel Economy" : {
 
     },
     "Get Average Fuel Economy" : {
 
     },
-    "Get Latest Fuel Log" : {
+    "Get Latest Fill-Up" : {
 
     },
     "Get Odometer" : {
@@ -49,19 +49,19 @@
     "Get the average fuel economy for ${vehicle}" : {
 
     },
-    "Get the latest fuel log for ${vehicle}" : {
+    "Get the latest fill-up for ${vehicle}" : {
 
     },
     "Get the odometer for ${vehicle}" : {
 
     },
-    "Gets the most recent fuel log for a vehicle." : {
+    "Gets the most recent fill-up for a vehicle." : {
 
     },
-    "Gets the odometer reading from a vehicle's latest fuel log." : {
+    "Gets the odometer reading from a vehicle's latest fill-up." : {
 
     },
-    "Latest Fuel Log" : {
+    "Latest Fill-Up" : {
 
     },
     "Log ${volume} for ${vehicle}" : {
@@ -76,13 +76,13 @@
     "Open ${target}" : {
 
     },
-    "Open Fuel Log" : {
+    "Open Fill-Up" : {
 
     },
     "Open Vehicle" : {
 
     },
-    "Opens a fuel log in Tankful." : {
+    "Opens a fill-up in Tankful." : {
 
     },
     "Opens a vehicle in Tankful." : {
@@ -91,13 +91,13 @@
     "Tankful couldn't open its database." : {
 
     },
-    "Tankful couldn't open that fuel log." : {
+    "Tankful couldn't open that fill-up." : {
 
     },
     "Tankful couldn't open that vehicle." : {
 
     },
-    "That fuel log no longer exists." : {
+    "That fill-up no longer exists." : {
 
     },
     "The average fuel economy for %@ is %@." : {
@@ -110,15 +110,15 @@
         }
       }
     },
-    "The latest fuel log for %@ doesn't include an odometer reading." : {
+    "The latest fill-up for %@ doesn't include an odometer reading." : {
 
     },
-    "The latest fuel log for %@ was on %@." : {
+    "The latest fill-up for %@ was on %@." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "The latest fuel log for %1$@ was on %2$@."
+            "value" : "The latest fill-up for %1$@ was on %2$@."
           }
         }
       }
@@ -133,7 +133,7 @@
         }
       }
     },
-    "There are no fuel logs for %@." : {
+    "There are no fill-ups for %@." : {
 
     },
     "There isn't enough information to calculate fuel economy for %@." : {

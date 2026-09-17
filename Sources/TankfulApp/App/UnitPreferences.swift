@@ -22,15 +22,15 @@ enum DistanceUnit: String, Codable, CaseIterable, Identifiable {
     
     var displayName: String {
         switch self {
-        case .kilometres: "Kilometres"
-        case .miles: "Miles"
+        case .kilometres: NSLocalizedString("Kilometres", comment: "Distance unit name")
+        case .miles: NSLocalizedString("Miles", comment: "Distance unit name")
         }
     }
     
     var costPerDisplayName: String {
         switch self {
-        case .kilometres: "Cost per kilometre"
-        case .miles: "Cost per mile"
+        case .kilometres: NSLocalizedString("Cost per kilometre", comment: "Metric label for cost per unit of distance")
+        case .miles: NSLocalizedString("Cost per mile", comment: "Metric label for cost per unit of distance")
         }
     }
 }
@@ -52,9 +52,9 @@ enum VolumeUnit: String, Codable, CaseIterable, Identifiable {
     
     var displayName: String {
         switch self {
-        case .litres: "Litres"
-        case .imperialGallons: "Imperial Gallons"
-        case .usGallons: "US Gallons"
+        case .litres: NSLocalizedString("Litres", comment: "Volume unit name")
+        case .imperialGallons: NSLocalizedString("Imperial Gallons", comment: "Volume unit name")
+        case .usGallons: NSLocalizedString("US Gallons", comment: "Volume unit name")
         }
     }
 }
@@ -76,9 +76,9 @@ enum FuelEconomyUnit: String, Codable, CaseIterable, Identifiable {
     
     var displayName: String {
         switch self {
-        case .mpgImperial: "MPG (Imperial)"
-        case .mpgUS: "MPG (US)"
-        case .litresPer100Km: "Litres per 100km"
+        case .mpgImperial: NSLocalizedString("MPG (Imperial)", comment: "Fuel economy unit name")
+        case .mpgUS: NSLocalizedString("MPG (US)", comment: "Fuel economy unit name")
+        case .litresPer100Km: NSLocalizedString("Litres per 100km", comment: "Fuel economy unit name")
         }
     }
 }

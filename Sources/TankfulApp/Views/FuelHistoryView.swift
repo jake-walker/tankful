@@ -21,7 +21,7 @@ struct FuelHistoryView: View {
                     .fuelLogEntity(id: log.id)
             }
         }
-        .navigationTitle(vehicle?.displayName ?? "Fuel History")
+        .navigationTitle(vehicle?.displayName ?? NSLocalizedString("Fuel History", comment: "Fuel history screen title"))
         .task {
             await load()
         }

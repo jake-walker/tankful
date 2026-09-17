@@ -41,10 +41,10 @@ struct TankfulShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: GetLastFuelLogIntent(),
             phrases: [
-                "Get my latest fuel log in \(.applicationName)",
+                "Get my latest fill-up in \(.applicationName)",
                 "Show my last fill-up in \(.applicationName)"
             ],
-            shortTitle: "Latest Fuel Log",
+            shortTitle: "Latest Fill-Up",
             systemImageName: "fuelpump"
         )
     }

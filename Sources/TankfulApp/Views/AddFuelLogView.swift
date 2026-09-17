@@ -52,7 +52,7 @@ struct AddFuelLogView: View {
             Toggle("Missed Last", isOn: $missedLast)
             TextField("Notes", text: $notes)
         }
-        .navigationTitle("Add Fuel Log")
+        .navigationTitle("Add Fill-Up")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 if #available(iOS 26.0, *) {

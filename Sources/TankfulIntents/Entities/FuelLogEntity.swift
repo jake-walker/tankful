@@ -5,8 +5,8 @@ import TankfulDomain
 public struct FuelLogEntity: AppEntity {
     public static var typeDisplayRepresentation: TypeDisplayRepresentation {
         TypeDisplayRepresentation(
-            name: "Fuel Log",
-            numericFormat: "\(placeholder: .int) fuel logs"
+            name: "Fill-Up",
+            numericFormat: "\(placeholder: .int) fill-ups"
         )
     }
 

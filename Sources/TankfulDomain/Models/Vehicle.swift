@@ -40,7 +40,10 @@ public struct Vehicle: Identifiable, Equatable, Codable, Sendable {
             return components.joined(separator: " ")
         }
         
-        return "Vehicle \(String(id.uuidString.suffix(6)).uppercased())"
+        return String(
+            format: NSLocalizedString("Vehicle %@", comment: "Fallback vehicle name followed by a short identifier"),
+            String(id.uuidString.suffix(6)).uppercased()
+        )
     }
     
     public func with(id newUUID: UUID) -> Self {

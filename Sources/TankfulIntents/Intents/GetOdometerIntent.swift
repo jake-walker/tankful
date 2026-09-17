@@ -3,7 +3,7 @@ import AppIntents
 @available(anyAppleOS 26.0, *)
 struct GetOdometerIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Odometer"
-    static let description = IntentDescription("Gets the odometer reading from a vehicle's latest fuel log.")
+    static let description = IntentDescription("Gets the odometer reading from a vehicle's latest fill-up.")
     static var supportedModes: IntentModes { .background }
 
     @Parameter(title: "Vehicle")

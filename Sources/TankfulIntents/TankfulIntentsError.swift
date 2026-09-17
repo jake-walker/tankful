@@ -21,15 +21,15 @@ public enum TankfulIntentsError: Error, CustomLocalizedStringResourceConvertible
         case .failedToInitialize:
             "Tankful couldn't open its database."
         case .fuelLogNotFound:
-            "That fuel log no longer exists."
+            "That fill-up no longer exists."
         case let .noFuelLogs(vehicleName):
-            "There are no fuel logs for \(vehicleName)."
+            "There are no fill-ups for \(vehicleName)."
         case let .noFuelEconomy(vehicleName):
             "There isn't enough information to calculate fuel economy for \(vehicleName)."
         case let .noOdometer(vehicleName):
-            "The latest fuel log for \(vehicleName) doesn't include an odometer reading."
+            "The latest fill-up for \(vehicleName) doesn't include an odometer reading."
         case .unableToOpenFuelLog:
-            "Tankful couldn't open that fuel log."
+            "Tankful couldn't open that fill-up."
         case .unableToOpenVehicle:
             "Tankful couldn't open that vehicle."
         }

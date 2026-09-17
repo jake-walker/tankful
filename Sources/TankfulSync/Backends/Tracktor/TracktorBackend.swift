@@ -21,21 +21,39 @@ public final class TracktorBackend: SyncBackend {
         public var errorDescription: String? {
             switch self {
             case .unsuccessfulResponse(let endpoint):
-                "Request to Tracktor was unsuccessful (\(endpoint))"
+                String(
+                    format: NSLocalizedString("Request to Tracktor was unsuccessful (%@)", comment: "Tracktor sync error; argument is an API endpoint"),
+                    endpoint
+                )
             case .requiredConfigKeyMissing:
-                "Tracktor config is missing one or more required config keys"
+                NSLocalizedString(
+                    "Tracktor config is missing one or more required config keys",
+                    comment: "Tracktor sync configuration error"
+                )
             case .unsupportedUnit(let unit):
-                "Unsupported unit \(unit)"
+                String(
+                    format: NSLocalizedString("Unsupported unit %@", comment: "Tracktor sync error; argument is a measurement unit"),
+                    unit
+                )
             case .unsupportedFuelType(let fuelType):
-                "Unsupported fuel type \(fuelType)"
+                String(
+                    format: NSLocalizedString("Unsupported fuel type %@", comment: "Tracktor sync error; argument is a fuel type"),
+                    fuelType
+                )
             case .missingID:
-                "Tracktor did not give an ID for a model"
+                NSLocalizedString("Tracktor did not give an ID for a model", comment: "Tracktor sync response error")
             case .invalidDate(let date):
-                "Failed to parse date from Tracktor (\(date))"
+                String(
+                    format: NSLocalizedString("Failed to parse date from Tracktor (%@)", comment: "Tracktor sync error; argument is a date value"),
+                    date
+                )
             case .unsupportedCurrency(let currency):
-                "Unsupported currency \(currency)"
+                String(
+                    format: NSLocalizedString("Unsupported currency %@", comment: "Tracktor sync error; argument is a currency code"),
+                    currency
+                )
             case .missingRemoteID:
-                "Local entity is missing remote ID"
+                NSLocalizedString("Local entity is missing remote ID", comment: "Tracktor sync error")
             }
         }
     }

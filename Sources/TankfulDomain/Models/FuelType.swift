@@ -5,6 +5,8 @@
 //  Created by Jake Walker on 14/09/2026.
 //
 
+import Foundation
+
 public enum FuelType: String, Codable, CaseIterable, Identifiable, Sendable {
     case petrol
     case diesel
@@ -12,6 +14,11 @@ public enum FuelType: String, Codable, CaseIterable, Identifiable, Sendable {
     public var id: Self { self }
     
     public var name: String {
-        self.rawValue.capitalized
+        switch self {
+        case .petrol:
+            NSLocalizedString("Petrol", comment: "Fuel type")
+        case .diesel:
+            NSLocalizedString("Diesel", comment: "Fuel type")
+        }
     }
 }

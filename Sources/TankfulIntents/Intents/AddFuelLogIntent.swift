@@ -9,7 +9,7 @@ import AppIntents
 
 @available(anyAppleOS 26.0, *)
 struct AddFuelLogIntent: AppIntent {
-    static let title: LocalizedStringResource = "Add Fuel Log"
+    static let title: LocalizedStringResource = "Add Fill-Up"
     static let description = IntentDescription("Adds a fill-up to a vehicle in Tankful.")
     static var supportedModes: IntentModes { .background }
 
@@ -47,7 +47,7 @@ struct AddFuelLogIntent: AppIntent {
 
         return .result(
             value: fuelLog,
-            dialog: "Added a fuel log for \(vehicle.name)."
+            dialog: "Added a fill-up for \(vehicle.name)."
         )
     }
 }

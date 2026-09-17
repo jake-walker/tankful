@@ -59,7 +59,7 @@ struct HomeView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         }
-        .navigationTitle(vehicle?.displayName ?? "Vehicle")
+        .navigationTitle(vehicle?.displayName ?? NSLocalizedString("Vehicle", comment: "Fallback vehicle screen title"))
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
@@ -109,7 +109,10 @@ struct HomeView: View {
     private var summaryMetrics: some View {
         HStack(spacing: 8) {
             if let economy = fuelLogs.suffix(recentCount).averageFuelEconomy {
-                metricView(value: env.formatter.economy(economy).description, label: "Avg. Economy")
+                metricView(
+                    value: env.formatter.economy(economy).description,
+                    label: NSLocalizedString("Avg. Economy", comment: "Average fuel economy metric label")
+                )
                 
                 Divider()
             }
@@ -120,7 +123,10 @@ struct HomeView: View {
                 Divider()
             }
             
-            metricView(value: env.formatter.distance(fuelLogs.suffix(recentCount).totalDistance).description, label: "Distance")
+            metricView(
+                value: env.formatter.distance(fuelLogs.suffix(recentCount).totalDistance).description,
+                label: NSLocalizedString("Distance", comment: "Total distance metric label")
+            )
         }
     }
 
@@ -194,7 +200,7 @@ struct HomeView: View {
                 Spacer()
                 
                 NavigationLink(value: AppRoute.addFuelLog) {
-                    Label("Add fill-up", systemImage: "plus")
+                    Label("Add Fill-Up", systemImage: "plus")
                 }
                 .labelStyle(.iconOnly)
             }
@@ -225,8 +231,11 @@ struct HomeView: View {
         #if canImport(Charts)
         Chart(fuelLogs.reversed().dropFirst()) { log in
             LineMark(
-                x: .value("Date", log.log.date),
-                y: .value("Fuel Economy", log.economy?.converted(to: env.fuelEconomyUnit.unit).value ?? 0)
+                x: .value(NSLocalizedString("Date", comment: "Fuel economy chart date axis label"), log.log.date),
+                y: .value(
+                    NSLocalizedString("Fuel Economy", comment: "Fuel economy chart value label"),
+                    log.economy?.converted(to: env.fuelEconomyUnit.unit).value ?? 0
+                )
             )
         }
         .chartYScale(domain: .automatic(includesZero: false))

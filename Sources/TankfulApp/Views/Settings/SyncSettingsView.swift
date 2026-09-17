@@ -32,7 +32,11 @@ struct SyncSettingsView: View {
                         .frame(width: 32, height: 32)
 
                     VStack(alignment: .leading) {
-                        Text(syncEnabled ? "Sync Status" : "Sync Disabled")
+                        Text(
+                            syncEnabled
+                                ? NSLocalizedString("Sync Status", comment: "Sync status section heading")
+                                : NSLocalizedString("Sync Disabled", comment: "Sync status section heading")
+                        )
                             .font(.headline)
 
                         if syncEnabled {
@@ -177,14 +181,20 @@ struct SyncSettingsView: View {
         switch env.syncStatus {
         case .idle(let lastSync):
             if let lastSync {
-                return "Last synced \(lastSync.formatted(date: .abbreviated, time: .shortened))"
+                return String(
+                    format: NSLocalizedString("Last synced %@", comment: "Sync status followed by the last sync date"),
+                    lastSync.formatted(date: .abbreviated, time: .shortened)
+                )
             } else {
-                return "Not yet synced"
+                return NSLocalizedString("Not yet synced", comment: "Sync status when no sync has completed")
             }
         case .syncing:
-            return "Syncing..."
+            return NSLocalizedString("Syncing...", comment: "Sync status while a sync is running")
         case .failed(_, let message):
-            return "Failed: \(message)"
+            return String(
+                format: NSLocalizedString("Failed: %@", comment: "Sync failure status followed by an error message"),
+                message
+            )
         }
     }
 
@@ -229,7 +239,7 @@ struct SyncSettingsView: View {
             env.syncConfiguration = nil
             savedDraft = draft
             validationMessage = nil
-            saveMessage = "Sync disabled."
+            saveMessage = NSLocalizedString("Sync disabled.", comment: "Confirmation shown after disabling sync")
             return
         }
 
@@ -237,7 +247,10 @@ struct SyncSettingsView: View {
               let scheme = baseURL.scheme?.lowercased(),
               ["http", "https"].contains(scheme),
               baseURL.host != nil else {
-            validationMessage = "Enter a valid HTTP or HTTPS server URL."
+            validationMessage = NSLocalizedString(
+                "Enter a valid HTTP or HTTPS server URL.",
+                comment: "Validation error for an invalid sync server URL"
+            )
             saveMessage = nil
             return
         }
@@ -249,7 +262,10 @@ struct SyncSettingsView: View {
             if username.isEmpty && password.isEmpty {
                 authentication = nil
             } else if username.isEmpty || password.isEmpty {
-                validationMessage = "Enter both a username and password, or leave both blank."
+                validationMessage = NSLocalizedString(
+                    "Enter both a username and password, or leave both blank.",
+                    comment: "Validation error for incomplete sync credentials"
+                )
                 saveMessage = nil
                 return
             } else {
@@ -264,7 +280,7 @@ struct SyncSettingsView: View {
             )
             savedDraft = draft
             validationMessage = nil
-            saveMessage = "Changes saved."
+            saveMessage = NSLocalizedString("Changes saved.", comment: "Confirmation shown after saving sync settings")
         } catch {
             validationMessage = error.localizedDescription
             saveMessage = nil
@@ -307,7 +323,13 @@ private enum HeaderParsingError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidLine(let line):
-            "Custom header on line \(line) must use \"Name: value\" format."
+            String(
+                format: NSLocalizedString(
+                    "Custom header on line %lld must use \"Name: value\" format.",
+                    comment: "Validation error for a malformed custom HTTP header; argument is the line number"
+                ),
+                Int64(line)
+            )
         }
     }
 }

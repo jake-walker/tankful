@@ -182,9 +182,15 @@ public enum HTTPError: Error, LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .invalidResponse:
-            "The server returned an invalid HTTP response."
+            NSLocalizedString("The server returned an invalid HTTP response.", comment: "HTTP response error")
         case .unsuccessfulStatusCode(let statusCode, _):
-            "The server returned HTTP status \(statusCode)."
+            String(
+                format: NSLocalizedString(
+                    "The server returned HTTP status %lld.",
+                    comment: "HTTP response error; argument is the numeric status code"
+                ),
+                Int64(statusCode)
+            )
         }
     }
 }

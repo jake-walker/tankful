@@ -50,7 +50,7 @@ struct FuelLogDetailView: View {
                         Text("Odometer")
                     }
                     
-                    Text("\(fuelLog.filled ? "Filled" : "Not filled")\(fuelLog.missedLast ? ", Missed Last" : "")")
+                    Text(fillStatus(for: fuelLog))
                     
                     LabeledContent {
                         if let volume = fuelLog.volume {
@@ -88,7 +88,7 @@ struct FuelLogDetailView: View {
             }
         }
         .fuelLogEntity(id: fuelLog?.id)
-        .navigationTitle(fuelLog?.date.formatted(date: .abbreviated, time: .omitted) ?? "Loading")
+        .navigationTitle(fuelLog?.date.formatted(date: .abbreviated, time: .omitted) ?? NSLocalizedString("Loading", comment: "Title shown while a fill-up is loading"))
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
@@ -123,6 +123,19 @@ struct FuelLogDetailView: View {
         }
     }
     
+    private func fillStatus(for fuelLog: FuelLog) -> String {
+        switch (fuelLog.filled, fuelLog.missedLast) {
+        case (true, true):
+            NSLocalizedString("Filled, Missed Last", comment: "Fill-up status")
+        case (true, false):
+            NSLocalizedString("Filled", comment: "Fill-up status")
+        case (false, true):
+            NSLocalizedString("Not filled, Missed Last", comment: "Fill-up status")
+        case (false, false):
+            NSLocalizedString("Not filled", comment: "Fill-up status")
+        }
+    }
+
     private func deleteFuelLog() async {
         guard !isDeleting else { return }
 
