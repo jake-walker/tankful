@@ -1,0 +1,16 @@
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 197-202,562-564,761-763,877-879,882
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ed86b11d8cf5b95e8b958f900a61d39dcce6a818",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
