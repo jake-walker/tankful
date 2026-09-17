@@ -17,6 +17,7 @@ public final class TracktorBackend: SyncBackend {
         case invalidDate(date: String)
         case unsupportedCurrency(currencyCode: String)
         case missingRemoteID
+        case currencyMismatch(logCurrency: String, remoteCurrency: String)
         
         public var errorDescription: String? {
             switch self {
@@ -54,6 +55,12 @@ public final class TracktorBackend: SyncBackend {
                 )
             case .missingRemoteID:
                 NSLocalizedString("Local entity is missing remote ID", comment: "Tracktor sync error")
+            case .currencyMismatch(let local, let remote):
+                String(
+                    format: NSLocalizedString("This fill-up uses %$1@, but Tracktor is configured to use %$2@", comment: "Tracktor sync error; arguments are currency codes"),
+                    local,
+                    remote
+                )
             }
         }
     }

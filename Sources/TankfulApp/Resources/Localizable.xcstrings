@@ -192,6 +192,12 @@
         }
       }
     },
+    "Currency" : {
+
+    },
+    "Currency is determined by your device's region settings and is used for new fill-ups." : {
+
+    },
     "Custom header on line %lld must use \"Name: value\" format." : {
       "comment" : "Validation error for a malformed custom HTTP header; argument is the line number"
     },
@@ -551,6 +557,9 @@
         }
       }
     },
+    "Odometer (%@)" : {
+
+    },
     "OK" : {
       "localizations" : {
         "en-GB" : {
@@ -747,6 +756,9 @@
         }
       }
     },
+    "Total Cost (%@)" : {
+
+    },
     "Tracktor" : {
       "localizations" : {
         "en-GB" : {
@@ -860,7 +872,11 @@
         }
       }
     },
+    "Volume (%@)" : {
+
+    },
     "Volume of Fuel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {

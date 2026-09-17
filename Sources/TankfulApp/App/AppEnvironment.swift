@@ -34,21 +34,30 @@ import TankfulIntents
     let vehicleController: VehicleController
     let fuelLogController: FuelLogController
     
-    var distanceUnit: DistanceUnit = .miles {
+    var distanceUnit: DistanceUnit = .localeDefault {
         didSet {
             UserDefaults.standard.set(distanceUnit.rawValue, forKey: Self.distanceUnitKey)
         }
     }
-    var volumeUnit: VolumeUnit = .litres {
+    var volumeUnit: VolumeUnit = .localeDefault {
         didSet {
             UserDefaults.standard.set(volumeUnit.rawValue, forKey: Self.volumeUnitKey)
         }
     }
     
-    var fuelEconomyUnit: FuelEconomyUnit = .mpgImperial {
+    var fuelEconomyUnit: FuelEconomyUnit = .localeDefault {
         didSet {
             UserDefaults.standard.set(fuelEconomyUnit.rawValue, forKey: Self.fuelEconomyUnitKey)
         }
+    }
+    
+    var currency: (any CurrencyDescriptor.Type) {
+        if let currencyCode = Locale.current.currency?.identifier,
+           let descriptor = CurrencyMint.init(defaultCurrency: USD.self).make(identifier: .alphaCode(currencyCode))?.descriptor {
+            return descriptor
+        }
+        
+        return USD.self
     }
 
     /// The selected backend configuration, used to create a sync coordinator at launch.
@@ -186,7 +195,7 @@ import TankfulIntents
 
     func refreshVehicleSpotlightIndex() async {
         #if canImport(TankfulIntents)
-        if #available(iOS 26.0, macOS 26.0, *) {
+        if #available(anyAppleOS 26.0, *) {
             try? await TankfulIntentsEnvironment.refreshVehicleIndex()
         }
         #endif

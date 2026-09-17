@@ -40,7 +40,11 @@ internal struct TracktorFuelLog: Codable, Sendable {
         _ log: FuelLog,
         remoteUnits: TracktorUnits,
         remoteVehicleID: String
-    ) {
+    ) throws {
+        guard remoteUnits.currency.uppercased() == log.cost.descriptor.alphabeticCode.uppercased() else {
+            throw TracktorBackend.Error.currencyMismatch(logCurrency: log.cost.descriptor.alphabeticCode, remoteCurrency: remoteUnits.currency)
+        }
+        
         self.id = log.remoteID
         self.vehicleID = remoteVehicleID
         self.date = log.date.ISO8601Format(.iso8601(timeZone: .gmt, includingFractionalSeconds: true))

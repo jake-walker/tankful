@@ -97,6 +97,18 @@ internal extension TankfulIntentsEnvironment {
                 return FuelLogEntity(fuelLog, vehicle: vehicle)
             }
     }
+    
+    private static func makeCurrencyValue(_ exactAmount: Decimal) -> (any CurrencyValue) {
+        if let currencyCode = Locale.current.currency?.identifier,
+           let currencyValue = CurrencyMint.standard.make(
+            identifier: .alphaCode(currencyCode),
+            exactAmount: exactAmount
+           ) {
+            return currencyValue
+        }
+
+        return USD(exactAmount: exactAmount)
+    }
 
     static func addFuelLog(
         vehicleID: Vehicle.ID,
@@ -112,13 +124,14 @@ internal extension TankfulIntentsEnvironment {
         }
 
         let existingLogs = try await fuelLogRepository.fuelLogs(for: vehicleID)
+        
         let fuelLog = FuelLog(
             id: FuelLog.ID(),
             vehicleID: vehicleID,
             date: date,
             odometer: odometer,
             volume: volume,
-            cost: GBP(exactAmount: cost),
+            cost: makeCurrencyValue(cost),
             filled: true,
             missedLast: existingLogs.isEmpty,
             syncState: .created

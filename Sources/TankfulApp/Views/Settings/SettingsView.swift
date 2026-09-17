@@ -15,7 +15,7 @@ struct SettingsView: View {
         @Bindable var env = env
 
         Form {
-            Section("Units") {
+            Section {
                 Picker("Distance", selection: $env.distanceUnit) {
                     ForEach(DistanceUnit.allCases) { unit in
                         Text(unit.displayName).tag(unit)
@@ -33,6 +33,16 @@ struct SettingsView: View {
                         Text(unit.displayName).tag(unit)
                     }
                 }
+                
+                LabeledContent {
+                    Text(env.currency.name)
+                } label: {
+                    Text("Currency")
+                }
+            } header: {
+                Text("Units")
+            } footer: {
+                Text("Currency is determined by your device's region settings and is used for new fill-ups.")
             }
             
             Section {
