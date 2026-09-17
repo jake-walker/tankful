@@ -22,9 +22,16 @@ public struct VehicleEntity: IndexedEntity {
     }
     
     public var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(
-            title: "\(name)"
-        )
+        if let description {
+            DisplayRepresentation(
+                title: "\(name)",
+                subtitle: "\(description)"
+            )
+        } else {
+            DisplayRepresentation(
+                title: "\(name)"
+            )
+        }
     }
     
     public static let defaultQuery = VehicleEntityQuery()
@@ -33,6 +40,12 @@ public struct VehicleEntity: IndexedEntity {
     
     @Property(indexingKey: \.displayName)
     public var name: String
+    
+    @Property(indexingKey: \.description)
+    public var description: String?
+    
+    @Property
+    public var year: Int?
     
     @Property
     public var make: String?
@@ -43,6 +56,8 @@ public struct VehicleEntity: IndexedEntity {
     internal init(_ vehicle: Vehicle) {
         self.id = vehicle.id
         self.name = vehicle.displayName
+        self.description = vehicle.description
+        self.year = vehicle.year.map(Int.init)
         self.make = vehicle.make
         self.model = vehicle.model
     }

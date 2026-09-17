@@ -12,6 +12,7 @@ extension VehicleRecord {
     init(_ vehicle: Vehicle) throws {
         self.init(
             id: vehicle.id.uuidString,
+            name: vehicle.name,
             make: vehicle.make,
             model: vehicle.model,
             year: vehicle.year,
@@ -28,6 +29,7 @@ extension VehicleRecord {
         
         return Vehicle(
             id: uuid,
+            name: self.name,
             make: self.make,
             model: self.model,
             year: self.year,

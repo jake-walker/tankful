@@ -17,6 +17,7 @@ struct VehicleView: View {
     @State internal var remoteID: String?
     @State internal var syncState: SyncState = .created
 
+    @State internal var name: String = ""
     @State internal var make: String = ""
     @State internal var model: String = ""
     @State internal var year: String = ""
@@ -34,6 +35,13 @@ struct VehicleView: View {
 
     var body: some View {
         Form {
+            LabeledContent {
+                TextField("Name", text: $name)
+                    .multilineTextAlignment(.trailing)
+            } label: {
+                Text("Name")
+            }
+            
             LabeledContent {
                 TextField("Make", text: $make)
                     .multilineTextAlignment(.trailing)
@@ -130,6 +138,7 @@ struct VehicleView: View {
                 throw VehicleViewError.vehicleNotFound
             }
 
+            name = vehicle.name ?? ""
             make = vehicle.make ?? ""
             model = vehicle.model ?? ""
             year = vehicle.year.map(String.init) ?? ""
@@ -151,6 +160,7 @@ struct VehicleView: View {
 
         let vehicle = Vehicle(
             id: vehicleID ?? Vehicle.ID(),
+            name: name.isEmpty ? nil : name,
             make: make.isEmpty ? nil : make,
             model: model.isEmpty ? nil : model,
             year: Int64(year),

@@ -8,6 +8,8 @@
 import Foundation
 import TankfulDomain
 
+fileprivate let tracktorNameKey: String = "name"
+
 internal struct TracktorVehicle: Codable, Sendable {
     let id: String?
     let make: String?
@@ -41,8 +43,13 @@ internal struct TracktorVehicle: Codable, Sendable {
         self.image = nil
         self.fuelType = vehicle.fuelType.rawValue
         self.vehicleType = "car"
-        self.customFields = nil
         self.overallMileage = nil
+        
+        if let name = vehicle.name {
+            self.customFields = [tracktorNameKey: name]
+        } else {
+            self.customFields = nil
+        }
     }
     
     func encode(to encoder: any Encoder) throws {
@@ -76,6 +83,14 @@ extension TracktorVehicle {
         }
     }
     
+    private var name: String? {
+        guard let name = self.customFields?[tracktorNameKey] else {
+            return nil
+        }
+        
+        return name
+    }
+    
     func toDomain() throws -> Vehicle {
         guard let remoteID = self.id else {
             throw TracktorBackend.Error.missingID
@@ -83,6 +98,7 @@ extension TracktorVehicle {
         
         return Vehicle(
             id: UUID(),
+            name: self.name,
             make: self.make,
             model: self.model,
             year: self.year,

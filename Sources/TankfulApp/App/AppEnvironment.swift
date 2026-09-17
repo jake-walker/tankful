@@ -244,6 +244,7 @@ extension AppEnvironment {
         let vehicles = [
             Vehicle(
                 id: UUID(),
+                name: "My Car",
                 make: "Volkswagen",
                 model: "Golf",
                 year: 2021,

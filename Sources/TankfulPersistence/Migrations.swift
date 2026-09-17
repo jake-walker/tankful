@@ -139,10 +139,17 @@ enum Migrations {
         ]
     )
     
+    static let v4 = Migration(
+        version: 4,
+        up: ["ALTER TABLE vehicle ADD COLUMN name TEXT"],
+        down: ["ALTER TABLE vehicle DROP COLUMN name"]
+    )
+    
     static let all: [Migration] = [
         v1,
         v2,
-        v3
+        v3,
+        v4
     ]
 }
 

@@ -134,13 +134,13 @@ public final class TracktorBackend: SyncBackend {
         }
         
         let response: TracktorResponse<TracktorVehicle> = try await authenticatedRequest(
-            .patch,
-            path: "/api/vehicles/\(remoteID)",
+            .put,
+            path: "/api/vehicles",
             body: TracktorVehicle(vehicle)
         )
         
         guard response.success else {
-            throw Error.unsuccessfulResponse(endpoint: "/api/vehicles/\(remoteID)")
+            throw Error.unsuccessfulResponse(endpoint: "/api/vehicles")
         }
     }
     
@@ -187,7 +187,7 @@ public final class TracktorBackend: SyncBackend {
         let config = try await configuration()
         
         let response: TracktorResponse<TracktorFuelLog> = try await authenticatedRequest(
-            .patch,
+            .put,
             path: "/api/vehicles/\(remoteVehicleID)/fuel-logs/\(remoteID)",
             body: TracktorFuelLog(
                 log,
@@ -308,7 +308,7 @@ private extension TracktorBackend {
         )
     }
     
-    func authenticatedRequest<Body: Encodable, Response: Decodable & Sendable>(
+    func authenticatedRequest<Body: Encodable & Sendable, Response: Decodable & Sendable>(
         _ method: HTTPMethod,
         path: String,
         query: [URLQueryItem] = [],
@@ -325,6 +325,7 @@ private extension TracktorBackend {
             method,
             path: path,
             headers: headers,
+            body: body,
             response: response
         )
     }

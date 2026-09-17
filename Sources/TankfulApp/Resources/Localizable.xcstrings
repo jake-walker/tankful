@@ -505,6 +505,9 @@
     "MPG (US)" : {
       "comment" : "Fuel economy unit name"
     },
+    "Name" : {
+
+    },
     "No fill-ups have been recorded for this vehicle in the last six months." : {
 
     },

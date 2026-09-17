@@ -11,6 +11,9 @@ public struct VehicleRecord: SQLCodable, Equatable {
     public var id: String
     static let id = SQLColumn(name: "id", type: .text, primaryKey: true)
     
+    public var name: String?
+    static let name = SQLColumn(name: "name", type: .text, nullable: true)
+    
     public var make: String?
     static let make = SQLColumn(name: "make", type: .text, nullable: true)
     
@@ -29,10 +32,11 @@ public struct VehicleRecord: SQLCodable, Equatable {
     public var syncState: String
     static let syncState = SQLColumn(name: "syncState", type: .text, nullable: false)
     
-    public static let table = SQLTable(name: "vehicle", columns: [id, make, model, year, fuelType, remoteID, syncState])
+    public static let table = SQLTable(name: "vehicle", columns: [id, name, make, model, year, fuelType, remoteID, syncState])
     
     public init(
         id: String,
+        name: String?,
         make: String?,
         model: String?,
         year: Int64?,
@@ -41,6 +45,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
         syncState: String
     ) {
         self.id = id
+        self.name = name
         self.make = make
         self.model = model
         self.year = year
@@ -54,6 +59,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
         context: SQLContext
     ) throws {
         self.id = try Self.id.textValueRequired(in: row)
+        self.name = Self.name.textValue(in: row)
         self.make = Self.make.textValue(in: row)
         self.model = Self.model.textValue(in: row)
         self.year = Self.year.longValue(in: row)
@@ -64,6 +70,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
     
     public func encode(row: inout SQLRow) throws {
         row[Self.id] = SQLValue(self.id)
+        row[Self.name] = SQLValue(self.name)
         row[Self.make] = SQLValue(self.make)
         row[Self.model] = SQLValue(self.model)
         row[Self.year] = SQLValue(self.year)
