@@ -1,0 +1,26 @@
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 20,32,37,40,128,139,220,262,264,270,274,328
+  h_2463f6ed1216b2 13,27-28,69-72,82-85,90,97,102,121,127,130,133-138,140-141,144,197,202-204,207,213,222,229,232,237-239,242,250,253-261,263,266,268-269,271-273,275-276,280,285,290,308,312-315,326-327,329-330
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 52,358
+  h_2463f6ed1216b2 28-35,40-43,45,80-89,96-98,141,162,197-198,202-203,209-210,242,257-258,263-266,300-301,347-348,357,359-361
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 180-182,197-202,562-564,761-763,877-879,882
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  h_2463f6ed1216b2 13-19,23-24,27-43,45-81,83,89-95,118
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 72
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9edace9b27bc43a1526436d4d7ebbe1ce3504004",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
