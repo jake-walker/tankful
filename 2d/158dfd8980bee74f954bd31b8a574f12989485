@@ -1,0 +1,20 @@
+Package.swift
+  h_2463f6ed1216b2 55-58
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 233-239,241
+Sources/TankfulDomain/Models/CalculatedFuelLog.swift
+  h_2463f6ed1216b2 14,19-20,22,26,49-59,84-99,101-110,112-126,128-130,165,172
+Tests/TankfulDomainTests/CalculatedFuelLogTests.swift
+  h_2463f6ed1216b2 1-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2d158dfd8980bee74f954bd31b8a574f12989485",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
