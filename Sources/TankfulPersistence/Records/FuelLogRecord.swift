@@ -14,8 +14,8 @@ public struct FuelLogRecord: SQLCodable, Equatable {
     public var vehicleID: String
     static let vehicleID = SQLColumn(name: "vehicleID", type: .text, nullable: false)
     
-    public var date: String
-    static let date = SQLColumn(name: "date", type: .text, nullable: false)
+    public var date: Int64
+    static let date = SQLColumn(name: "date", type: .long, nullable: false)
     
     public var odometerMetres: Int64?
     static let odometerMetres = SQLColumn(name: "odometerMetres", type: .long, nullable: true)
@@ -49,7 +49,7 @@ public struct FuelLogRecord: SQLCodable, Equatable {
     public init(
         id: String,
         vehicleID: String,
-        date: String,
+        date: Int64,
         odometerMetres: Int64?,
         volumeLitres: Double?,
         costMinorUnits: Int64,
@@ -80,7 +80,7 @@ public struct FuelLogRecord: SQLCodable, Equatable {
     ) throws {
         self.id = try Self.id.textValueRequired(in: row)
         self.vehicleID = try Self.vehicleID.textValueRequired(in: row)
-        self.date = try Self.date.textValueRequired(in: row)
+        self.date = try Self.date.longValueRequired(in: row)
         self.odometerMetres = Self.odometerMetres.longValue(in: row)
         self.volumeLitres = Self.volumeLitres.realValue(in: row)
         self.costMinorUnits = try Self.costMinorUnits.longValueRequired(in: row)

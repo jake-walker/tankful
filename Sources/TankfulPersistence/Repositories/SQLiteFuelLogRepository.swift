@@ -5,6 +5,7 @@
 //  Created by Jake Walker on 14/09/2026.
 //
 
+import Foundation
 import TankfulDomain
 import SkipSQLCore
 
@@ -25,8 +26,17 @@ public final class SQLiteFuelLogRepository: FuelLogRepository {
             .map { try $0.toDomain() }
     }
     
-    public func fuelLogs(for vehicleID: Vehicle.ID) async throws -> [FuelLog] {
-        let predicate = FuelLogRecord.vehicleID.equals(SQLValue(vehicleID.uuidString))
+    public func fuelLogs(for vehicleID: Vehicle.ID, startingAt date: Date?) async throws -> [FuelLog] {
+        var predicate = FuelLogRecord.vehicleID.equals(SQLValue(vehicleID.uuidString))
+
+        if let date {
+            predicate = predicate.and(
+                FuelLogRecord.date.greaterThanOrEqual(
+                    SQLValue(Int64(date.timeIntervalSince1970.rounded(.up)))
+                )
+            )
+        }
+
         return try database.ctx.fetchAll(FuelLogRecord.self, where: predicate)
             .map { try $0.toDomain() }
     }

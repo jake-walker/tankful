@@ -14,7 +14,7 @@ extension FuelLogRecord {
         self.init(
             id: fuelLog.id.uuidString,
             vehicleID: fuelLog.vehicleID.uuidString,
-            date: fuelLog.date.ISO8601Format(),
+            date: Int64(fuelLog.date.timeIntervalSince1970),
             odometerMetres: fuelLog.odometer.map { Int64($0.converted(to: .meters).value) },
             volumeLitres: fuelLog.volume?.converted(to: .liters).value,
             costMinorUnits: fuelLog.cost.minorUnits,
@@ -33,12 +33,6 @@ extension FuelLogRecord {
             throw PersistenceMappingError.invalidUUID
         }
         
-        let formatter = ISO8601DateFormatter()
-        
-        guard let date = formatter.date(from: self.date) else {
-            throw PersistenceMappingError.invalidDate
-        }
-        
         guard let cost = CurrencyMint.standard.make(identifier: .init(self.currencyCode), minorUnits: self.costMinorUnits) else {
             throw PersistenceMappingError.invalidEnumValue(type: CurrencyMint.CurrencyIdentifier.self, value: self.currencyCode)
         }
@@ -46,7 +40,7 @@ extension FuelLogRecord {
         return FuelLog(
             id: uuid,
             vehicleID: vehicleUUID,
-            date: date,
+            date: Date(timeIntervalSince1970: TimeInterval(self.date)),
             odometer: self.odometerMetres.map { Measurement(value: Double($0), unit: UnitLength.meters) },
             volume: self.volumeLitres.map { Measurement(value: $0, unit: UnitVolume.liters) },
             cost: cost,

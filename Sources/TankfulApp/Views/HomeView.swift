@@ -15,13 +15,19 @@ import Charts
 
 struct HomeView: View {
     @Environment(AppEnvironment.self) internal var env
-    
-    let recentCount: Int = 5
+
+    private let recentFillUpLimit = 5
     
     @State internal var vehicles: [Vehicle] = []
     @State internal var vehicle: Vehicle?
     @State internal var fuelLogs: [CalculatedFuelLog] = []
     @State internal var isLoading: Bool = true
+
+    private var chartFuelLogs: [CalculatedFuelLog] {
+        return fuelLogs
+            .filter { $0.economy != nil }
+            .reversed()
+    }
     
     private var lastCostPerMile: (any CurrencyValue)? {
         guard !fuelLogs.isEmpty else {
@@ -108,7 +114,7 @@ struct HomeView: View {
     
     private var summaryMetrics: some View {
         HStack(spacing: 8) {
-            if let economy = fuelLogs.suffix(recentCount).averageFuelEconomy {
+            if let economy = fuelLogs.averageFuelEconomy {
                 metricView(
                     value: env.formatter.economy(economy).description,
                     label: NSLocalizedString("Avg. Economy", comment: "Average fuel economy metric label")
@@ -117,14 +123,14 @@ struct HomeView: View {
                 Divider()
             }
             
-            if let averageCostPerDistance = fuelLogs.suffix(recentCount).averageCostPerDistance(unit: env.distanceUnit.unit) {
+            if let averageCostPerDistance = fuelLogs.averageCostPerDistance(unit: env.distanceUnit.unit) {
                 metricView(value: "\(averageCostPerDistance.localizedString())/\(env.distanceUnit.unit.symbol)", label: env.distanceUnit.costPerDisplayName)
                 
                 Divider()
             }
             
             metricView(
-                value: env.formatter.distance(fuelLogs.suffix(recentCount).totalDistance).description,
+                value: env.formatter.distance(fuelLogs.totalDistance).description,
                 label: NSLocalizedString("Distance", comment: "Total distance metric label")
             )
         }
@@ -157,11 +163,11 @@ struct HomeView: View {
             Image(systemName: "fuelpump")
                 .font(.largeTitle)
 
-            Text("No Fill-Ups Yet")
+            Text("No Recent Fill-Ups")
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Text("Add the first fill-up for this vehicle to start tracking its fuel usage.")
+            Text("No fill-ups have been recorded for this vehicle in the last six months.")
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
 
@@ -169,6 +175,8 @@ struct HomeView: View {
                 env.router.push(AppRoute.addFuelLog)
             }
             .buttonStyle(.borderedProminent)
+
+            NavigationLink("Show Full History", value: AppRoute.fuelLogs)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
@@ -206,7 +214,7 @@ struct HomeView: View {
             }
             .padding([.horizontal, .top])
             
-            ForEach(fuelLogs.prefix(recentCount)) { log in
+            ForEach(fuelLogs.prefix(recentFillUpLimit)) { log in
                 Divider()
                 
                 NavigationLink(value: AppRoute.fuelLog(log.log.id)) {
@@ -229,7 +237,7 @@ struct HomeView: View {
     
     private var chart: some View {
         #if canImport(Charts)
-        Chart(fuelLogs.reversed().dropFirst()) { log in
+        Chart(chartFuelLogs) { log in
             if let economy = log.economy {
                 LineMark(
                     x: .value(NSLocalizedString("Date", comment: "Fuel economy chart date axis label"), log.log.date),
@@ -281,7 +289,11 @@ struct HomeView: View {
         }
         
         vehicle = loadedVehicle
-        fuelLogs = (try? await env.fuelLogRepository.fuelLogs(for: loadedVehicle.id).calculated()) ?? []
+
+        let cutoffDate = Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date()
+        fuelLogs = (try? await env.fuelLogRepository
+            .fuelLogs(for: loadedVehicle.id, startingAt: cutoffDate)
+            .calculated()) ?? []
     }
 
     private func selectVehicle(_ selectedVehicle: Vehicle) {

@@ -97,6 +97,7 @@
       }
     },
     "Add the first fill-up for this vehicle to start tracking its fuel usage." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -495,7 +496,11 @@
     "MPG (US)" : {
       "comment" : "Fuel economy unit name"
     },
+    "No fill-ups have been recorded for this vehicle in the last six months." : {
+
+    },
     "No Fill-Ups Yet" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -504,6 +509,9 @@
           }
         }
       }
+    },
+    "No Recent Fill-Ups" : {
+
     },
     "Not filled" : {
       "comment" : "Fill-up status"
@@ -654,6 +662,9 @@
           }
         }
       }
+    },
+    "Show Full History" : {
+
     },
     "Show More" : {
       "localizations" : {
