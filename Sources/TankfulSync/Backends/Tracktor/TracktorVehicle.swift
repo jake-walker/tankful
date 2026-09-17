@@ -36,7 +36,7 @@ struct TracktorVehicle: Codable, Sendable {
         make = vehicle.make
         model = vehicle.model
         year = vehicle.year
-        licensePlate = nil
+        licensePlate = vehicle.licensePlate
         vin = nil
         color = nil
         odometer = nil
@@ -102,6 +102,7 @@ extension TracktorVehicle {
             make: make,
             model: model,
             year: year,
+            licensePlate: licensePlate,
             fuelType: Self.parseFuelType(fuelType),
             remoteID: remoteID,
             syncState: .synced

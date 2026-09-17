@@ -31,6 +31,14 @@ public struct SyncConfiguration: Sendable, Codable {
     }
 }
 
-public enum BackendType: String, Sendable, Codable {
+public enum BackendType: String, Sendable, Codable, CaseIterable {
     case tracktor
+    case lubeLogger
+
+    public var displayName: String {
+        switch self {
+        case .lubeLogger: NSLocalizedString("LubeLogger", comment: "LubeLogger backend name")
+        case .tracktor: NSLocalizedString("Tracktor", comment: "Tracktor backend name")
+        }
+    }
 }

@@ -21,6 +21,7 @@ struct VehicleView: View {
     @State var make: String = ""
     @State var model: String = ""
     @State var year: String = ""
+    @State var licensePlate: String = ""
     @State var fuelType: FuelType = .petrol
     @State var isLoading: Bool = false
     @State var isSaving: Bool = false
@@ -61,6 +62,13 @@ struct VehicleView: View {
                     .multilineTextAlignment(.trailing)
             } label: {
                 Text("Year")
+            }
+
+            LabeledContent {
+                TextField("License Plate", text: $licensePlate)
+                    .multilineTextAlignment(.trailing)
+            } label: {
+                Text("License Plate")
             }
 
             Picker("Fuel Type", selection: $fuelType) {
@@ -146,6 +154,7 @@ struct VehicleView: View {
             make = vehicle.make ?? ""
             model = vehicle.model ?? ""
             year = vehicle.year.map(String.init) ?? ""
+            licensePlate = vehicle.licensePlate ?? ""
             fuelType = vehicle.fuelType
             remoteID = vehicle.remoteID
             syncState = vehicle.syncState
@@ -168,6 +177,7 @@ struct VehicleView: View {
             make: make.isEmpty ? nil : make,
             model: model.isEmpty ? nil : model,
             year: Int64(year),
+            licensePlate: licensePlate.isEmpty ? nil : licensePlate,
             fuelType: fuelType,
             remoteID: remoteID,
             syncState: syncState

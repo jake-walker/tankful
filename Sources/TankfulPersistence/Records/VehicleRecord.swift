@@ -23,6 +23,9 @@ public struct VehicleRecord: SQLCodable, Equatable {
     public var year: Int64?
     static let year = SQLColumn(name: "year", type: .long, nullable: true)
 
+    public var licensePlate: String?
+    static let licensePlate = SQLColumn(name: "licensePlate", type: .text, nullable: true)
+
     public var fuelType: String
     static let fuelType = SQLColumn(name: "fuelType", type: .text, nullable: false)
 
@@ -32,7 +35,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
     public var syncState: String
     static let syncState = SQLColumn(name: "syncState", type: .text, nullable: false)
 
-    public static let table = SQLTable(name: "vehicle", columns: [id, name, make, model, year, fuelType, remoteID, syncState])
+    public static let table = SQLTable(name: "vehicle", columns: [id, name, make, model, year, licensePlate, fuelType, remoteID, syncState])
 
     public init(
         id: String,
@@ -40,6 +43,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
         make: String?,
         model: String?,
         year: Int64?,
+        licensePlate: String?,
         fuelType: String,
         remoteID: String?,
         syncState: String
@@ -49,6 +53,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
         self.make = make
         self.model = model
         self.year = year
+        self.licensePlate = licensePlate
         self.fuelType = fuelType
         self.remoteID = remoteID
         self.syncState = syncState
@@ -63,6 +68,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
         make = Self.make.textValue(in: row)
         model = Self.model.textValue(in: row)
         year = Self.year.longValue(in: row)
+        licensePlate = Self.licensePlate.textValue(in: row)
         fuelType = try Self.fuelType.textValueRequired(in: row)
         remoteID = Self.remoteID.textValue(in: row)
         syncState = try Self.syncState.textValueRequired(in: row)
@@ -74,6 +80,7 @@ public struct VehicleRecord: SQLCodable, Equatable {
         row[Self.make] = SQLValue(make)
         row[Self.model] = SQLValue(model)
         row[Self.year] = SQLValue(year)
+        row[Self.licensePlate] = SQLValue(licensePlate)
         row[Self.fuelType] = SQLValue(fuelType)
         row[Self.remoteID] = SQLValue(remoteID)
         row[Self.syncState] = SQLValue(syncState)

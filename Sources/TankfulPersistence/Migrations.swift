@@ -53,8 +53,16 @@ enum Migrations {
         ]
     )
 
+    /// v2 - add license plate
+    static let v2 = Migration(
+        version: 2,
+        up: ["ALTER TABLE vehicle ADD COLUMN licensePlate TEXT"],
+        down: ["ALTER TABLE vehicle DROP COLUMN licensePlate"]
+    )
+
     static let all: [Migration] = [
         v1,
+        v2,
     ]
 }
 

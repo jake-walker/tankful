@@ -98,7 +98,9 @@ import TankfulSync
     }
 
     var formatter: TankfulFormatter {
-        TankfulFormatter(distanceUnit: distanceUnit, volumeUnit: volumeUnit, fuelEconomyUnit: fuelEconomyUnit)
+        TankfulFormatter(
+            distanceUnit: distanceUnit, volumeUnit: volumeUnit, fuelEconomyUnit: fuelEconomyUnit
+        )
     }
 
     init(
@@ -132,7 +134,9 @@ import TankfulSync
         }
 
         if let currencyCode = UserDefaults.standard.string(forKey: Self.currencyKey),
-           let descriptor = CurrencyMint(defaultCurrency: USD.self).make(identifier: .alphaCode(currencyCode))?.descriptor
+           let descriptor = CurrencyMint(defaultCurrency: USD.self).make(
+               identifier: .alphaCode(currencyCode)
+           )?.descriptor
         {
             currency = descriptor
         }
@@ -182,7 +186,19 @@ import TankfulSync
         let backend: any SyncBackend
         switch syncConfiguration.type {
         case .tracktor:
-            backend = TracktorBackend(client: HTTPClient(configuration: syncConfiguration), credentials: syncConfiguration.authentication)
+            backend = TracktorBackend(
+                client: HTTPClient(configuration: syncConfiguration),
+                credentials: syncConfiguration.authentication
+            )
+        case .lubeLogger:
+            backend = LubeLoggerBackend(
+                client: HTTPClient(configuration: syncConfiguration),
+                units: LubeLoggerUnits(
+                    distance: distanceUnit.unit,
+                    volume: volumeUnit.unit,
+                    currency: currency
+                )
+            )
         }
 
         let engine = SyncEngine(
@@ -227,7 +243,9 @@ import TankfulSync
 
     private static func defaultCurrency() -> any CurrencyDescriptor.Type {
         if let currencyCode = Locale.current.currency?.identifier,
-           let descriptor = CurrencyMint(defaultCurrency: USD.self).make(identifier: .alphaCode(currencyCode))?.descriptor
+           let descriptor = CurrencyMint(defaultCurrency: USD.self).make(
+               identifier: .alphaCode(currencyCode)
+           )?.descriptor
         {
             return descriptor
         }

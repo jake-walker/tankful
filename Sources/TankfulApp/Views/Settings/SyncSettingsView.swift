@@ -12,6 +12,7 @@ struct SyncSettingsView: View {
     @Environment(AppEnvironment.self) var env
 
     @State var syncEnabled = false
+    @State var backend: BackendType = .tracktor
     @State var serverURL = ""
     @State var username = ""
     @State var password = ""
@@ -73,10 +74,12 @@ struct SyncSettingsView: View {
                 Toggle("Enable sync", isOn: $syncEnabled)
 
                 if syncEnabled {
-                    Picker("Backend", selection: .constant(BackendType.tracktor)) {
-                        Text("Tracktor").tag(BackendType.tracktor)
+                    Picker("Backend", selection: $backend) {
+                        ForEach(BackendType.allCases, id: \.rawValue) { item in
+                            Text(item.displayName)
+                                .tag(item)
+                        }
                     }
-                    .disabled(true)
                 }
             }
 
@@ -187,6 +190,7 @@ struct SyncSettingsView: View {
 
     private var draft: SyncSettingsDraft {
         SyncSettingsDraft(
+            backend: backend,
             syncEnabled: syncEnabled,
             serverURL: serverURL,
             username: username,
@@ -237,6 +241,7 @@ struct SyncSettingsView: View {
     private func loadSyncConfiguration() {
         guard let configuration = env.syncConfiguration else {
             syncEnabled = false
+            backend = .tracktor
             serverURL = ""
             username = ""
             password = ""
@@ -246,6 +251,7 @@ struct SyncSettingsView: View {
         }
 
         syncEnabled = true
+        backend = configuration.type
         serverURL = configuration.baseURL.absoluteString
         headers = configuration.additionalHeaders
             .sorted { $0.key.localizedCaseInsensitiveCompare($1.key) == .orderedAscending }
@@ -304,7 +310,7 @@ struct SyncSettingsView: View {
             }
 
             env.syncConfiguration = SyncConfiguration(
-                type: .tracktor,
+                type: backend,
                 baseURL: baseURL,
                 additionalHeaders: additionalHeaders,
                 authentication: authentication
@@ -343,6 +349,7 @@ struct SyncSettingsView: View {
 }
 
 struct SyncSettingsDraft: Equatable {
+    var backend: BackendType = .tracktor
     var syncEnabled = false
     var serverURL = ""
     var username = ""

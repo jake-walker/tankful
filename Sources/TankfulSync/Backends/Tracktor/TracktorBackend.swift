@@ -129,7 +129,7 @@ public final class TracktorBackend: SyncBackend {
     }
 
     public func updateVehicle(_ vehicle: Vehicle) async throws {
-        guard let remoteID = vehicle.remoteID else {
+        guard vehicle.remoteID != nil else {
             throw Error.missingRemoteID
         }
 
