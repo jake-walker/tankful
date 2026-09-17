@@ -11,26 +11,38 @@ import TankfulDomain
 struct TankfulFormatter {
     let distanceUnit: DistanceUnit
     let volumeUnit: VolumeUnit
+    let fuelEconomyUnit: FuelEconomyUnit
     
-    func odometer(_ value: Measurement<UnitLength>) -> String {
+    func odometer(_ value: Measurement<UnitLength>) -> FormattedMeasurement {
         let value = value.converted(to: distanceUnit.unit)
         
-        return value.value.formatted(.number.precision(.fractionLength(0))) + " " + value.unit.symbol
+        return FormattedMeasurement(value: value.value.formatted(.number.precision(.fractionLength(0))), symbol: value.unit.symbol)
     }
     
-    func distance(_ value: Measurement<UnitLength>) -> String {
+    func distance(_ value: Measurement<UnitLength>) -> FormattedMeasurement {
         let value = value.converted(to: distanceUnit.unit)
         
-        return value.value.formatted(.number.precision(.fractionLength(1))) + " " + value.unit.symbol
+        return FormattedMeasurement(value: value.value.formatted(.number.precision(.fractionLength(1))), symbol: value.unit.symbol)
     }
     
-    func volume(_ value: Measurement<UnitVolume>) -> String {
+    func volume(_ value: Measurement<UnitVolume>) -> FormattedMeasurement {
         let value = value.converted(to: volumeUnit.unit)
         
-        return value.value.formatted(.number.precision(.fractionLength(2))) + " " + value.unit.symbol
+        return FormattedMeasurement(value: value.value.formatted(.number.precision(.fractionLength(2))), symbol: value.unit.symbol)
     }
     
-    func economy(_ value: FuelEconomy) -> String {
-        return value.milesPerImperialGallon.formatted(.number.precision(.fractionLength(1))) + " mpg"
+    func economy(_ value: Measurement<UnitFuelEfficiency>) -> FormattedMeasurement {
+        let value = value.converted(to: fuelEconomyUnit.unit)
+        
+        return FormattedMeasurement(value: value.value.formatted(.number.precision(.fractionLength(1))), symbol: value.unit.symbol)
+    }
+}
+
+struct FormattedMeasurement: CustomStringConvertible {
+    let value: String
+    let symbol: String
+    
+    var description: String {
+        "\(value) \(symbol)"
     }
 }

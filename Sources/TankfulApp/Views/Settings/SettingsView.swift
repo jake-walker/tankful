@@ -17,14 +17,21 @@ struct SettingsView: View {
         Form {
             Section("Units") {
                 Picker("Distance", selection: $env.distanceUnit) {
-                    Text("Miles").tag(DistanceUnit.miles)
-                    Text("Kilometres").tag(DistanceUnit.kilometres)
+                    ForEach(DistanceUnit.allCases) { unit in
+                        Text(unit.displayName).tag(unit)
+                    }
                 }
 
                 Picker("Volume", selection: $env.volumeUnit) {
-                    Text("Litres").tag(VolumeUnit.litres)
-                    Text("Imperial Gallons").tag(VolumeUnit.imperialGallons)
-                    Text("US Gallons").tag(VolumeUnit.usGallons)
+                    ForEach(VolumeUnit.allCases) { unit in
+                        Text(unit.displayName).tag(unit)
+                    }
+                }
+                
+                Picker("Fuel Economy", selection: $env.fuelEconomyUnit) {
+                    ForEach(FuelEconomyUnit.allCases) { unit in
+                        Text(unit.displayName).tag(unit)
+                    }
                 }
             }
             

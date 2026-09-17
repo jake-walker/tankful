@@ -160,11 +160,7 @@ internal extension TankfulIntentsEnvironment {
             throw TankfulIntentsError.noFuelEconomy(vehicleName: vehicle.name)
         }
 
-        if UserDefaults.standard.string(forKey: "distanceUnit") == "kilometres" {
-            return Measurement(value: economy.litresPer100Kilometres, unit: .litersPer100Kilometers)
-        }
-
-        return Measurement(value: economy.milesPerImperialGallon, unit: .milesPerImperialGallon)
+        return economy
     }
 
     static func openFuelLog(id: FuelLog.ID) throws {

@@ -14,14 +14,14 @@ public struct CalculatedFuelLog: Identifiable {
     
     public var id: FuelLog.ID { log.id }
     
-    public var economy: FuelEconomy? {
+    public var economy: Measurement<UnitFuelEfficiency>? {
         guard !log.missedLast,
               let distance,
               let volume = log.volume else {
             return nil
         }
         
-        return FuelEconomy(distance: distance, volume: volume)
+        return calculateFuelEconomy(distance: distance, volume: volume)
     }
     
     public func costPerDistance(unit: UnitLength) -> (any CurrencyValue)? {
@@ -66,16 +66,13 @@ extension Array where Element == FuelLog {
         )
     }
     
-    private func calculateEconomy(from previous: FuelLog, to current: FuelLog) -> FuelEconomy? {
+    private func calculateEconomy(from previous: FuelLog, to current: FuelLog) -> Measurement<UnitFuelEfficiency>? {
         guard let distance = calculateDistance(from: previous, to: current),
               let volume = current.volume else {
             return nil
         }
         
-        return FuelEconomy(
-            distance: distance,
-            volume: volume
-        )
+        return calculateFuelEconomy(distance: distance, volume: volume)
     }
     
     public func calculated() -> [CalculatedFuelLog] {
@@ -132,7 +129,7 @@ extension Collection where Element == CalculatedFuelLog {
         return Measurement(value: litres, unit: .liters)
     }
     
-    public var averageFuelEconomy: FuelEconomy? {
+    public var averageFuelEconomy: Measurement<UnitFuelEfficiency>? {
         let validLogs = filter {
             !$0.log.missedLast && $0.distance != nil && $0.log.volume != nil
         }
@@ -151,7 +148,7 @@ extension Collection where Element == CalculatedFuelLog {
             return nil
         }
         
-        return FuelEconomy(
+        return calculateFuelEconomy(
             distance: Measurement(value: distance, unit: .meters),
             volume: Measurement(value: volume, unit: .liters)
         )

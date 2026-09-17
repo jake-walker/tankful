@@ -109,18 +109,18 @@ struct HomeView: View {
     private var summaryMetrics: some View {
         HStack(spacing: 8) {
             if let economy = fuelLogs.suffix(recentCount).averageFuelEconomy {
-                metricView(value: "\(economy.milesPerImperialGallon.formatted(.number.precision(.fractionLength(1)))) mpg", label: "Avg. Economy")
+                metricView(value: env.formatter.economy(economy).description, label: "Avg. Economy")
                 
                 Divider()
             }
             
             if let averageCostPerDistance = fuelLogs.suffix(recentCount).averageCostPerDistance(unit: env.distanceUnit.unit) {
-                metricView(value: "\(averageCostPerDistance.localizedString())/\(env.distanceUnit.unit.symbol)", label: "Cost per mile")
+                metricView(value: "\(averageCostPerDistance.localizedString())/\(env.distanceUnit.unit.symbol)", label: env.distanceUnit.costPerDisplayName)
                 
                 Divider()
             }
             
-            metricView(value: env.formatter.distance(fuelLogs.suffix(recentCount).totalDistance), label: "Distance")
+            metricView(value: env.formatter.distance(fuelLogs.suffix(recentCount).totalDistance).description, label: "Distance")
         }
     }
 
@@ -226,7 +226,7 @@ struct HomeView: View {
         Chart(fuelLogs.reversed().dropFirst()) { log in
             LineMark(
                 x: .value("Date", log.log.date),
-                y: .value("Fuel Economy", log.economy?.milesPerImperialGallon ?? 0)
+                y: .value("Fuel Economy", log.economy?.converted(to: env.fuelEconomyUnit.unit).value ?? 0)
             )
         }
         .chartYScale(domain: .automatic(includesZero: false))
@@ -236,7 +236,7 @@ struct HomeView: View {
                 
                 AxisValueLabel {
                     if let v = value.as(Double.self) {
-                        Text("\(Int(v)) mpg")
+                        Text("\(Int(v)) \(env.fuelEconomyUnit.unit.symbol)")
                     }
                 }
             }

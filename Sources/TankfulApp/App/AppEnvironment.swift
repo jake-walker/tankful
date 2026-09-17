@@ -22,6 +22,7 @@ import TankfulIntents
     private static let currentVehicleKey = "currentVehicleID"
     private static let distanceUnitKey = "distanceUnit"
     private static let volumeUnitKey = "volumeUnit"
+    private static let fuelEconomyUnitKey = "fuelEconomyUnit"
     private static let syncConfigurationKey = "syncConfiguration"
     private static let lastSuccessfulSyncKey = "lastSuccessfulSync"
     
@@ -41,6 +42,12 @@ import TankfulIntents
     var volumeUnit: VolumeUnit = .litres {
         didSet {
             UserDefaults.standard.set(volumeUnit.rawValue, forKey: Self.volumeUnitKey)
+        }
+    }
+    
+    var fuelEconomyUnit: FuelEconomyUnit = .mpgImperial {
+        didSet {
+            UserDefaults.standard.set(fuelEconomyUnit.rawValue, forKey: Self.fuelEconomyUnitKey)
         }
     }
 
@@ -82,7 +89,7 @@ import TankfulIntents
     }
     
     var formatter: TankfulFormatter {
-        TankfulFormatter(distanceUnit: distanceUnit, volumeUnit: volumeUnit)
+        TankfulFormatter(distanceUnit: distanceUnit, volumeUnit: volumeUnit, fuelEconomyUnit: fuelEconomyUnit)
     }
     
     init(
@@ -105,6 +112,11 @@ import TankfulIntents
         if let rawVolumeUnit = UserDefaults.standard.string(forKey: Self.volumeUnitKey),
            let volumeUnit = VolumeUnit(rawValue: rawVolumeUnit) {
             self.volumeUnit = volumeUnit
+        }
+        
+        if let rawFuelEconomyUnit = UserDefaults.standard.string(forKey: Self.fuelEconomyUnitKey),
+           let fuelEconomyUnit = FuelEconomyUnit(rawValue: rawFuelEconomyUnit) {
+            self.fuelEconomyUnit = fuelEconomyUnit
         }
         
         if let id = UserDefaults.standard.string(

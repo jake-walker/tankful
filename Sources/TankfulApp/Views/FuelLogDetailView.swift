@@ -42,7 +42,7 @@ struct FuelLogDetailView: View {
                     
                     LabeledContent {
                         if let odometer = fuelLog.odometer {
-                            Text(env.formatter.odometer(odometer))
+                            Text(env.formatter.odometer(odometer).description)
                         } else {
                             Text("-")
                         }
@@ -54,7 +54,7 @@ struct FuelLogDetailView: View {
                     
                     LabeledContent {
                         if let volume = fuelLog.volume {
-                            Text(env.formatter.volume(volume))
+                            Text(env.formatter.volume(volume).description)
                         } else {
                             Text("-")
                         }

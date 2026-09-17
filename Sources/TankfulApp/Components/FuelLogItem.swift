@@ -36,15 +36,17 @@ struct FuelLogItem: View {
                     Spacer()
 
                     if let economy = fuelLog.economy {
+                        let formatted = env.formatter.economy(economy)
+                        
                         HStack(alignment: .firstTextBaseline, spacing: 3) {
-                            Text(economy.milesPerImperialGallon.formatted(.number.precision(.fractionLength(1))))
+                            Text(formatted.value)
                             .font(.headline)
                             .fontWeight(.semibold)
                             #if !os(Android)
                             .monospacedDigit()
                             #endif
 
-                            Text("mpg")
+                            Text(formatted.symbol)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
@@ -58,7 +60,7 @@ struct FuelLogItem: View {
 
                 HStack(alignment: .firstTextBaseline) {
                     if let volume = fuelLog.log.volume {
-                        Text("\(fuelLog.log.cost.localizedString()) · \(env.formatter.volume(volume))")
+                        Text("\(fuelLog.log.cost.localizedString()) · \(env.formatter.volume(volume).description)")
                     } else {
                         Text(fuelLog.log.cost.description)
                     }
@@ -66,7 +68,7 @@ struct FuelLogItem: View {
                     Spacer()
 
                     if let distance = fuelLog.distance {
-                        Text(env.formatter.distance(distance))
+                        Text(env.formatter.distance(distance).description)
                     }
                 }
                 .font(.subheadline)
