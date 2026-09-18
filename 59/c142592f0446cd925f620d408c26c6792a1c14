@@ -1,0 +1,15 @@
+fastlane/Fastfile
+  h_2463f6ed1216b2 139,147
+  h_2463f6ed1216b2 134
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "59c142592f0446cd925f620d408c26c6792a1c14",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
