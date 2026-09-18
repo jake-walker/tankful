@@ -13,6 +13,7 @@ public struct FuelLogEntityQuery: EntityQuery {
 
     public init() {}
 }
+
 //  FuelLogEntityQuery.swift
 //  tankful
 //

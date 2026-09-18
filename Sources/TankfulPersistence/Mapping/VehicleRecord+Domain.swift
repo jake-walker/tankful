@@ -21,21 +21,21 @@ extension VehicleRecord {
             syncState: vehicle.syncState.rawValue
         )
     }
-    
+
     func toDomain() throws -> Vehicle {
-        guard let uuid = UUID(uuidString: self.id) else {
+        guard let uuid = UUID(uuidString: id) else {
             throw PersistenceMappingError.invalidUUID
         }
-        
-        return Vehicle(
+
+        return try Vehicle(
             id: uuid,
-            name: self.name,
-            make: self.make,
-            model: self.model,
-            year: self.year,
-            fuelType: try decodeEnum(FuelType.self, from: self.fuelType),
-            remoteID: self.remoteID,
-            syncState: try decodeEnum(SyncState.self, from: self.syncState)
+            name: name,
+            make: make,
+            model: model,
+            year: year,
+            fuelType: decodeEnum(FuelType.self, from: fuelType),
+            remoteID: remoteID,
+            syncState: decodeEnum(SyncState.self, from: syncState)
         )
     }
 }

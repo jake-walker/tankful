@@ -4,7 +4,9 @@ import AppIntents
 struct GetLastFuelLogIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Latest Fill-Up"
     static let description = IntentDescription("Gets the most recent fill-up for a vehicle.")
-    static var supportedModes: IntentModes { .background }
+    static var supportedModes: IntentModes {
+        .background
+    }
 
     @Parameter(title: "Vehicle")
     var vehicle: VehicleEntity
@@ -23,6 +25,7 @@ struct GetLastFuelLogIntent: AppIntent {
         )
     }
 }
+
 //  GetLastFuelLogIntent.swift
 //  tankful
 //

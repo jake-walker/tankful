@@ -41,16 +41,17 @@ public struct FuelLogEntity: AppEntity {
     @Property(title: "Notes")
     public var notes: String?
 
-    internal init(_ fuelLog: FuelLog, vehicle: VehicleEntity) {
-        self.id = fuelLog.id
+    init(_ fuelLog: FuelLog, vehicle: VehicleEntity) {
+        id = fuelLog.id
         self.vehicle = vehicle
-        self.date = fuelLog.date
-        self.odometer = fuelLog.odometer
-        self.volume = fuelLog.volume
-        self.cost = NSDecimalNumber(decimal: fuelLog.cost.exactAmount).doubleValue
-        self.notes = fuelLog.notes
+        date = fuelLog.date
+        odometer = fuelLog.odometer
+        volume = fuelLog.volume
+        cost = NSDecimalNumber(decimal: fuelLog.cost.exactAmount).doubleValue
+        notes = fuelLog.notes
     }
 }
+
 //  FuelLogEntity.swift
 //  tankful
 //

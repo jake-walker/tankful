@@ -12,7 +12,7 @@ public struct SyncConfiguration: Sendable, Codable {
     public var baseURL: URL
     public var additionalHeaders: [String: String]
     public var authentication: Authentication?
-    
+
     public enum Authentication: Sendable, Codable {
         case credentials(username: String, password: String)
         case header(name: String, value: String)

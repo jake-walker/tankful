@@ -12,10 +12,10 @@ public protocol FuelLogRepository {
     func fuelLog(id: FuelLog.ID) async throws -> FuelLog?
     func fuelLogs() async throws -> [FuelLog]
     func fuelLogs(for vehicleID: Vehicle.ID, startingAt date: Date?) async throws -> [FuelLog]
-    
+
     func save(_ fuelLog: FuelLog) async throws
     func delete(id: FuelLog.ID) async throws
-    
+
     func pendingSync() async throws -> [FuelLog]
     func deleteAll() async throws
 }

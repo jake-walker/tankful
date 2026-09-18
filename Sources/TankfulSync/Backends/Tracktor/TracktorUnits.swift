@@ -5,10 +5,10 @@
 //  Created by Jake Walker on 16/09/2026.
 //
 
-import Foundation
 import Currency
+import Foundation
 
-internal struct TracktorUnits {
+struct TracktorUnits {
     let distance: UnitLength
     let volume: UnitVolume
     let currency: String

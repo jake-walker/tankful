@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct RootView: View {
-    @Environment(AppEnvironment.self) internal var env
-    
+    @Environment(AppEnvironment.self) var env
+
     var body: some View {
         @Bindable var router = env.router
-        
+
         NavigationStack(path: $router.path) {
             HomeView()
                 .navigationDestination(for: AppRoute.self, destination: { destination in
@@ -38,8 +38,8 @@ struct RootView: View {
 }
 
 #if !os(Android)
-#Preview {
-    RootView()
-        .environment(AppEnvironment.preview())
-}
+    #Preview {
+        RootView()
+            .environment(AppEnvironment.preview())
+    }
 #endif

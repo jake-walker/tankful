@@ -14,10 +14,10 @@ public struct VehicleEntityQuery: EntityQuery {
             ids: identifiers
         )
     }
-    
+
     public func suggestedEntities() async throws -> [VehicleEntity] {
         try await TankfulIntentsEnvironment.vehicleEntities()
     }
-    
+
     public init() {}
 }

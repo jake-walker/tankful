@@ -5,11 +5,11 @@
 //  Created by Jake Walker on 17/09/2026.
 //
 
+import CoreSpotlight
+import Currency
+import Foundation
 import TankfulDomain
 import TankfulPersistence
-import Foundation
-import Currency
-import CoreSpotlight
 
 @MainActor
 public enum TankfulIntentsEnvironment {
@@ -17,7 +17,7 @@ public enum TankfulIntentsEnvironment {
     private static var fuelLogRepository: (any FuelLogRepository)?
     private static var openFuelLogHandler: ((FuelLog.ID) -> Void)?
     private static var openVehicleHandler: ((Vehicle.ID) -> Void)?
-    
+
     public static func configure(
         vehicleRepository: any VehicleRepository,
         fuelLogRepository: any FuelLogRepository,
@@ -26,21 +26,21 @@ public enum TankfulIntentsEnvironment {
     ) {
         self.vehicleRepository = vehicleRepository
         self.fuelLogRepository = fuelLogRepository
-        self.openFuelLogHandler = openFuelLog
-        self.openVehicleHandler = openVehicle
+        openFuelLogHandler = openFuelLog
+        openVehicleHandler = openVehicle
     }
-    
+
     private static func createRepositoriesIfNeeded() throws {
         guard vehicleRepository == nil || fuelLogRepository == nil else {
             return
         }
-        
+
         let directory = URL.applicationSupportDirectory.appendingPathComponent("Tankful", isDirectory: true)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         let databaseURL = directory.appendingPathComponent("Tankful.sqlite")
-        
+
         let database = try TankfulDatabase.live(at: databaseURL)
-        
+
         vehicleRepository = SQLiteVehicleRepository(database: database)
         fuelLogRepository = SQLiteFuelLogRepository(database: database)
     }
@@ -58,16 +58,16 @@ public extension TankfulIntentsEnvironment {
 }
 
 @available(anyAppleOS 26.0, *)
-internal extension TankfulIntentsEnvironment {
+extension TankfulIntentsEnvironment {
     static func vehicleEntities(ids: [Vehicle.ID]? = nil) async throws -> [VehicleEntity] {
         try createRepositoriesIfNeeded()
-        
+
         guard let vehicleRepository else {
             throw TankfulIntentsError.failedToInitialize
         }
-        
+
         let vehicles = try await vehicleRepository.vehicles()
-        
+
         let requestedIDs = ids.map(Set.init)
 
         return vehicles
@@ -97,13 +97,14 @@ internal extension TankfulIntentsEnvironment {
                 return FuelLogEntity(fuelLog, vehicle: vehicle)
             }
     }
-    
+
     private static func makeCurrencyValue(_ exactAmount: Decimal) -> (any CurrencyValue) {
         if let currencyCode = Locale.current.currency?.identifier,
            let currencyValue = CurrencyMint.standard.make(
-            identifier: .alphaCode(currencyCode),
-            exactAmount: exactAmount
-           ) {
+               identifier: .alphaCode(currencyCode),
+               exactAmount: exactAmount
+           )
+        {
             return currencyValue
         }
 
@@ -124,7 +125,7 @@ internal extension TankfulIntentsEnvironment {
         }
 
         let existingLogs = try await fuelLogRepository.fuelLogs(for: vehicleID)
-        
+
         let fuelLog = FuelLog(
             id: FuelLog.ID(),
             vehicleID: vehicleID,
@@ -154,7 +155,8 @@ internal extension TankfulIntentsEnvironment {
         }
 
         guard let fuelLog = try await fuelLogRepository.fuelLogs(for: vehicle.id)
-            .max(by: { $0.date < $1.date }) else {
+            .max(by: { $0.date < $1.date })
+        else {
             throw TankfulIntentsError.noFuelLogs(vehicleName: vehicle.name)
         }
 

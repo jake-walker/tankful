@@ -14,20 +14,20 @@ import TankfulDomain
 #endif
 
 struct HomeView: View {
-    @Environment(AppEnvironment.self) internal var env
+    @Environment(AppEnvironment.self) var env
 
     private let recentFillUpLimit = 5
 
-    @State internal var vehicles: [Vehicle] = []
-    @State internal var vehicle: Vehicle?
-    @State internal var fuelLogs: [CalculatedFuelLog] = []
-    @State internal var isLoading: Bool = true
+    @State var vehicles: [Vehicle] = []
+    @State var vehicle: Vehicle?
+    @State var fuelLogs: [CalculatedFuelLog] = []
+    @State var isLoading: Bool = true
 
     private var chartFuelLogs: [CalculatedFuelLog] {
         return
             fuelLogs
-            .filter { $0.economy != nil }
-            .reversed()
+                .filter { $0.economy != nil }
+                .reversed()
     }
 
     private var lastCostPerMile: (any CurrencyValue)? {
@@ -52,11 +52,11 @@ struct HomeView: View {
                     Group {
                         VStack(spacing: 18) {
                             chart
-                            
+
                             summaryMetrics
                         }
                         .cardStyle()
-                        
+
                         recentFillUpsSection
                             .cardStyle(padding: false)
                     }
@@ -82,7 +82,8 @@ struct HomeView: View {
                                     Label(
                                         vehicle.displayName,
                                         systemImage: env.currentVehicleID == vehicle.id
-                                            ? "checkmark.circle" : "circle")
+                                            ? "checkmark.circle" : "circle"
+                                    )
                                 }
                             }
                         }
@@ -125,19 +126,21 @@ struct HomeView: View {
                 metricView(
                     value: env.formatter.economy(economy).description,
                     label: NSLocalizedString(
-                        "Avg. Economy", comment: "Average fuel economy metric label")
+                        "Avg. Economy", comment: "Average fuel economy metric label"
+                    )
                 )
 
                 Divider()
             }
 
             if let averageCostPerDistance = fuelLogs.averageCostPerDistance(
-                unit: env.distanceUnit.unit)
-            {
+                unit: env.distanceUnit.unit
+            ) {
                 metricView(
                     value:
-                        "\(averageCostPerDistance.localizedString())/\(env.distanceUnit.unit.symbol)",
-                    label: env.distanceUnit.costPerDisplayName)
+                    "\(averageCostPerDistance.localizedString())/\(env.distanceUnit.unit.symbol)",
+                    label: env.distanceUnit.costPerDisplayName
+                )
 
                 Divider()
             }
@@ -199,9 +202,9 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(value)
                 .font(.system(size: 20, weight: .semibold))
-                #if !os(Android)
-                    .monospacedDigit()
-                #endif
+            #if !os(Android)
+                .monospacedDigit()
+            #endif
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
 
@@ -234,9 +237,9 @@ struct HomeView: View {
                     FuelLogItem(fuelLog: log, showChevron: true)
                         .fuelLogEntity(id: log.id)
                         .padding(.horizontal)
-                        #if !os(Android) && !os(macOS)
-                            .foregroundStyle(Color(uiColor: .label))
-                        #endif
+                    #if !os(Android) && !os(macOS)
+                        .foregroundStyle(Color(uiColor: .label))
+                    #endif
                 }
             }
 
@@ -255,11 +258,13 @@ struct HomeView: View {
                     LineMark(
                         x: .value(
                             NSLocalizedString(
-                                "Date", comment: "Fuel economy chart date axis label"), log.log.date
+                                "Date", comment: "Fuel economy chart date axis label"
+                            ), log.log.date
                         ),
                         y: .value(
                             NSLocalizedString(
-                                "Fuel Economy", comment: "Fuel economy chart value label"),
+                                "Fuel Economy", comment: "Fuel economy chart value label"
+                            ),
                             economy.converted(to: env.fuelEconomyUnit.unit).value
                         )
                     )

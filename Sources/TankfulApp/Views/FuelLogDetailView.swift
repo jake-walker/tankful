@@ -9,17 +9,17 @@ import SwiftUI
 import TankfulDomain
 
 struct FuelLogDetailView: View {
-    @Environment(AppEnvironment.self) internal var env
-    
+    @Environment(AppEnvironment.self) var env
+
     let fuelLogID: FuelLog.ID
-    
-    @State internal var fuelLog: FuelLog?
-    @State internal var vehicle: Vehicle?
-    @State internal var isConfirmingDelete: Bool = false
-    @State internal var isDeleting: Bool = false
-    @State internal var isShowingError: Bool = false
-    @State internal var errorMessage: String = ""
-    
+
+    @State var fuelLog: FuelLog?
+    @State var vehicle: Vehicle?
+    @State var isConfirmingDelete: Bool = false
+    @State var isDeleting: Bool = false
+    @State var isShowingError: Bool = false
+    @State var errorMessage: String = ""
+
     var body: some View {
         Group {
             if let fuelLog {
@@ -33,13 +33,13 @@ struct FuelLogDetailView: View {
                     } label: {
                         Text("Vehicle")
                     }
-                    
+
                     LabeledContent {
                         Text(fuelLog.date.formatted())
                     } label: {
                         Text("Date")
                     }
-                    
+
                     LabeledContent {
                         if let odometer = fuelLog.odometer {
                             Text(env.formatter.odometer(odometer).description)
@@ -49,9 +49,9 @@ struct FuelLogDetailView: View {
                     } label: {
                         Text("Odometer")
                     }
-                    
+
                     Text(fillStatus(for: fuelLog))
-                    
+
                     LabeledContent {
                         if let volume = fuelLog.volume {
                             Text(env.formatter.volume(volume).description)
@@ -61,7 +61,7 @@ struct FuelLogDetailView: View {
                     } label: {
                         Text("Volume")
                     }
-                    
+
                     LabeledContent {
                         if let unitCost = fuelLog.unitCost {
                             Text("\(unitCost.localizedString())/\(env.volumeUnit.unit.symbol)")
@@ -71,13 +71,13 @@ struct FuelLogDetailView: View {
                     } label: {
                         Text("Unit Cost")
                     }
-                    
+
                     LabeledContent {
                         Text(fuelLog.cost.localizedString())
                     } label: {
                         Text("Total Cost")
                     }
-                    
+
                     if let notes = fuelLog.notes {
                         Text(notes)
                     }
@@ -109,12 +109,12 @@ struct FuelLogDetailView: View {
             Button("Delete Fill-Up", role: .destructive) {
                 Task { await deleteFuelLog() }
             }
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {}
         } message: {
             Text("This action cannot be undone.")
         }
         .alert("Unable to Delete Fill-Up", isPresented: $isShowingError) {
-            Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {}
         } message: {
             Text(errorMessage)
         }
@@ -122,7 +122,7 @@ struct FuelLogDetailView: View {
             await load()
         }
     }
-    
+
     private func fillStatus(for fuelLog: FuelLog) -> String {
         switch (fuelLog.filled, fuelLog.missedLast) {
         case (true, true):
@@ -154,7 +154,7 @@ struct FuelLogDetailView: View {
 
     private func load() async {
         fuelLog = try? await env.fuelLogRepository.fuelLog(id: fuelLogID)
-        
+
         if let fuelLog {
             vehicle = try? await env.vehicleRepository.vehicle(id: fuelLog.vehicleID)
         }
@@ -162,12 +162,12 @@ struct FuelLogDetailView: View {
 }
 
 #if !os(Android)
-#Preview {
-    let env = AppEnvironment.preview()
-    
-    NavigationView {
-        FuelLogDetailView(fuelLogID: env.previewFuelLogID)
-            .environment(env)
+    #Preview {
+        let env = AppEnvironment.preview()
+
+        NavigationView {
+            FuelLogDetailView(fuelLogID: env.previewFuelLogID)
+                .environment(env)
+        }
     }
-}
 #endif

@@ -1,5 +1,6 @@
 // Licensed under the GNU General Public License v3.0 or later
 // SPDX-License-Identifier: GPL-3.0-or-later
+// swiftformat:disable all
 
 import Foundation
 import SkipFuse
@@ -19,23 +20,23 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
 /// The default implementation merely loads the `ContentView` for the app and logs a message.
 /* SKIP @bridge */public struct TankfulAppRootView : View {
     @Environment(\.scenePhase) internal var scenePhase
-    
+
     @State internal var env: AppEnvironment
-    
+
     /* SKIP @bridge */public init() {
         let directory = URL.applicationSupportDirectory.appendingPathComponent("Tankful", isDirectory: true)
-        
+
         try! FileManager.default.createDirectory(
             at: directory,
             withIntermediateDirectories: true
         )
-        
+
         let database = try! TankfulDatabase.live(at: directory.appendingPathComponent("Tankful.sqlite"))
-        
+
         let vehicleRepository = SQLiteVehicleRepository(database: database)
         let fuelLogRepository = SQLiteFuelLogRepository(database: database)
         let router = AppRouter()
-        
+
         _env = State(
             initialValue: AppEnvironment(
                 router: router,
@@ -43,7 +44,7 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
                 fuelLogRepository: fuelLogRepository
             )
         )
-        
+
         #if os(iOS) || os(macOS)
         TankfulIntentsEnvironment.configure(
             vehicleRepository: vehicleRepository,

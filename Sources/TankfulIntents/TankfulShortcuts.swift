@@ -15,7 +15,7 @@ struct TankfulShortcuts: AppShortcutsProvider {
             phrases: [
                 "Add fuel in \(.applicationName)",
                 "Log a fill-up in \(.applicationName)",
-                "Add a fill-up to \(.applicationName)"
+                "Add a fill-up to \(.applicationName)",
             ],
             shortTitle: "Add Fuel",
             systemImageName: "fuelpump.fill"
@@ -24,7 +24,7 @@ struct TankfulShortcuts: AppShortcutsProvider {
             intent: GetFuelEconomyIntent(),
             phrases: [
                 "Get fuel economy in \(.applicationName)",
-                "What's my fuel economy in \(.applicationName)"
+                "What's my fuel economy in \(.applicationName)",
             ],
             shortTitle: "Fuel Economy",
             systemImageName: "gauge.with.dots.needle.50percent"
@@ -33,7 +33,7 @@ struct TankfulShortcuts: AppShortcutsProvider {
             intent: GetOdometerIntent(),
             phrases: [
                 "Get my odometer in \(.applicationName)",
-                "What's my mileage in \(.applicationName)"
+                "What's my mileage in \(.applicationName)",
             ],
             shortTitle: "Get Odometer",
             systemImageName: "gauge.with.dots.needle.bottom.50percent"
@@ -42,7 +42,7 @@ struct TankfulShortcuts: AppShortcutsProvider {
             intent: GetLastFuelLogIntent(),
             phrases: [
                 "Get my latest fill-up in \(.applicationName)",
-                "Show my last fill-up in \(.applicationName)"
+                "Show my last fill-up in \(.applicationName)",
             ],
             shortTitle: "Latest Fill-Up",
             systemImageName: "fuelpump"

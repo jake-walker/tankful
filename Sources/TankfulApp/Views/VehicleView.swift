@@ -9,25 +9,25 @@ import SwiftUI
 import TankfulDomain
 
 struct VehicleView: View {
-    @Environment(AppEnvironment.self) internal var env
+    @Environment(AppEnvironment.self) var env
 
     let vehicleID: Vehicle.ID?
-    
-    // TODO: improve this
-    @State internal var remoteID: String?
-    @State internal var syncState: SyncState = .created
 
-    @State internal var name: String = ""
-    @State internal var make: String = ""
-    @State internal var model: String = ""
-    @State internal var year: String = ""
-    @State internal var fuelType: FuelType = .petrol
-    @State internal var isLoading: Bool = false
-    @State internal var isSaving: Bool = false
-    @State internal var isDeleting: Bool = false
-    @State internal var isConfirmingDelete: Bool = false
-    @State internal var isShowingError: Bool = false
-    @State internal var errorMessage: String = ""
+    // TODO: improve this
+    @State var remoteID: String?
+    @State var syncState: SyncState = .created
+
+    @State var name: String = ""
+    @State var make: String = ""
+    @State var model: String = ""
+    @State var year: String = ""
+    @State var fuelType: FuelType = .petrol
+    @State var isLoading: Bool = false
+    @State var isSaving: Bool = false
+    @State var isDeleting: Bool = false
+    @State var isConfirmingDelete: Bool = false
+    @State var isShowingError: Bool = false
+    @State var errorMessage: String = ""
 
     init(vehicleID: Vehicle.ID? = nil) {
         self.vehicleID = vehicleID
@@ -41,7 +41,7 @@ struct VehicleView: View {
             } label: {
                 Text("Name")
             }
-            
+
             LabeledContent {
                 TextField("Make", text: $make)
                     .multilineTextAlignment(.trailing)
@@ -89,7 +89,7 @@ struct VehicleView: View {
                     .disabled(isLoading || isSaving || !hasValidYear)
                 }
             }
-            
+
             if vehicleID != nil {
                 ToolbarItem(placement: .secondaryAction) {
                     Button("Delete Vehicle", systemImage: "trash", role: .destructive) {
@@ -110,12 +110,12 @@ struct VehicleView: View {
             Button("Delete Vehicle", role: .destructive) {
                 Task { await deleteVehicle() }
             }
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {}
         } message: {
             Text("All fill-ups for this vehicle will also be deleted. This action cannot be undone.")
         }
         .alert("Unable to Update Vehicle", isPresented: $isShowingError) {
-            Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {}
         } message: {
             Text(errorMessage)
         }
@@ -177,7 +177,7 @@ struct VehicleView: View {
             }
 
             await env.refreshVehicleSpotlightIndex()
-           
+
             env.selectVehicle(id: vehicle.id)
             env.router.pop()
         } catch {
@@ -220,19 +220,19 @@ private enum VehicleViewError: LocalizedError {
 }
 
 #if !os(Android)
-#Preview("Add Vehicle") {
-    NavigationStack {
-        VehicleView()
-            .environment(AppEnvironment.preview())
+    #Preview("Add Vehicle") {
+        NavigationStack {
+            VehicleView()
+                .environment(AppEnvironment.preview())
+        }
     }
-}
 
-#Preview("Edit Vehicle") {
-    let env = AppEnvironment.preview()
+    #Preview("Edit Vehicle") {
+        let env = AppEnvironment.preview()
 
-    NavigationStack {
-        VehicleView(vehicleID: env.currentVehicleID)
-            .environment(env)
+        NavigationStack {
+            VehicleView(vehicleID: env.currentVehicleID)
+                .environment(env)
+        }
     }
-}
 #endif

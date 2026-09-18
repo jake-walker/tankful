@@ -4,7 +4,9 @@ import AppIntents
 struct GetFuelEconomyIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Average Fuel Economy"
     static let description = IntentDescription("Calculates a vehicle's average fuel economy from all valid fill-ups.")
-    static var supportedModes: IntentModes { .background }
+    static var supportedModes: IntentModes {
+        .background
+    }
 
     @Parameter(title: "Vehicle")
     var vehicle: VehicleEntity
@@ -23,6 +25,7 @@ struct GetFuelEconomyIntent: AppIntent {
         )
     }
 }
+
 //  GetFuelEconomyIntent.swift
 //  tankful
 //

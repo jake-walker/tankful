@@ -11,7 +11,9 @@ import AppIntents
 struct OpenVehicleIntent: OpenIntent {
     static let title: LocalizedStringResource = "Open Vehicle"
     static let description = IntentDescription("Opens a vehicle in Tankful.")
-    static var supportedModes: IntentModes { .foreground }
+    static var supportedModes: IntentModes {
+        .foreground
+    }
 
     @Parameter(title: "Vehicle")
     var target: VehicleEntity

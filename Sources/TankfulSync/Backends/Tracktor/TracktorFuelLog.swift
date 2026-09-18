@@ -5,11 +5,11 @@
 //  Created by Jake Walker on 16/09/2026.
 //
 
-import TankfulDomain
-import Foundation
 import Currency
+import Foundation
+import TankfulDomain
 
-internal struct TracktorFuelLog: Codable, Sendable {
+struct TracktorFuelLog: Codable, Sendable {
     let id: String?
     let vehicleID: String
     let date: String
@@ -21,7 +21,7 @@ internal struct TracktorFuelLog: Codable, Sendable {
     let cost: Decimal
     let notes: String?
     let attachment: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case vehicleID = "vehicleId"
@@ -35,7 +35,7 @@ internal struct TracktorFuelLog: Codable, Sendable {
         case notes
         case attachment
     }
-    
+
     init(
         _ log: FuelLog,
         remoteUnits: TracktorUnits,
@@ -44,20 +44,20 @@ internal struct TracktorFuelLog: Codable, Sendable {
         guard remoteUnits.currency.uppercased() == log.cost.descriptor.alphabeticCode.uppercased() else {
             throw TracktorBackend.Error.currencyMismatch(logCurrency: log.cost.descriptor.alphabeticCode, remoteCurrency: remoteUnits.currency)
         }
-        
-        self.id = log.remoteID
-        self.vehicleID = remoteVehicleID
-        self.date = log.date.ISO8601Format(.iso8601(timeZone: .gmt, includingFractionalSeconds: true))
-        self.odometer = log.odometer.map { Int($0.converted(to: remoteUnits.distance).value.rounded()) }
-        self.filled = log.filled
-        self.missedLast = log.missedLast
-        self.fuelAmount = log.volume?.converted(to: remoteUnits.volume).value
-        self.rate = log.unitCost.map { NSDecimalNumber(decimal: $0.exactAmount).doubleValue }
-        self.cost = log.cost.exactAmount
-        self.notes = log.notes
-        self.attachment = nil
+
+        id = log.remoteID
+        vehicleID = remoteVehicleID
+        date = log.date.ISO8601Format(.iso8601(timeZone: .gmt, includingFractionalSeconds: true))
+        odometer = log.odometer.map { Int($0.converted(to: remoteUnits.distance).value.rounded()) }
+        filled = log.filled
+        missedLast = log.missedLast
+        fuelAmount = log.volume?.converted(to: remoteUnits.volume).value
+        rate = log.unitCost.map { NSDecimalNumber(decimal: $0.exactAmount).doubleValue }
+        cost = log.cost.exactAmount
+        notes = log.notes
+        attachment = nil
     }
-    
+
     func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -78,32 +78,32 @@ extension TracktorFuelLog {
     private static func parseDate(_ value: String) -> Date? {
         let calendar = Calendar(identifier: .iso8601)
         let timeZone = TimeZone(secondsFromGMT: 0)!
-        
+
         // ISO 8601 timestamp
         let isoFormatter = ISO8601DateFormatter()
         isoFormatter.formatOptions = [
             .withInternetDateTime,
-            .withFractionalSeconds
+            .withFractionalSeconds,
         ]
-        
+
         var date = isoFormatter.date(from: value)
-        
+
         // try ISO 8601 without fractional seconds
         if date == nil {
             isoFormatter.formatOptions = [
-                .withInternetDateTime
+                .withInternetDateTime,
             ]
-            
+
             date = isoFormatter.date(from: value)
         }
-        
+
         let formats = [
             "yyyy-MM-dd'T'HH:mm:ss.SSS",
             "yyyy-MM-dd'T'HH:mm:ss",
             "yyyy-MM-dd HH:mm:ss",
-            "yyyy-MM-dd"
+            "yyyy-MM-dd",
         ]
-        
+
         for format in formats {
             if date == nil {
                 let formatter = DateFormatter()
@@ -111,53 +111,53 @@ extension TracktorFuelLog {
                 formatter.locale = Locale(identifier: "en_US_POSIX")
                 formatter.timeZone = timeZone
                 formatter.dateFormat = format
-                
+
                 date = formatter.date(from: value)
             } else {
                 break
             }
         }
-        
+
         guard let date else {
             return nil
         }
-        
+
         var utcCalendar = calendar
         utcCalendar.timeZone = timeZone
-        
+
         return utcCalendar.startOfDay(for: date)
     }
-    
+
     func toDomain(units: TracktorUnits) throws -> FuelLog {
-        guard let remoteID = self.id else {
+        guard let remoteID = id else {
             throw TracktorBackend.Error.missingID
         }
-        
-        guard let date = Self.parseDate(self.date) else {
-            throw TracktorBackend.Error.invalidDate(date: self.date)
+
+        guard let date = Self.parseDate(date) else {
+            throw TracktorBackend.Error.invalidDate(date: date)
         }
-        
+
         guard let cost = CurrencyMint.standard.make(
             identifier: .alphaCode(units.currency),
-            exactAmount: self.cost
+            exactAmount: cost
         ) else {
             throw TracktorBackend.Error.unsupportedCurrency(currencyCode: units.currency)
         }
-        
+
         return FuelLog(
             id: UUID(),
             vehicleID: UUID(),
             date: date,
-            odometer: self.odometer.map {
+            odometer: odometer.map {
                 Measurement(value: Double($0), unit: units.distance)
             },
-            volume: self.fuelAmount.map {
+            volume: fuelAmount.map {
                 Measurement(value: $0, unit: units.volume)
             },
             cost: cost,
-            filled: self.filled,
-            missedLast: self.missedLast,
-            notes: self.notes,
+            filled: filled,
+            missedLast: missedLast,
+            notes: notes,
             remoteID: remoteID,
             syncState: .synced
         )

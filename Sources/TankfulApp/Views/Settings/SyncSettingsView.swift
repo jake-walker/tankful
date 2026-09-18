@@ -9,17 +9,17 @@ import SwiftUI
 import TankfulSync
 
 struct SyncSettingsView: View {
-    @Environment(AppEnvironment.self) internal var env
+    @Environment(AppEnvironment.self) var env
 
-    @State internal var syncEnabled = false
-    @State internal var serverURL = ""
-    @State internal var username = ""
-    @State internal var password = ""
-    @State internal var headers = ""
-    @State internal var validationMessage: String?
-    @State internal var savedDraft = SyncSettingsDraft()
-    @State internal var saveMessage: String?
-    @State internal var isConfirmingDiscard = false
+    @State var syncEnabled = false
+    @State var serverURL = ""
+    @State var username = ""
+    @State var password = ""
+    @State var headers = ""
+    @State var validationMessage: String?
+    @State var savedDraft = SyncSettingsDraft()
+    @State var saveMessage: String?
+    @State var isConfirmingDiscard = false
 
     var body: some View {
         Form {
@@ -38,9 +38,11 @@ struct SyncSettingsView: View {
                         Text(
                             syncEnabled
                                 ? NSLocalizedString(
-                                    "Sync Status", comment: "Sync status section heading")
+                                    "Sync Status", comment: "Sync status section heading"
+                                )
                                 : NSLocalizedString(
-                                    "Sync Disabled", comment: "Sync status section heading")
+                                    "Sync Disabled", comment: "Sync status section heading"
+                                )
                         )
                         .font(.headline)
 
@@ -83,10 +85,10 @@ struct SyncSettingsView: View {
                         )
                         .multilineTextAlignment(.trailing)
                         .autocorrectionDisabled()
-#if !os(macOS)
-.textInputAutocapitalization(.never)
-.keyboardType(.URL)
-#endif
+                        #if !os(macOS)
+                            .textInputAutocapitalization(.never)
+                            .keyboardType(.URL)
+                        #endif
                     } label: {
                         Text("Server URL")
                     }
@@ -191,23 +193,26 @@ struct SyncSettingsView: View {
 
     private var syncText: String {
         switch env.syncStatus {
-        case .idle(let lastSync):
+        case let .idle(lastSync):
             if let lastSync {
                 return String(
                     format: NSLocalizedString(
-                        "Last synced %@", comment: "Sync status followed by the last sync date"),
+                        "Last synced %@", comment: "Sync status followed by the last sync date"
+                    ),
                     lastSync.formatted(date: .abbreviated, time: .shortened)
                 )
             } else {
                 return NSLocalizedString(
-                    "Not yet synced", comment: "Sync status when no sync has completed")
+                    "Not yet synced", comment: "Sync status when no sync has completed"
+                )
             }
         case .syncing:
             return NSLocalizedString("Syncing...", comment: "Sync status while a sync is running")
-        case .failed(_, let message):
+        case let .failed(_, message):
             return String(
                 format: NSLocalizedString(
-                    "Failed: %@", comment: "Sync failure status followed by an error message"),
+                    "Failed: %@", comment: "Sync failure status followed by an error message"
+                ),
                 message
             )
         }
@@ -239,7 +244,7 @@ struct SyncSettingsView: View {
             .map { "\($0.key): \($0.value)" }
             .joined(separator: "\n")
 
-        if case .credentials(let savedUsername, let savedPassword) = configuration.authentication {
+        if case let .credentials(savedUsername, savedPassword) = configuration.authentication {
             username = savedUsername
             password = savedPassword
         } else {
@@ -255,14 +260,15 @@ struct SyncSettingsView: View {
             savedDraft = draft
             validationMessage = nil
             saveMessage = NSLocalizedString(
-                "Sync disabled.", comment: "Confirmation shown after disabling sync")
+                "Sync disabled.", comment: "Confirmation shown after disabling sync"
+            )
             return
         }
 
         guard let baseURL = URL(string: serverURL),
-            let scheme = baseURL.scheme?.lowercased(),
-            ["http", "https"].contains(scheme),
-            baseURL.host != nil
+              let scheme = baseURL.scheme?.lowercased(),
+              ["http", "https"].contains(scheme),
+              baseURL.host != nil
         else {
             validationMessage = NSLocalizedString(
                 "Enter a valid HTTP or HTTPS server URL.",
@@ -298,7 +304,8 @@ struct SyncSettingsView: View {
             savedDraft = draft
             validationMessage = nil
             saveMessage = NSLocalizedString(
-                "Changes saved.", comment: "Confirmation shown after saving sync settings")
+                "Changes saved.", comment: "Confirmation shown after saving sync settings"
+            )
         } catch {
             validationMessage = error.localizedDescription
             saveMessage = nil
@@ -327,7 +334,7 @@ struct SyncSettingsView: View {
     }
 }
 
-internal struct SyncSettingsDraft: Equatable {
+struct SyncSettingsDraft: Equatable {
     var syncEnabled = false
     var serverURL = ""
     var username = ""
@@ -340,12 +347,12 @@ private enum HeaderParsingError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .invalidLine(let line):
+        case let .invalidLine(line):
             String(
                 format: NSLocalizedString(
                     "Custom header on line %lld must use \"Name: value\" format.",
                     comment:
-                        "Validation error for a malformed custom HTTP header; argument is the line number"
+                    "Validation error for a malformed custom HTTP header; argument is the line number"
                 ),
                 Int64(line)
             )

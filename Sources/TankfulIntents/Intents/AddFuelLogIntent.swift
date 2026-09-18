@@ -11,7 +11,9 @@ import AppIntents
 struct AddFuelLogIntent: AppIntent {
     static let title: LocalizedStringResource = "Add Fill-Up"
     static let description = IntentDescription("Adds a fill-up to a vehicle in Tankful.")
-    static var supportedModes: IntentModes { .background }
+    static var supportedModes: IntentModes {
+        .background
+    }
 
     static var parameterSummary: some ParameterSummary {
         Summary("Log \(\.$volume) for \(\.$vehicle)") {
@@ -20,22 +22,22 @@ struct AddFuelLogIntent: AppIntent {
             \.$date
         }
     }
-    
+
     @Parameter(title: "Vehicle")
     var vehicle: VehicleEntity
-    
+
     @Parameter(title: "Volume")
     var volume: Measurement<UnitVolume>
-    
+
     @Parameter(title: "Cost")
     var cost: Double
-    
+
     @Parameter(title: "Odometer")
     var odometer: Measurement<UnitLength>
-    
+
     @Parameter(title: "Date")
     var date: Date?
-    
+
     func perform() async throws -> some ReturnsValue<FuelLogEntity> & ProvidesDialog {
         let fuelLog = try await TankfulIntentsEnvironment.addFuelLog(
             vehicleID: vehicle.id,

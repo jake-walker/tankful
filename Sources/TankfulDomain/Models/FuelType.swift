@@ -10,9 +10,11 @@ import Foundation
 public enum FuelType: String, Codable, CaseIterable, Identifiable, Sendable {
     case petrol
     case diesel
-    
-    public var id: Self { self }
-    
+
+    public var id: Self {
+        self
+    }
+
     public var name: String {
         switch self {
         case .petrol:

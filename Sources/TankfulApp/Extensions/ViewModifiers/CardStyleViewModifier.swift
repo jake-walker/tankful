@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CardStyle: ViewModifier {
-#if !os(Android)
-    @Environment(\.defaultMinListRowHeight) var listRowHeight
+    #if !os(Android)
+        @Environment(\.defaultMinListRowHeight) var listRowHeight
     #endif
 
     let withPadding: Bool
@@ -18,7 +18,7 @@ struct CardStyle: ViewModifier {
         content
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(withPadding ? 18 : 0)
-#if !os(Android)
+        #if !os(Android)
             .background(.regularMaterial)
             .containerShape(.rect(cornerRadius: listRowHeight / 2))
         #endif

@@ -32,7 +32,7 @@ internal val logger: SkipLogger = SkipLogger(subsystem = "tankful.app", category
 private typealias AppRootView = TankfulAppRootView
 private typealias AppDelegate = TankfulAppAppDelegate
 
-/// AndroidAppMain is the `android.app.Application` entry point, and must match `application android:name` in the AndroidMainfest.xml file.
+/// AndroidAppMain is the `android.app.Application` entry point, and must match `application android:name` in the AndroidManifest.xml file.
 open class AndroidAppMain: Application {
     constructor() {
     }
@@ -48,7 +48,7 @@ open class AndroidAppMain: Application {
     }
 }
 
-/// AndroidAppMain is initial `androidx.appcompat.app.AppCompatActivity`, and must match `activity android:name` in the AndroidMainfest.xml file.
+/// AndroidAppMain is initial `androidx.appcompat.app.AppCompatActivity`, and must match `activity android:name` in the AndroidManifest.xml file.
 open class MainActivity: AppCompatActivity {
     constructor() {
     }

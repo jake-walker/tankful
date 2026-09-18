@@ -20,7 +20,7 @@ public struct VehicleEntity: IndexedEntity {
             numericFormat: "\(placeholder: .int) vehicles"
         )
     }
-    
+
     public var displayRepresentation: DisplayRepresentation {
         if let description {
             DisplayRepresentation(
@@ -33,32 +33,32 @@ public struct VehicleEntity: IndexedEntity {
             )
         }
     }
-    
+
     public static let defaultQuery = VehicleEntityQuery()
-    
+
     public let id: UUID
-    
+
     @Property(indexingKey: \.displayName)
     public var name: String
-    
+
     @Property(indexingKey: \.description)
     public var description: String?
-    
+
     @Property
     public var year: Int?
-    
+
     @Property
     public var make: String?
-    
+
     @Property
     public var model: String?
-    
-    internal init(_ vehicle: Vehicle) {
-        self.id = vehicle.id
-        self.name = vehicle.displayName
-        self.description = vehicle.description
-        self.year = vehicle.year.map(Int.init)
-        self.make = vehicle.make
-        self.model = vehicle.model
+
+    init(_ vehicle: Vehicle) {
+        id = vehicle.id
+        name = vehicle.displayName
+        description = vehicle.description
+        year = vehicle.year.map(Int.init)
+        make = vehicle.make
+        model = vehicle.model
     }
 }

@@ -5,11 +5,11 @@
 //  Created by Jake Walker on 16/09/2026.
 //
 
-internal struct TracktorAuthRequest: Encodable, Sendable {
+struct TracktorAuthRequest: Encodable, Sendable {
     let username: String
     let password: String
 }
 
-internal struct TracktorAuthResponse: Decodable, Sendable {
+struct TracktorAuthResponse: Decodable, Sendable {
     let sessionToken: String
 }

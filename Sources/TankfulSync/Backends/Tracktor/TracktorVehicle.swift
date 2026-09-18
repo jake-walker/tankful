@@ -8,9 +8,9 @@
 import Foundation
 import TankfulDomain
 
-fileprivate let tracktorNameKey: String = "name"
+private let tracktorNameKey: String = "name"
 
-internal struct TracktorVehicle: Codable, Sendable {
+struct TracktorVehicle: Codable, Sendable {
     let id: String?
     let make: String?
     let model: String?
@@ -24,34 +24,34 @@ internal struct TracktorVehicle: Codable, Sendable {
     let vehicleType: String
     let customFields: [String: String]?
     let overallMileage: Double?
-    
+
     enum CodingKeys: String, CodingKey {
         case id, make, model, year, licensePlate, vin, color, odometer, image, fuelType, vehicleType, customFields, overallMileage
     }
-    
+
     init(
         _ vehicle: Vehicle
     ) {
-        self.id = vehicle.remoteID
-        self.make = vehicle.make
-        self.model = vehicle.model
-        self.year = vehicle.year
-        self.licensePlate = nil
-        self.vin = nil
-        self.color = nil
-        self.odometer = nil
-        self.image = nil
-        self.fuelType = vehicle.fuelType.rawValue
-        self.vehicleType = "car"
-        self.overallMileage = nil
-        
+        id = vehicle.remoteID
+        make = vehicle.make
+        model = vehicle.model
+        year = vehicle.year
+        licensePlate = nil
+        vin = nil
+        color = nil
+        odometer = nil
+        image = nil
+        fuelType = vehicle.fuelType.rawValue
+        vehicleType = "car"
+        overallMileage = nil
+
         if let name = vehicle.name {
-            self.customFields = [tracktorNameKey: name]
+            customFields = [tracktorNameKey: name]
         } else {
-            self.customFields = nil
+            customFields = nil
         }
     }
-    
+
     func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -66,7 +66,7 @@ internal struct TracktorVehicle: Codable, Sendable {
         try container.encode(fuelType, forKey: .fuelType)
         try container.encode(vehicleType, forKey: .vehicleType)
         try container.encode(customFields, forKey: .customFields)
-        
+
         // Create schema does not include this key, but update schema accepts it
         if id != nil {
             try container.encode(overallMileage, forKey: .overallMileage)
@@ -82,27 +82,27 @@ extension TracktorVehicle {
         case let value: throw TracktorBackend.Error.unsupportedFuelType(fuelType: value)
         }
     }
-    
+
     private var name: String? {
-        guard let name = self.customFields?[tracktorNameKey] else {
+        guard let name = customFields?[tracktorNameKey] else {
             return nil
         }
-        
+
         return name
     }
-    
+
     func toDomain() throws -> Vehicle {
-        guard let remoteID = self.id else {
+        guard let remoteID = id else {
             throw TracktorBackend.Error.missingID
         }
-        
-        return Vehicle(
+
+        return try Vehicle(
             id: UUID(),
-            name: self.name,
-            make: self.make,
-            model: self.model,
-            year: self.year,
-            fuelType: try Self.parseFuelType(self.fuelType),
+            name: name,
+            make: make,
+            model: model,
+            year: year,
+            fuelType: Self.parseFuelType(fuelType),
             remoteID: remoteID,
             syncState: .synced
         )

@@ -5,9 +5,9 @@
 //  Created by Jake Walker on 14/09/2026.
 //
 
+import Currency
 import Foundation
 import TankfulDomain
-import Currency
 
 extension FuelLogRecord {
     init(_ fuelLog: FuelLog) throws {
@@ -26,29 +26,30 @@ extension FuelLogRecord {
             syncState: fuelLog.syncState.rawValue
         )
     }
-    
+
     func toDomain() throws -> FuelLog {
-        guard let uuid = UUID(uuidString: self.id),
-              let vehicleUUID = UUID(uuidString: self.vehicleID) else {
+        guard let uuid = UUID(uuidString: id),
+              let vehicleUUID = UUID(uuidString: vehicleID)
+        else {
             throw PersistenceMappingError.invalidUUID
         }
-        
-        guard let cost = CurrencyMint.standard.make(identifier: .init(self.currencyCode), minorUnits: self.costMinorUnits) else {
-            throw PersistenceMappingError.invalidEnumValue(type: CurrencyMint.CurrencyIdentifier.self, value: self.currencyCode)
+
+        guard let cost = CurrencyMint.standard.make(identifier: .init(currencyCode), minorUnits: costMinorUnits) else {
+            throw PersistenceMappingError.invalidEnumValue(type: CurrencyMint.CurrencyIdentifier.self, value: currencyCode)
         }
-        
-        return FuelLog(
+
+        return try FuelLog(
             id: uuid,
             vehicleID: vehicleUUID,
-            date: Date(timeIntervalSince1970: TimeInterval(self.date)),
-            odometer: self.odometerMetres.map { Measurement(value: Double($0), unit: UnitLength.meters) },
-            volume: self.volumeLitres.map { Measurement(value: $0, unit: UnitVolume.liters) },
+            date: Date(timeIntervalSince1970: TimeInterval(date)),
+            odometer: odometerMetres.map { Measurement(value: Double($0), unit: UnitLength.meters) },
+            volume: volumeLitres.map { Measurement(value: $0, unit: UnitVolume.liters) },
             cost: cost,
-            filled: self.filled == 1,
-            missedLast: self.missedLast == 1,
-            notes: self.notes,
-            remoteID: self.remoteID,
-            syncState: try decodeEnum(SyncState.self, from: self.syncState)
+            filled: filled == 1,
+            missedLast: missedLast == 1,
+            notes: notes,
+            remoteID: remoteID,
+            syncState: decodeEnum(SyncState.self, from: syncState)
         )
     }
 }

@@ -5,19 +5,19 @@
 //  Created by Jake Walker on 15/09/2026.
 //
 
+import Currency
 import SwiftUI
 import TankfulDomain
-import Currency
 
 struct FuelLogItem: View {
-    @Environment(AppEnvironment.self) internal var env
+    @Environment(AppEnvironment.self) var env
 
     let fuelLog: CalculatedFuelLog
     let showChevron: Bool
 
     init(fuelLog: CalculatedFuelLog) {
         self.fuelLog = fuelLog
-        self.showChevron = false
+        showChevron = false
     }
 
     init(fuelLog: CalculatedFuelLog, showChevron: Bool) {
@@ -37,13 +37,13 @@ struct FuelLogItem: View {
 
                     if let economy = fuelLog.economy {
                         let formatted = env.formatter.economy(economy)
-                        
+
                         HStack(alignment: .firstTextBaseline, spacing: 3) {
                             Text(formatted.value)
-                            .font(.headline)
-                            .fontWeight(.semibold)
+                                .font(.headline)
+                                .fontWeight(.semibold)
                             #if !os(Android)
-                            .monospacedDigit()
+                                .monospacedDigit()
                             #endif
 
                             Text(formatted.symbol)
@@ -73,8 +73,8 @@ struct FuelLogItem: View {
                 }
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-#if !os(Android)
-                .monospacedDigit()
+                #if !os(Android)
+                    .monospacedDigit()
                 #endif
             }
 

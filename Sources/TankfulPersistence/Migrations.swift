@@ -12,7 +12,7 @@ struct Migration: Sendable {
 }
 
 enum Migrations {
-    // v1 - initial schema
+    /// v1 - initial schema
     static let v1 = Migration(
         version: 1,
         up: [
@@ -45,16 +45,16 @@ enum Migrations {
 
                 FOREIGN KEY(vehicleID) REFERENCES vehicle(id)
             )
-            """
+            """,
         ],
         down: [
             "DROP TABLE fuelLog",
-            "DROP TABLE vehicle"
+            "DROP TABLE vehicle",
         ]
     )
-    
+
     static let all: [Migration] = [
-        v1
+        v1,
     ]
 }
 
@@ -63,7 +63,7 @@ extension TankfulDatabase {
         for migration in Migrations.all {
             if ctx.userVersion < migration.version {
                 print("Migrating database to \(migration.version)")
-                
+
                 try ctx.transaction {
                     for statement in migration.up {
                         try ctx.exec(sql: statement)

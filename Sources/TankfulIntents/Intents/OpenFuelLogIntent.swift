@@ -4,7 +4,9 @@ import AppIntents
 struct OpenFuelLogIntent: OpenIntent {
     static let title: LocalizedStringResource = "Open Fill-Up"
     static let description = IntentDescription("Opens a fill-up in Tankful.")
-    static var supportedModes: IntentModes { .foreground }
+    static var supportedModes: IntentModes {
+        .foreground
+    }
 
     @Parameter(title: "Fill-Up")
     var target: FuelLogEntity
@@ -19,6 +21,7 @@ struct OpenFuelLogIntent: OpenIntent {
         return .result()
     }
 }
+
 //  OpenFuelLogIntent.swift
 //  tankful
 //

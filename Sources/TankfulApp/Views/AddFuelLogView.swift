@@ -10,40 +10,41 @@ import SwiftUI
 import TankfulDomain
 
 struct AddFuelLogView: View {
-    @Environment(AppEnvironment.self) internal var env
+    @Environment(AppEnvironment.self) var env
 
-    @State internal var vehicles: [Vehicle] = []
+    @State var vehicles: [Vehicle] = []
 
-    @State internal var vehicleID: Vehicle.ID?
-    @State internal var date: Date = .now
-    @State internal var odometer: Int?
-    @State internal var volume: Double?
-    @State internal var cost: Decimal?
-    @State internal var filled: Bool = true
-    @State internal var missedLast: Bool = false
-    @State internal var notes: String = ""
-    @State internal var isSaving: Bool = false
-    @State internal var isShowingError: Bool = false
-    @State internal var errorMessage: String = ""
-    
+    @State var vehicleID: Vehicle.ID?
+    @State var date: Date = .now
+    @State var odometer: Int?
+    @State var volume: Double?
+    @State var cost: Decimal?
+    @State var filled: Bool = true
+    @State var missedLast: Bool = false
+    @State var notes: String = ""
+    @State var isSaving: Bool = false
+    @State var isShowingError: Bool = false
+    @State var errorMessage: String = ""
+
     private var unitCost: (any CurrencyValue)? {
         guard let volume,
               let cost,
-              volume > 0 else {
+              volume > 0
+        else {
             return nil
         }
-        
+
         return CurrencyMint.standard.make(
             identifier: .alphaCode(env.currency.alphabeticCode),
             exactAmount: cost / Decimal(volume)
         )
     }
-    
+
     private var currencySymbol: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = env.currency.alphabeticCode
-        
+
         return formatter.currencySymbol ?? env.currency.alphabeticCode
     }
 
@@ -67,11 +68,11 @@ struct AddFuelLogView: View {
                     format: .number.grouping(.never)
                 )
                 .keyboardType(.numberPad)
-                    .multilineTextAlignment(.trailing)
+                .multilineTextAlignment(.trailing)
             } label: {
                 Text("Odometer (\(env.distanceUnit.unit.symbol))")
             }
-            
+
             LabeledContent {
                 TextField(
                     "-",
@@ -79,11 +80,11 @@ struct AddFuelLogView: View {
                     format: .number.grouping(.never)
                 )
                 .keyboardType(.decimalPad)
-                    .multilineTextAlignment(.trailing)
+                .multilineTextAlignment(.trailing)
             } label: {
                 Text("Volume (\(env.volumeUnit.unit.symbol))")
             }
-            
+
             LabeledContent {
                 TextField(
                     "-",
@@ -91,11 +92,11 @@ struct AddFuelLogView: View {
                     format: .number.grouping(.never)
                 )
                 .keyboardType(.decimalPad)
-                    .multilineTextAlignment(.trailing)
+                .multilineTextAlignment(.trailing)
             } label: {
                 Text("Total Cost (\(currencySymbol))")
             }
-            
+
             LabeledContent {
                 if let unitCost {
                     Text("\(unitCost.localizedString())/\(env.volumeUnit.unit.symbol)")
@@ -105,7 +106,7 @@ struct AddFuelLogView: View {
             } label: {
                 Text("Unit Cost")
             }
-            
+
             Toggle("Filled Tank", isOn: $filled)
             Toggle("Missed Last", isOn: $missedLast)
             TextField("Notes", text: $notes)
@@ -138,8 +139,8 @@ struct AddFuelLogView: View {
 
     private var isFormValid: Bool {
         guard let odometer,
-            let volume,
-            let cost
+              let volume,
+              let cost
         else {
             return false
         }
@@ -158,13 +159,13 @@ struct AddFuelLogView: View {
 
     private func save() async {
         guard !isSaving,
-            let vehicleID,
-            let odometer,
-            let volume,
-            let cost,
-            odometer >= 0,
-            volume > 0,
-            cost >= .zero
+              let vehicleID,
+              let odometer,
+              let volume,
+              let cost,
+              odometer >= 0,
+              volume > 0,
+              cost >= .zero
         else {
             return
         }
@@ -174,12 +175,12 @@ struct AddFuelLogView: View {
 
         do {
             let existingLogs = try await env.fuelLogRepository.fuelLogs(for: vehicleID)
-            
+
             let currencyValue = CurrencyMint.standard.make(
                 identifier: .alphaCode(env.currency.alphabeticCode),
                 exactAmount: cost
             ) ?? USD(exactAmount: cost)
-            
+
             let fuelLog = FuelLog(
                 id: FuelLog.ID(),
                 vehicleID: vehicleID,

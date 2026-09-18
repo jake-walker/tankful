@@ -9,48 +9,48 @@ import SwiftUI
 import TankfulDomain
 
 #if canImport(AppIntents) && canImport(TankfulIntents)
-import AppIntents
-import TankfulIntents
+    import AppIntents
+    import TankfulIntents
 #endif
 
 struct VehicleEntityModifier: ViewModifier {
     let id: Vehicle.ID?
-    
+
     func body(content: Content) -> some View {
         #if canImport(AppIntents) && canImport(TankfulIntents)
-        if #available(anyAppleOS 26.0, *), let id {
-            content.appEntityIdentifier(
-                EntityIdentifier(
-                    for: VehicleEntity.self,
-                    identifier: id
+            if #available(anyAppleOS 26.0, *), let id {
+                content.appEntityIdentifier(
+                    EntityIdentifier(
+                        for: VehicleEntity.self,
+                        identifier: id
+                    )
                 )
-            )
-        } else {
-            content
-        }
+            } else {
+                content
+            }
         #else
-        content
+            content
         #endif
     }
 }
 
 struct FuelLogEntityModifier: ViewModifier {
     let id: FuelLog.ID?
-    
+
     func body(content: Content) -> some View {
         #if canImport(AppIntents) && canImport(TankfulIntents)
-        if #available(anyAppleOS 26.0, *), let id {
-            content.appEntityIdentifier(
-                EntityIdentifier(
-                    for: FuelLogEntity.self,
-                    identifier: id
+            if #available(anyAppleOS 26.0, *), let id {
+                content.appEntityIdentifier(
+                    EntityIdentifier(
+                        for: FuelLogEntity.self,
+                        identifier: id
+                    )
                 )
-            )
-        } else {
-            content
-        }
+            } else {
+                content
+            }
         #else
-        content
+            content
         #endif
     }
 }

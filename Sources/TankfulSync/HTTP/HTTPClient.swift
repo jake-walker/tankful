@@ -7,7 +7,7 @@
 
 import Foundation
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 public struct HTTPClient: Sendable {
@@ -15,10 +15,10 @@ public struct HTTPClient: Sendable {
     private let headers: [String: String]
     private let authentication: SyncConfiguration.Authentication?
     private let session: URLSession
-    
+
     public init(
         baseURL: URL,
-        headers: [String : String],
+        headers: [String: String],
         authentication: SyncConfiguration.Authentication? = nil,
         session: URLSession = .shared
     ) {
@@ -27,7 +27,7 @@ public struct HTTPClient: Sendable {
         self.authentication = authentication
         self.session = session
     }
-    
+
     public init(
         configuration: SyncConfiguration,
         session: URLSession = .shared
@@ -49,50 +49,50 @@ private extension HTTPClient {
         headers: [String: String]? = nil
     ) throws -> URLRequest {
         let url = baseURL.appending(path: path)
-        
+
         guard var components = URLComponents(
             url: url,
             resolvingAgainstBaseURL: false
         ) else {
             throw URLError(.badURL)
         }
-        
+
         if !query.isEmpty {
             components.queryItems = query
         }
-        
+
         guard let url = components.url else {
             throw URLError(.badURL)
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.setValue(
             "application/json",
             forHTTPHeaderField: "Accept"
         )
-        
+
         for (name, value) in self.headers {
             request.setValue(value, forHTTPHeaderField: name)
         }
-        
+
         if let headers {
             for (name, value) in headers {
                 request.setValue(value, forHTTPHeaderField: name)
             }
         }
-        
+
         applyAuthentication(to: &request)
-        
+
         return request
     }
-    
+
     func applyAuthentication(to request: inout URLRequest) {
         switch authentication {
         case .none:
             break
-            
-        case .header(name: let name, value: let value):
+
+        case let .header(name: name, value: value):
             request.setValue(
                 value,
                 forHTTPHeaderField: name
@@ -103,34 +103,34 @@ private extension HTTPClient {
             break
         }
     }
-    
+
     func perform<Response: Decodable>(
         _ request: URLRequest
     ) async throws -> Response {
-        let (data, response) = try await self.session.data(for: request)
-        
+        let (data, response) = try await session.data(for: request)
+
         guard let response = response as? HTTPURLResponse else {
             throw HTTPError.invalidResponse
         }
-        
-        guard 200..<300 ~= response.statusCode else {
+
+        guard 200 ..< 300 ~= response.statusCode else {
             throw HTTPError.unsuccessfulStatusCode(
                 response.statusCode,
                 data
             )
         }
-        
+
         return try JSONDecoder().decode(Response.self, from: data)
     }
 }
 
-extension HTTPClient {
-    public func request<Response: Decodable>(
+public extension HTTPClient {
+    func request<Response: Decodable>(
         _ method: HTTPMethod,
         path: String,
         query: [URLQueryItem] = [],
         headers: [String: String]? = nil,
-        response: Response.Type = Response.self
+        response _: Response.Type = Response.self
     ) async throws -> Response {
         let request = try makeRequest(
             method,
@@ -138,17 +138,17 @@ extension HTTPClient {
             query: query,
             headers: headers
         )
-        
+
         return try await perform(request)
     }
-    
-    public func request<Body: Encodable, Response: Decodable>(
+
+    func request<Body: Encodable, Response: Decodable>(
         _ method: HTTPMethod,
         path: String,
         query: [URLQueryItem] = [],
         headers: [String: String]? = nil,
         body: Body,
-        response: Response.Type = Response.self
+        response _: Response.Type = Response.self
     ) async throws -> Response {
         var request = try makeRequest(
             method,
@@ -156,13 +156,13 @@ extension HTTPClient {
             query: query,
             headers: headers
         )
-        
+
         request.httpBody = try JSONEncoder().encode(body)
         request.setValue(
             "application/json",
             forHTTPHeaderField: "Content-Type"
         )
-        
+
         return try await perform(request)
     }
 }
@@ -183,7 +183,7 @@ public enum HTTPError: Error, LocalizedError {
         switch self {
         case .invalidResponse:
             NSLocalizedString("The server returned an invalid HTTP response.", comment: "HTTP response error")
-        case .unsuccessfulStatusCode(let statusCode, _):
+        case let .unsuccessfulStatusCode(statusCode, _):
             String(
                 format: NSLocalizedString(
                     "The server returned HTTP status %lld.",

@@ -7,7 +7,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
-        .library(name: "TankfulApp", type: .dynamic, targets: ["TankfulApp"])
+        .library(name: "TankfulApp", type: .dynamic, targets: ["TankfulApp"]),
     ],
     dependencies: [
         .package(url: "https://github.com/skiptools/skip.git", from: "1.9.9"),
@@ -24,26 +24,30 @@ let package = Package(
                 "TankfulPersistence",
                 "TankfulSync",
                 .product(name: "Currency", package: "swift-currency"),
-                .byNameItem(name: "TankfulIntents", condition: .when(platforms: [.iOS, .macOS]))
+                .byNameItem(name: "TankfulIntents", condition: .when(platforms: [.iOS, .macOS])),
             ], resources: [.process("Resources")],
-            plugins: [.plugin(name: "skipstone", package: "skip")]),
+            plugins: [.plugin(name: "skipstone", package: "skip")]
+        ),
         .target(
             name: "TankfulDomain",
             dependencies: [
-                .product(name: "Currency", package: "swift-currency")
-            ]),
+                .product(name: "Currency", package: "swift-currency"),
+            ]
+        ),
         .target(
             name: "TankfulPersistence",
             dependencies: [
                 .product(name: "SkipSQLPlus", package: "skip-sql"),
                 "TankfulDomain",
-            ]),
+            ]
+        ),
         .target(
             name: "TankfulSync",
             dependencies: [
                 "TankfulDomain",
                 .product(name: "Currency", package: "swift-currency"),
-            ]),
+            ]
+        ),
         .target(
             name: "TankfulIntents",
             dependencies: [
@@ -56,6 +60,6 @@ let package = Package(
         .testTarget(
             name: "TankfulDomainTests",
             dependencies: ["TankfulDomain"]
-        )
+        ),
     ]
 )

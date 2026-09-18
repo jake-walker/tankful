@@ -1,5 +1,6 @@
 // Licensed under the GNU General Public License v3.0 or later
 // SPDX-License-Identifier: GPL-3.0-or-later
+// swiftformat:disable all
 
 import SwiftUI
 import TankfulApp
@@ -85,5 +86,4 @@ typealias AppType = NSApplication
         AppDelegate.shared.onDestroy()
     }
     #endif
-
 }

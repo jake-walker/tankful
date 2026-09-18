@@ -1,16 +1,16 @@
 import Currency
 import Foundation
-import Testing
 @testable import TankfulDomain
+import Testing
 
 struct CalculatedFuelLogTests {
     private let vehicleID = UUID()
 
     @Test func partialFillRollsDistanceAndVolumeIntoNextFullFill() throws {
         let logs = try [
-            makeLog(day: 0, odometer: 10_000, volume: 40, filled: true),
-            makeLog(day: 1, odometer: 10_250, volume: 20, filled: false),
-            makeLog(day: 2, odometer: 10_500, volume: 30, filled: true),
+            makeLog(day: 0, odometer: 10000, volume: 40, filled: true),
+            makeLog(day: 1, odometer: 10250, volume: 20, filled: false),
+            makeLog(day: 2, odometer: 10500, volume: 30, filled: true),
         ].calculated()
 
         #expect(logs.count == 3)
@@ -28,9 +28,9 @@ struct CalculatedFuelLogTests {
 
     @Test func missedLastInvalidatesCurrentIntervalButStartsANewBaseline() throws {
         let logs = try [
-            makeLog(day: 0, odometer: 10_000, volume: 40, filled: true),
-            makeLog(day: 1, odometer: 10_500, volume: 50, filled: true, missedLast: true),
-            makeLog(day: 2, odometer: 11_000, volume: 40, filled: true),
+            makeLog(day: 0, odometer: 10000, volume: 40, filled: true),
+            makeLog(day: 1, odometer: 10500, volume: 50, filled: true, missedLast: true),
+            makeLog(day: 2, odometer: 11000, volume: 40, filled: true),
         ].calculated()
 
         #expect(logs[1].distance == nil)
@@ -41,9 +41,9 @@ struct CalculatedFuelLogTests {
 
     @Test func missingValuesPreventEconomyWithoutRemovingLogs() throws {
         let logs = try [
-            makeLog(day: 0, odometer: 10_000, volume: 40, filled: true),
-            makeLog(day: 1, odometer: 10_250, volume: nil, filled: false),
-            makeLog(day: 2, odometer: 10_500, volume: 30, filled: true),
+            makeLog(day: 0, odometer: 10000, volume: 40, filled: true),
+            makeLog(day: 1, odometer: 10250, volume: nil, filled: false),
+            makeLog(day: 2, odometer: 10500, volume: 30, filled: true),
             makeLog(day: 3, odometer: nil, volume: 30, filled: true),
         ].calculated()
 
@@ -53,9 +53,9 @@ struct CalculatedFuelLogTests {
 
     @Test func averageEconomyUsesRolledUpVolume() throws {
         let logs = try [
-            makeLog(day: 0, odometer: 10_000, volume: 40, filled: true),
-            makeLog(day: 1, odometer: 10_250, volume: 20, filled: false),
-            makeLog(day: 2, odometer: 10_500, volume: 30, filled: true),
+            makeLog(day: 0, odometer: 10000, volume: 40, filled: true),
+            makeLog(day: 1, odometer: 10250, volume: 20, filled: false),
+            makeLog(day: 2, odometer: 10500, volume: 30, filled: true),
         ].calculated()
 
         #expect(logs.averageFuelEconomy?.converted(to: .litersPer100Kilometers).value == 10)
@@ -76,7 +76,7 @@ struct CalculatedFuelLogTests {
         return FuelLog(
             id: UUID(),
             vehicleID: vehicleID,
-            date: Date(timeIntervalSince1970: TimeInterval(day * 86_400)),
+            date: Date(timeIntervalSince1970: TimeInterval(day * 86400)),
             odometer: odometer.map { Measurement(value: $0, unit: .kilometers) },
             volume: volume.map { Measurement(value: $0, unit: .liters) },
             cost: cost,

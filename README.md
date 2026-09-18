@@ -38,7 +38,7 @@ Android Studio's Device Manager.
 
 The project can be opened and run in Xcode from
 `Project.xcworkspace`, which also enabled parallel
-development of any Skip libary dependencies.
+development of any Skip library dependencies.
 
 To run both the Swift and Kotlin apps simultaneously,
 launch the "TankfulApp App" target from Xcode.
