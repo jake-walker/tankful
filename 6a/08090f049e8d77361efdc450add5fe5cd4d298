@@ -1,0 +1,69 @@
+Sources/TankfulApp/Resources/Module.xcassets/custom.fuelpump.badge.plus.symbolset/custom.fuelpump.badge.plus.svg
+  h_2463f6ed1216b2 1-121
+Sources/TankfulApp/App/TankfulFormatter.swift
+  h_2463f6ed1216b2 28
+  h_2463f6ed1216b2 19-22,25,29-31,37-40,46-49
+Sources/TankfulApp/Views/Home/RecentLogsView.swift
+  h_2463f6ed1216b2 13,21,23,29
+  s_d0053ecbef7985::t_32244bd22d0ca8 1-12,14-20,22,24-28,30-40
+Sources/TankfulApp/Components/AppIcon.swift
+  h_2463f6ed1216b2 1,4,72,75,97-100
+  h_2463f6ed1216b2 2-3,5-71,73-74,76-96,101-110
+Sources/TankfulApp/Views/Home/EconomyChartView.swift
+  h_2463f6ed1216b2 1-59
+  h_2463f6ed1216b2 60-63
+Sources/TankfulApp/Views/Home/StatsCardView.swift
+  h_2463f6ed1216b2 1-90
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  h_2463f6ed1216b2 53-61,63-69,114,119
+  h_2463f6ed1216b2 62,107-110
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  h_2463f6ed1216b2 97
+  h_2463f6ed1216b2 87-90
+Sources/TankfulApp/Resources/Module.xcassets/custom.fuelpump.badge.plus.symbolset/Contents.json
+  h_2463f6ed1216b2 1-16
+Sources/TankfulApp/Components/AndroidFab.swift
+  h_2463f6ed1216b2 1-2,21
+  s_d0053ecbef7985::t_ce2790f4396347 3-20,22-40
+Sources/TankfulApp/Views/Home/HomeView.swift
+  s_d0053ecbef7985::t_ce2790f4396347 1-60,67-73,76-78,81-84,87-89,91-117,119-128,130-139,141-150,152-204,210,218-220
+  s_d0053ecbef7985::t_32244bd22d0ca8 90,118,129,140,151
+  s_d0053ecbef7985::t_b7c1573c83f882 74-75,79-80,85-86
+  s_d0053ecbef7985::t_dc186813bfbb48 61-66
+Sources/TankfulApp/Extensions/ViewModifiers/SurfaceContainerBackgroundModifier.swift
+  s_d0053ecbef7985::t_81889caa1bba43 1-19
+  s_d0053ecbef7985::t_fe3e9f4c203401 20
+Sources/TankfulApp/Components/FuelLogItem.swift
+  h_2463f6ed1216b2 82-87,91-93
+Sources/TankfulApp/Extensions/ViewModifiers/CardStyleViewModifier.swift
+  h_2463f6ed1216b2 24-26
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 610,619-621,689
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  h_2463f6ed1216b2 114-117,122,127
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 28-39,135-138,144,152,157
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 72-75,85,90,99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6a08090f049e8d77361efdc450add5fe5cd4d298",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_d0053ecbef7985": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b468-54fd-72d2-94c1-557371c5a234",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
