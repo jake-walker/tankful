@@ -1,0 +1,62 @@
+fastlane/Fastfile
+  h_2463f6ed1216b2 1-150
+fastlane/Appfile
+  h_2463f6ed1216b2 1-11
+Darwin/TankfulApp.xcodeproj/project.pbxproj
+  s_8df172c472b993::t_908a06430e3501 136,202-203,210,219-220,227
+  s_8df172c472b993::t_d361b45066484d 135,137-138
+  s_8df172c472b993::t_41b8539cae3a5e 104,106,118,148,153,272
+scripts/changelog.sh
+  h_2463f6ed1216b2 1-2
+fastlane/Matchfile
+  h_2463f6ed1216b2 1-5
+Skip.env
+  h_2463f6ed1216b2 14
+.gitignore
+  h_2463f6ed1216b2 77-78
+"Darwin/TankfulApp.xcodeproj/xcshareddata/xcschemes/Tankful App.xcscheme"
+  h_2463f6ed1216b2 20,49,66
+Gemfile
+  h_2463f6ed1216b2 1-7
+Gemfile.lock
+  h_2463f6ed1216b2 1-263
+Sources/TankfulApp/Components/FuelLogItem.swift
+  h_2463f6ed1216b2 89
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  h_2463f6ed1216b2 206
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  h_2463f6ed1216b2 118
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  h_2463f6ed1216b2 164
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 330
+Sources/TankfulApp/Views/RootView.swift
+  h_2463f6ed1216b2 40
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 58
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 363
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "afc2a2345a7b0c9500c860563c3e68b17820ffd3",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_8df172c472b993": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b579-aa07-73c2-9cda-c389457a891d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
