@@ -1,0 +1,150 @@
+require("dotenv")
+Dotenv.load "../Skip.env"
+
+default_platform(:ios)
+
+gradle_bin = (ENV["HOMEBREW_PREFIX"] ? ENV["HOMEBREW_PREFIX"] : "/opt/homebrew") + "/bin/gradle"
+
+before_all do
+  setup_ci if ENV["CI"]
+end
+
+platform :ios do
+  lane :assemble do |options|
+    ENV["SKIP_ZERO"] = "true"
+    build_app(
+      scheme: "Tankful App",
+      sdk: "iphoneos",
+      xcconfig: "fastlane/AppStore.xcconfig",
+      xcargs: "-skipPackagePluginValidation -skipMacroValidation",
+      derived_data_path: "../.build/Darwin/DerivedData",
+      output_directory: "../.build/fastlane/Darwin",
+      skip_archive: ENV["FASTLANE_SKIP_ARCHIVE"] == "YES",
+      skip_codesigning: ENV["FASTLANE_SKIP_CODESIGNING"] == "YES"
+    )
+  end
+
+  lane :setup_signing do |options|
+    api_key = lane_context[SharedValues::APP_STORE_CONNECT_API_KEY]
+    team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+
+    if team_id.nil?
+      UI.user_error!("Team ID is not defined in the Appfile. Please add it there or configure it dynamically.")
+    end
+
+    if app_identifier.nil?
+      UI.user_error!("App Identifier is not defined in the Appfile. Please add it there or configure it dynamically.")
+    end
+
+    app_store_connect_api_key(
+      key_id: ENV["ASC_KEY_ID"],
+      issuer_id: ENV["ASC_ISSUER_ID"],
+      key_content: ENV["ASC_KEY_CONTENT"],
+      is_key_content_base64: true,
+      in_house: false
+    )
+
+    sync_code_signing(
+      type: "appstore",
+      app_identifier: app_identifier,
+      readonly: is_ci
+    )
+    update_code_signing_settings(
+      path: "./Darwin/TankfulApp.xcodeproj",
+      use_automatic_signing: false,
+      team_id: team_id,
+      targets: ["Tankful App"],
+      profile_name: lane_context[:MATCH_PROVISIONING_PROFILE_MAPPING][app_identifier],
+      code_sign_identity: "Apple Distribution"
+    )
+  end
+
+  lane :bump_build_number do |options|
+    next_build_number = latest_testflight_build_number(initial_build_number: 0) + 1
+
+    Dir.chdir("..") do
+      sh("sed -i '' \"s;CURRENT_PROJECT_VERSION = .*;CURRENT_PROJECT_VERSION = #{next_build_number};g\" Skip.env")
+    end
+  end
+
+  lane :beta do |options|
+    setup_signing
+    bump_build_number
+
+    changelog = nil
+    Dir.chdir("..") do
+      changelog = sh("./scripts/changelog.sh")
+    end
+
+    assemble
+
+    upload_to_testflight(
+      api_key: lane_context[SharedValues::APP_STORE_CONNECT_API_KEY],
+      # distribute_external: true,
+      # groups: ["External"],
+      changelog: changelog
+    )
+  end
+end
+
+platform :android do
+  lane :build do |options|
+    build_config = (options[:release] ? "Release" : "Debug")
+    gradle(
+      project_dir: "./Android",
+      task: "build#{build_config}",
+      gradle_path: gradle_bin,
+      flags: "--warning-mode none -x lint"
+    )
+  end
+
+  lane :bump_build_number do |options|
+    next_build_number = google_play_track_version_codes(track: options[:track])[0] + 1
+
+    Dir.chdir("..") do
+      sh("sed -i '' \"s;CURRENT_PROJECT_VERSION = .*;CURRENT_PROJECT_VERSION = #{next_build_number};g\" Skip.env")
+    end
+  end
+
+  lane :test do
+    gradle(
+      project_dir: "./Android",
+      task: "test",
+      gradle_path: gradle_bin
+    )
+  end
+
+  lane :assemble do
+    gradle(
+      project_dir: "./Android",
+      gradle_path: gradle_bin,
+      task: "bundleRelease",
+      print_command: false,
+      properties: {
+        "android.injected.signing.store.file" => ENV["ANDROID_SIGN_KEYSTORE_FILE"],
+        "android.injected.signing.store.password" => ENV["ANDROID_SIGN_KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["ANDROID_SIGN_KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["ANDROID_SIGN_KEY_PASSWORD"]
+      }
+    )
+  end
+
+  lane :release do
+    track = ENV["TRACK"]
+
+    bump_build_number(track: track)
+
+    Dir.chdir("..") do
+      sh("./scripts/changelog.sh")
+    end
+
+    assemble
+
+    upload_to_play_store(
+      track: track,
+      release_status: "completed",
+      aab: "./.build/Android/app/outputs/bundle/release/app-release.aab"
+    )
+  end
+end

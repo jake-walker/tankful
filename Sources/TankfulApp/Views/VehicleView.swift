@@ -219,7 +219,7 @@ private enum VehicleViewError: LocalizedError {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview("Add Vehicle") {
         NavigationStack {
             VehicleView()

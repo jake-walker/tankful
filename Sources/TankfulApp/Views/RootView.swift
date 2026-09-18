@@ -37,7 +37,7 @@ struct RootView: View {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview {
         RootView()
             .environment(AppEnvironment.preview())

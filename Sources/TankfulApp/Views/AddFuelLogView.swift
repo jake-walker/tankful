@@ -203,7 +203,7 @@ struct AddFuelLogView: View {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview {
         NavigationStack {
             AddFuelLogView()

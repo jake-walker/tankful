@@ -1,0 +1,11 @@
+require("dotenv")
+Dotenv.load("../Skip.env")
+
+# android
+package_name(ENV["PRODUCT_BUNDLE_IDENTIFIER"].sub("-", "_"))
+json_key_file("fastlane/.secrets/googleplay.json")
+
+# ios
+app_identifier(ENV["ANDROID_APPLICATION_ID"] || ENV["PRODUCT_BUNDLE_IDENTIFIER"])
+team_id("N93X7GBDAQ")
+apple_id(ENV["APPLE_ID"])

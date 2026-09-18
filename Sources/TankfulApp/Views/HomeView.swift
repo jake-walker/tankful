@@ -327,7 +327,7 @@ struct HomeView: View {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview {
         NavigationStack {
             HomeView()

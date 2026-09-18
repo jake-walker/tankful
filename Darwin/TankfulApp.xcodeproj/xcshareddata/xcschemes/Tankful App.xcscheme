@@ -17,7 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "499CD4382AC5B799001AE8D8"
                BuildableName = "TankfulApp.app"
-               BlueprintName = "TankfulApp App"
+               BlueprintName = "Tankful App"
                ReferencedContainer = "container:TankfulApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,7 +46,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "499CD4382AC5B799001AE8D8"
             BuildableName = "TankfulApp.app"
-            BlueprintName = "TankfulApp App"
+            BlueprintName = "Tankful App"
             ReferencedContainer = "container:TankfulApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "499CD4382AC5B799001AE8D8"
             BuildableName = "TankfulApp.app"
-            BlueprintName = "TankfulApp App"
+            BlueprintName = "Tankful App"
             ReferencedContainer = "container:TankfulApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -55,7 +55,7 @@ struct SettingsView: View {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview {
         NavigationStack {
             SettingsView()

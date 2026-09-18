@@ -101,9 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		499CD4382AC5B799001AE8D8 /* TankfulApp App */ = {
+		499CD4382AC5B799001AE8D8 /* Tankful App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "TankfulApp App" */;
+			buildConfigurationList = 499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "Tankful App" */;
 			buildPhases = (
 				499CD43A2AC5B799001AE8D8 /* Sources */,
 				499CD43C2AC5B799001AE8D8 /* Frameworks */,
@@ -115,7 +115,7 @@
 			);
 			dependencies = (
 			);
-			name = "TankfulApp App";
+			name = "Tankful App";
 			packageProductDependencies = (
 				491F27812DA55B72004926EE /* TankfulApp */,
 			);
@@ -132,6 +132,10 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					499CD4382AC5B799001AE8D8 = {
+					};
+				};
 			};
 			buildConfigurationList = 49F90C232A52156200F06D93 /* Build configuration list for PBXProject "TankfulApp" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -141,13 +145,12 @@
 				"en-GB",
 			);
 			mainGroup = 49F90C1F2A52156200F06D93;
-			packageReferences = (
-			);
+			minimizedProjectReferenceProxies = 1;
 			productRefGroup = 496BDBEC2B89A47800C09264 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				499CD4382AC5B799001AE8D8 /* TankfulApp App */,
+				499CD4382AC5B799001AE8D8 /* Tankful App */,
 			);
 		};
 /* End PBXProject section */
@@ -172,15 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = "Run skip gradle";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
 			shellScript = "if [ \"${SKIP_ZERO}\" != \"\" ]; then\n  echo \"note: skipping skip due to SKIP_ZERO\"\n  exit 0\nelif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"note: skipping skip due to ENABLE_PREVIEWS\"\n  exit 0\nelif [ \"${ACTION}\" = \"install\" ]; then\n  echo \"note: skipping skip due to archive install\"\n  exit 0\nelif [ \"${SKIP_ACTION}\" = \"none\" ]; then\n  echo \"note: skipping skip due to SKIP_ACTION none\"\n  exit 0\nelse\n  SKIP_ACTION=\"${SKIP_ACTION:-launch}\"\nfi\nPATH=${BUILD_ROOT}/Release:${BUILD_ROOT}/Debug:${BUILD_ROOT}/../../SourcePackages/artifacts/skip/skip/skip.artifactbundle/macos:${PATH}:${HOMEBREW_PREFIX:-/opt/homebrew}/bin\necho \"note: running gradle build with: $(which skip) gradle -p ${PWD}/../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\"\nskip gradle -p ../Android ${SKIP_ACTION:-launch}${CONFIGURATION:-Debug}\n";
@@ -204,12 +199,15 @@
 			baseConfigurationReference = 496EB72F2A6AE4DE00C1253B /* TankfulApp.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = N93X7GBDAQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tankful;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore xyz.jakewalker.tankful";
 			};
 			name = Debug;
 		};
@@ -218,12 +216,15 @@
 			baseConfigurationReference = 496EB72F2A6AE4DE00C1253B /* TankfulApp.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = N93X7GBDAQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tankful;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore xyz.jakewalker.tankful";
 			};
 			name = Release;
 		};
@@ -268,13 +269,12 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "TankfulApp App" */ = {
+		499CD4412AC5B799001AE8D8 /* Build configuration list for PBXNativeTarget "Tankful App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				499CD4422AC5B799001AE8D8 /* Debug */,
 				499CD4432AC5B799001AE8D8 /* Release */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		49F90C232A52156200F06D93 /* Build configuration list for PBXProject "TankfulApp" */ = {
@@ -283,7 +283,6 @@
 				49F90C4B2A52156300F06D93 /* Debug */,
 				49F90C4C2A52156300F06D93 /* Release */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */

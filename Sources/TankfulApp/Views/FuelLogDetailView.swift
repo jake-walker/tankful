@@ -161,7 +161,7 @@ struct FuelLogDetailView: View {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview {
         let env = AppEnvironment.preview()
 

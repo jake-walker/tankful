@@ -1,0 +1,5 @@
+storage_mode("s3")
+s3_bucket(ENV["AWS_S3_BUCKET_NAME"])
+type("development")
+
+app_identifier("xyz.jakewalker.tankful")

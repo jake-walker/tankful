@@ -86,7 +86,7 @@ struct FuelLogItem: View {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview {
         FuelLogItem(
             fuelLog: CalculatedFuelLog(

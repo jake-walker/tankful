@@ -360,7 +360,7 @@ private enum HeaderParsingError: LocalizedError {
     }
 }
 
-#if !os(Android)
+#if !os(Android) && DEBUG
     #Preview {
         NavigationStack {
             SyncSettingsView()
