@@ -111,16 +111,20 @@ struct AddFuelLogView: View {
             Toggle("Missed Last", isOn: $missedLast)
             TextField("Notes", text: $notes)
         }
+        #if os(Android)
+        .textFieldStyle(.plain)
+        .textFieldContentPadding(top: 4, leading: 0, bottom: 4, trailing: 0)
+        #endif
         .navigationTitle("Add Fill-Up")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 if #available(anyAppleOS 26.0, *) {
-                    Button("Save", systemImage: "checkmark", role: .confirm) {
+                    Button("Save", appIcon: .save, role: .confirm) {
                         Task { await save() }
                     }
                     .disabled(isSaving || !isFormValid)
                 } else {
-                    Button("Save", systemImage: "checkmark") {
+                    Button("Save", appIcon: .save) {
                         Task { await save() }
                     }
                     .disabled(isSaving || !isFormValid)

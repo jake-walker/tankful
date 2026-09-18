@@ -84,14 +84,17 @@ struct FuelHistoryView: View {
                 }
             #endif
         }
-        .navigationTitle(vehicle?.displayName ?? NSLocalizedString("Fuel History", comment: "Fuel history screen title"))
+        .navigationTitle(
+            vehicle?.displayName
+                ?? NSLocalizedString("Fuel History", comment: "Fuel history screen title")
+        )
         .task {
             await load()
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 NavigationLink(value: AppRoute.addFuelLog) {
-                    Label("Add Fill-Up", systemImage: "plus")
+                    AppIconLabel(title: "Add Fill-Up", icon: .add)
                 }
             }
         }

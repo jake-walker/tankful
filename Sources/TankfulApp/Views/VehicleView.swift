@@ -69,6 +69,10 @@ struct VehicleView: View {
                 }
             }
         }
+        #if os(Android)
+        .textFieldStyle(.plain)
+        .textFieldContentPadding(top: 4, leading: 0, bottom: 4, trailing: 0)
+        #endif
         .vehicleEntity(id: vehicleID)
         .navigationTitle(
             vehicleID == nil
@@ -78,12 +82,12 @@ struct VehicleView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 if #available(anyAppleOS 26.0, *) {
-                    Button("Save", systemImage: "checkmark", role: .confirm) {
+                    Button("Save", appIcon: .save, role: .confirm) {
                         Task { await save() }
                     }
                     .disabled(isLoading || isSaving || !hasValidYear)
                 } else {
-                    Button("Save", systemImage: "checkmark") {
+                    Button("Save", appIcon: .save) {
                         Task { await save() }
                     }
                     .disabled(isLoading || isSaving || !hasValidYear)
@@ -92,7 +96,7 @@ struct VehicleView: View {
 
             if vehicleID != nil {
                 ToolbarItem(placement: .secondaryAction) {
-                    Button("Delete Vehicle", systemImage: "trash", role: .destructive) {
+                    Button("Delete Vehicle", appIcon: .delete, role: .destructive) {
                         isConfirmingDelete = true
                     }
                     .disabled(isLoading || isSaving || isDeleting)

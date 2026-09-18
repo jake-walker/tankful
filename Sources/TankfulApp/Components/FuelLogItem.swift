@@ -79,10 +79,18 @@ struct FuelLogItem: View {
             }
 
             if showChevron {
-                Image(systemName: "chevron.right")
+                AppIcon(symbol: .chevron, size: 16)
+                #if !os(Android)
+                    .foregroundStyle(.tertiary)
+                #else
+                    .foregroundStyle(.secondary)
+                #endif
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        #if !os(Android)
+            .contentShape(.rect)
+        #endif
     }
 }
 

@@ -21,6 +21,9 @@ struct CardStyle: ViewModifier {
         #if !os(Android)
             .background(.regularMaterial)
             .containerShape(.rect(cornerRadius: listRowHeight / 2))
+        #else
+            .composeModifier { SurfaceContainerBackgroundModifier() }
+            .clipShape(.rect(cornerRadius: 8))
         #endif
     }
 }

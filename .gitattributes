@@ -1,0 +1,4 @@
+Android/app/src/main/ic_launcher-playstore.png filter=lfs diff=lfs merge=lfs -text
+Darwin/AppIcon.icon/**/*.png filter=lfs diff=lfs merge=lfs -text
+Android/app/src/main/res/**/*.webp filter=lfs diff=lfs merge=lfs -text
+Android/app/src/main/res/**/*.png filter=lfs diff=lfs merge=lfs -text

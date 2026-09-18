@@ -25,14 +25,18 @@ struct SyncSettingsView: View {
         Form {
             Section {
                 HStack(spacing: 16) {
-                    Image(
-                        systemName: syncEnabled
-                            ? "arrow.trianglehead.2.clockwise.rotate.90" : "circle.slash"
-                    )
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .fontWeight(.semibold)
-                    .frame(width: 32, height: 32)
+                    #if os(Android)
+                        AppIcon(symbol: syncEnabled ? .sync : .syncDisabled, size: 32)
+                    #else
+                        Image(
+                            systemName: syncEnabled
+                                ? "arrow.trianglehead.2.clockwise.rotate.90" : "circle.slash"
+                        )
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .fontWeight(.semibold)
+                        .frame(width: 32, height: 32)
+                    #endif
 
                     VStack(alignment: .leading) {
                         Text(
@@ -128,12 +132,16 @@ struct SyncSettingsView: View {
                 }
             }
         }
+        #if os(Android)
+        .textFieldStyle(.plain)
+        .textFieldContentPadding(top: 4, leading: 0, bottom: 4, trailing: 0)
+        #endif
         .navigationTitle("Sync Settings")
         .navigationBarBackButtonHidden(isDirty)
         .toolbar {
             if isDirty {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Back", systemImage: "chevron.left") {
+                    Button("Back", appIcon: .back) {
                         isConfirmingDiscard = true
                     }
                 }
@@ -141,12 +149,12 @@ struct SyncSettingsView: View {
 
             ToolbarItem(placement: .primaryAction) {
                 if #available(anyAppleOS 26.0, *) {
-                    Button("Save Changes", systemImage: "checkmark", role: .confirm) {
+                    Button("Save Changes", appIcon: .save, role: .confirm) {
                         saveSyncConfiguration()
                     }
                     .disabled(!isDirty)
                 } else {
-                    Button("Save Changes", systemImage: "checkmark") {
+                    Button("Save Changes", appIcon: .save) {
                         saveSyncConfiguration()
                     }
                     .disabled(!isDirty)

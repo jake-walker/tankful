@@ -77,6 +77,7 @@
       }
     },
     "Add Fill-Up" : {
+      "comment" : "Add fill-up button",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -305,8 +306,8 @@
     "Failed: %@" : {
       "comment" : "Sync failure status followed by an error message"
     },
-    "Filled" : {
-      "comment" : "Fill-up status"
+    "Fill Type" : {
+
     },
     "Filled Tank" : {
       "localizations" : {
@@ -317,9 +318,6 @@
           }
         }
       }
-    },
-    "Filled, Missed Last" : {
-      "comment" : "Fill-up status"
     },
     "Fuel Economy" : {
       "comment" : "Fuel economy chart value label",
@@ -344,6 +342,9 @@
           }
         }
       }
+    },
+    "Full tank" : {
+
     },
     "Get the average fuel economy for ${vehicle}" : {
       "localizations" : {
@@ -525,11 +526,8 @@
     "No Recent Fill-Ups" : {
 
     },
-    "Not filled" : {
-      "comment" : "Fill-up status"
-    },
-    "Not filled, Missed Last" : {
-      "comment" : "Fill-up status"
+    "Not recorded" : {
+
     },
     "Not yet synced" : {
       "comment" : "Sync status when no sync has completed",
@@ -606,7 +604,11 @@
         }
       }
     },
+    "Previous Fill-Up" : {
+
+    },
     "Recent fill-ups" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -615,6 +617,9 @@
           }
         }
       }
+    },
+    "Recent Fill-Ups" : {
+
     },
     "Save" : {
       "comment" : "Button title indicating that the current contents should be saved",
@@ -682,6 +687,7 @@
 
     },
     "Show More" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {

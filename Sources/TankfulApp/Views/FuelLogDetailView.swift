@@ -50,7 +50,23 @@ struct FuelLogDetailView: View {
                         Text("Odometer")
                     }
 
-                    Text(fillStatus(for: fuelLog))
+                    LabeledContent {
+                        if fuelLog.filled {
+                            Text("Full tank")
+                        } else {
+                            Text("Partial fill")
+                        }
+                    } label: {
+                        Text("Fill Type")
+                    }
+
+                    if fuelLog.missedLast {
+                        LabeledContent {
+                            Text("Not recorded")
+                        } label: {
+                            Text("Previous Fill-Up")
+                        }
+                    }
 
                     LabeledContent {
                         if let volume = fuelLog.volume {
@@ -88,16 +104,19 @@ struct FuelLogDetailView: View {
             }
         }
         .fuelLogEntity(id: fuelLog?.id)
-        .navigationTitle(fuelLog?.date.formatted(date: .abbreviated, time: .omitted) ?? NSLocalizedString("Loading", comment: "Title shown while a fill-up is loading"))
+        .navigationTitle(
+            fuelLog?.date.formatted(date: .abbreviated, time: .omitted)
+                ?? NSLocalizedString("Loading", comment: "Title shown while a fill-up is loading")
+        )
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
-                    Button("Delete Fill-Up", systemImage: "trash", role: .destructive) {
+                    Button("Delete Fill-Up", appIcon: .delete, role: .destructive) {
                         isConfirmingDelete = true
                     }
                     .disabled(fuelLog == nil || isDeleting)
                 } label: {
-                    Image(systemName: "ellipsis")
+                    AppIcon(symbol: .more)
                 }
             }
         }
@@ -120,19 +139,6 @@ struct FuelLogDetailView: View {
         }
         .task {
             await load()
-        }
-    }
-
-    private func fillStatus(for fuelLog: FuelLog) -> String {
-        switch (fuelLog.filled, fuelLog.missedLast) {
-        case (true, true):
-            NSLocalizedString("Filled, Missed Last", comment: "Fill-up status")
-        case (true, false):
-            NSLocalizedString("Filled", comment: "Fill-up status")
-        case (false, true):
-            NSLocalizedString("Not filled, Missed Last", comment: "Fill-up status")
-        case (false, false):
-            NSLocalizedString("Not filled", comment: "Fill-up status")
         }
     }
 
