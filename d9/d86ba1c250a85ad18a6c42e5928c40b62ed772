@@ -1,0 +1,14 @@
+Sources/TankfulApp/Views/Home/HomeView.swift
+  h_2463f6ed1216b2 213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d9d86ba1c250a85ad18a6c42e5928c40b62ed772",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
