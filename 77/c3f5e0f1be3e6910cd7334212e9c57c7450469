@@ -1,0 +1,105 @@
+fastlane/Fastfile
+  h_2463f6ed1216b2 1-133,135-138,140-146,148-150
+fastlane/Appfile
+  h_2463f6ed1216b2 1-11
+Darwin/TankfulApp.xcodeproj/project.pbxproj
+  s_8df172c472b993::t_908a06430e3501 136,202-203,210,219-220,227
+  s_8df172c472b993::t_d361b45066484d 135,137-138
+  s_8df172c472b993::t_41b8539cae3a5e 104,106,118,148,153,272
+scripts/changelog.sh
+  h_2463f6ed1216b2 1-2
+fastlane/Matchfile
+  h_2463f6ed1216b2 1-5
+Skip.env
+  h_2463f6ed1216b2 14
+.gitignore
+  h_2463f6ed1216b2 77-78
+"Darwin/TankfulApp.xcodeproj/xcshareddata/xcschemes/Tankful App.xcscheme"
+  h_2463f6ed1216b2 20,49,66
+Gemfile
+  h_2463f6ed1216b2 1-7
+Gemfile.lock
+  h_2463f6ed1216b2 1-263
+Sources/TankfulApp/Components/FuelLogItem.swift
+  h_2463f6ed1216b2 82-87,91-93,97
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  h_2463f6ed1216b2 114-117,122,127,210
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  h_2463f6ed1216b2 87-90,97,121
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  h_2463f6ed1216b2 53-69,107-110,114,119,170
+Sources/TankfulApp/Views/RootView.swift
+  h_2463f6ed1216b2 40
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 58
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 28-39,135-138,144,152,157,371
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 72-75,85,90,99,226
+Sources/TankfulApp/Extensions/ViewModifiers/CardStyleViewModifier.swift
+  h_2463f6ed1216b2 24-26
+.gitattributes
+  h_2463f6ed1216b2 1-2
+  h_2463f6ed1216b2 3-4
+Sources/TankfulApp/Extensions/ViewModifiers/SurfaceContainerBackgroundModifier.swift
+  s_d0053ecbef7985::t_81889caa1bba43 1-18
+  s_d0053ecbef7985::t_fe3e9f4c203401 19
+  s_d0053ecbef7985::t_3c68958910040f 20
+Sources/TankfulApp/Views/Home/HomeView.swift
+  s_d0053ecbef7985::t_ce2790f4396347 40,46-56,114,122
+  h_2463f6ed1216b2 57-60,80,119-121
+  s_d0053ecbef7985::t_67b1ae392b46a8 111-113
+  h_2463f6ed1216b2 28,38,62,76-79,81,89-90,94,100-101,105,108-110,115-118,135,146,157,168
+Sources/TankfulApp/App/TankfulFormatter.swift
+  h_2463f6ed1216b2 19-21,28-29,31,37,39-40,46-49
+  h_2463f6ed1216b2 22,25,30,38
+Sources/TankfulApp/Views/Home/RecentLogsView.swift
+  s_d0053ecbef7985::t_32244bd22d0ca8 1-12,14-20,22,24-28,30-40
+  h_2463f6ed1216b2 13,21,23,29
+Sources/TankfulApp/Resources/Module.xcassets/custom.fuelpump.badge.plus.symbolset/Contents.json
+  h_2463f6ed1216b2 1-16
+Sources/TankfulApp/Components/AppIcon.swift
+  h_2463f6ed1216b2 1-110
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 611,620-622,690
+  h_2463f6ed1216b2 80,309-310,345-347,529-530,606-608
+Sources/TankfulApp/Views/Home/EconomyChartView.swift
+  h_2463f6ed1216b2 1-17,19-24,26-38,40,42-59
+  h_2463f6ed1216b2 18,25,39,41,60-63
+Sources/TankfulApp/Components/AndroidFab.swift
+  s_d0053ecbef7985::t_ce2790f4396347 3-20,22-40
+  h_2463f6ed1216b2 1-2,21
+Sources/TankfulApp/Resources/Module.xcassets/custom.fuelpump.badge.plus.symbolset/custom.fuelpump.badge.plus.svg
+  h_2463f6ed1216b2 1-121
+Sources/TankfulApp/Views/Home/StatsCardView.swift
+  h_2463f6ed1216b2 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "77c3f5e0f1be3e6910cd7334212e9c57c7450469",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_8df172c472b993": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b579-aa07-73c2-9cda-c389457a891d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    },
+    "s_d0053ecbef7985": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b468-54fd-72d2-94c1-557371c5a234",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
