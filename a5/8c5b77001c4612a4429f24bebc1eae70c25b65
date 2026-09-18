@@ -1,0 +1,164 @@
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  s_d0053ecbef7985::t_2e6c856e8f72f1 54
+  h_2463f6ed1216b2 12-13,15-22,36,42,52,64,74,80,112,117,125,157,165-171
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 15
+  h_2463f6ed1216b2 12-14,16-22,41-42,44-45,88-91,196,200-201,206-207,211,214-215,247,263-264,269-271,307-308,337,350,355
+Sources/TankfulApp/TankfulApp.swift
+  h_2463f6ed1216b2 3
+  h_2463f6ed1216b2 23,25,28,33,35,39,47
+Sources/TankfulApp/Extensions/ViewModifiers/CardStyleViewModifier.swift
+  s_d0053ecbef7985::t_a2e378c8ab9c7c 21
+  h_2463f6ed1216b2 11-12
+Darwin/Sources/Main.swift
+  h_2463f6ed1216b2 3
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  s_d0053ecbef7985::t_32244bd22d0ca8 43,52,63,71
+  s_d0053ecbef7985::t_465b74cebee038 40-42
+  s_d0053ecbef7985::t_ab9b5904ea77fa 44-46
+  s_d0053ecbef7985::t_238ca6e4579b35 53
+  s_d0053ecbef7985::t_547e658a03f890 60-62
+  s_d0053ecbef7985::t_fbaf917210f61e 64-65
+  s_d0053ecbef7985::t_231e78c298f79d 68-70
+  s_d0053ecbef7985::t_9355a27953d955 72-73
+  h_2463f6ed1216b2 12-13,15-18,20,23-26,30-34,36-39,47-50,56-57,59,67,76-83
+Android/app/src/main/kotlin/Main.kt
+  h_2463f6ed1216b2 35,51
+Darwin/TankfulApp.xcconfig
+  h_2463f6ed1216b2 45
+Package.swift
+  h_2463f6ed1216b2 10,27,29-30,34-36,42-43,49-50,63
+README.md
+  h_2463f6ed1216b2 41
+Skip.env
+  h_2463f6ed1216b2 22
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 8,10-11,17,28,30,33,36,42,48,54-55,57-58,61,69-70,87,102,106,110,115-117,120-121,126-127,130,132-133,136,140,144,153,156,159,161-162,165,205-207,210,213-214,217,238-240,242-247,249-291,294-296,299-307,309-327,329-330
+Sources/TankfulApp/App/AppRouter.swift
+  h_2463f6ed1216b2 9-10,14,18,22
+Sources/TankfulApp/App/TankfulFormatter.swift
+  h_2463f6ed1216b2 15,18,21,24,27,30,33,36,44
+Sources/TankfulApp/App/UnitPreferences.swift
+  h_2463f6ed1216b2 13-17,24,31,38,52-56,64,72,86-90,98,106
+Sources/TankfulApp/Components/FuelLogItem.swift
+  h_2463f6ed1216b2 8,13,20,40,43-44,46,76-77
+Sources/TankfulApp/Controllers/FuelLogController.swift
+  h_2463f6ed1216b2 13,17,21,24,27,31
+Sources/TankfulApp/Controllers/VehicleController.swift
+  h_2463f6ed1216b2 13,17,21,24,27,31
+Sources/TankfulApp/Extensions/ViewModifiers/AppEntityViewModifier.swift
+  h_2463f6ed1216b2 12-13,18,21-26,28-30,32,39,42-47,49-51,53
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  h_2463f6ed1216b2 13-28,32-33,36,42,47,71,75,83,87,95,99,109,142-143,162-168,178,183
+Sources/TankfulApp/Views/HomeView.swift
+  h_2463f6ed1216b2 17,21-24,29-30,55,59,85-86,129-130,137-138,141-143,205-207,240-242,261-262,266-267
+Sources/TankfulApp/Views/RootView.swift
+  h_2463f6ed1216b2 11-12,15,41-44
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 12,30,36,47,59-63
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 12,15,17-30,44,92,113,118,180,223-227,230-231,233-236
+Sources/TankfulDomain/Models/CalculatedFuelLog.swift
+  h_2463f6ed1216b2 9,15-19,24-25,28,31,36,38,42,48,52,69-70,73,75,79,85,135,139,144,149-150,155,158-159,164,167-168,170,175,180,184,190-191,195,197-198,201,206,211,215
+Sources/TankfulDomain/Models/FuelLog.swift
+  h_2463f6ed1216b2 9,21,24,38,43-44,48
+Sources/TankfulDomain/Models/FuelType.swift
+  h_2463f6ed1216b2 13-17
+Sources/TankfulDomain/Models/Vehicle.swift
+  h_2463f6ed1216b2 17,20,31,36,39,41-43,47,53,58,60-62,66,69
+Sources/TankfulDomain/Repositories/FuelLogRepository.swift
+  h_2463f6ed1216b2 15,18
+Sources/TankfulDomain/Repositories/VehicleRepository.swift
+  h_2463f6ed1216b2 12,15
+Sources/TankfulIntents/Entities/FuelLogEntity.swift
+  h_2463f6ed1216b2 44-45,47-51,54
+Sources/TankfulIntents/Entities/VehicleEntity.swift
+  h_2463f6ed1216b2 23,36,38,40,43,46,49,52,55-62
+Sources/TankfulIntents/Intents/AddFuelLogIntent.swift
+  h_2463f6ed1216b2 14-16,25,28,31,34,37,40
+Sources/TankfulIntents/Intents/GetFuelEconomyIntent.swift
+  h_2463f6ed1216b2 7-9,28
+Sources/TankfulIntents/Intents/GetLastFuelLogIntent.swift
+  h_2463f6ed1216b2 7-9,28
+Sources/TankfulIntents/Intents/GetOdometerIntent.swift
+  h_2463f6ed1216b2 7-9,32
+Sources/TankfulIntents/Intents/OpenFuelLogIntent.swift
+  h_2463f6ed1216b2 7-9,24
+Sources/TankfulIntents/Intents/OpenVehicleIntent.swift
+  h_2463f6ed1216b2 14-16
+Sources/TankfulIntents/Queries/FuelLogEntityQuery.swift
+  h_2463f6ed1216b2 16
+Sources/TankfulIntents/Queries/VehicleEntityQuery.swift
+  h_2463f6ed1216b2 17,21
+Sources/TankfulIntents/TankfulIntentsEnvironment.swift
+  h_2463f6ed1216b2 8-10,20,29-30,32,37,41,43,61,64,68,70,100,104-107,128,158-159
+Sources/TankfulIntents/TankfulShortcuts.swift
+  h_2463f6ed1216b2 18,27,36,45
+Sources/TankfulPersistence/Mapping/FuelLogRecord+Domain.swift
+  h_2463f6ed1216b2 8,29,31-33,36-38,40-41,44-46,48-52
+Sources/TankfulPersistence/Mapping/Helpers.swift
+  h_2463f6ed1216b2 8-9,14
+Sources/TankfulPersistence/Mapping/VehicleRecord+Domain.swift
+  h_2463f6ed1216b2 24,26,29-30,32-38
+Sources/TankfulPersistence/Migrations.swift
+  h_2463f6ed1216b2 15,48,52,55,57,66
+Sources/TankfulPersistence/Records/FuelLogRecord.swift
+  h_2463f6ed1216b2 13,16,19,22,25,28,31,34,37,40,43,46,48,76,79,81-92,94,96-107
+Sources/TankfulPersistence/Records/VehicleRecord.swift
+  h_2463f6ed1216b2 13,16,19,22,25,28,31,34,36,56,59,61-68,70,72-79
+Sources/TankfulPersistence/Repositories/SQLiteFuelLogRepository.swift
+  h_2463f6ed1216b2 10,14,18,23,28,43,47,52,58
+Sources/TankfulPersistence/Repositories/SQLiteVehicleRepository.swift
+  h_2463f6ed1216b2 9,13,17,22,27,31,40,46
+Sources/TankfulPersistence/TankfulDatabase.swift
+  h_2463f6ed1216b2 8,14,23,29,34,41
+Sources/TankfulSync/Backends/SyncBackend.swift
+  h_2463f6ed1216b2 14,18
+Sources/TankfulSync/Backends/Tracktor/TracktorAuth.swift
+  h_2463f6ed1216b2 8,13
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  h_2463f6ed1216b2 21,24,34,39,46,51,58,67,70,73,81,87,91,95,98,104,108,112,119,123,127,130,135,141,146,152,157,160,170,174,178,181,186,188,198,203,209,221,226,230,233-234,237,240,247,253,260,263,266,273,282,286,288,291,295,299,303,311,315,320,324
+Sources/TankfulSync/Backends/Tracktor/TracktorConfig.swift
+  h_2463f6ed1216b2 8
+Sources/TankfulSync/Backends/Tracktor/TracktorFuelLog.swift
+  h_2463f6ed1216b2 9-10,12,24,38,47-58,60,81,86,88,90,94,96,99,104,106,114,120,124,127,130,132,135-137,139,142,146,151,154,158-160
+Sources/TankfulSync/Backends/Tracktor/TracktorResponse.swift
+  h_2463f6ed1216b2 8
+Sources/TankfulSync/Backends/Tracktor/TracktorUnits.swift
+  h_2463f6ed1216b2 9,11
+Sources/TankfulSync/Backends/Tracktor/TracktorVehicle.swift
+  h_2463f6ed1216b2 11,13,27,31,35-47,49,51,54,69,85,87,90,93,95,98-99,101-105
+Sources/TankfulSync/HTTP/HTTPClient.swift
+  h_2463f6ed1216b2 10,18,21,30,52,59,63,67,74,78,84,86,89,94-95,106,110-111,115-116,122,127-128,133,141,144-145,151,159,165,186
+Sources/TankfulSync/HTTP/SyncConfiguration.swift
+  h_2463f6ed1216b2 15
+Sources/TankfulSync/Sync/SyncEngine.swift
+  h_2463f6ed1216b2 13,44,84,86,97,102,113,116,118,121,129,132,137-138,143,147-148,153,157,159-162,164,166,169,176,179-181,185-186,188,191-193,196-197,199,202-204,208-209,211,214-216,219-220,222,224,227
+Tests/TankfulDomainTests/CalculatedFuelLogTests.swift
+  h_2463f6ed1216b2 4,11-13,31-33,44-46,56-58,79
+_typos.toml
+  h_2463f6ed1216b2 1-2
+prek.toml
+  h_2463f6ed1216b2 1-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a58c5b77001c4612a4429f24bebc1eae70c25b65",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_d0053ecbef7985": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b468-54fd-72d2-94c1-557371c5a234",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
