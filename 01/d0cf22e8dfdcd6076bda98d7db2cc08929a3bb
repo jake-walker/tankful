@@ -1,0 +1,74 @@
+Sources/TankfulApp/Views/AddFuelLogView.swift
+  s_d0053ecbef7985::t_7cd88f8529d952 115
+  s_d0053ecbef7985::t_20e60cb6f40560 113-114,116
+  s_d0053ecbef7985::t_32244bd22d0ca8 121,126
+Sources/TankfulApp/Extensions/ViewModifiers/CardStyleViewModifier.swift
+  s_d0053ecbef7985::t_a2e378c8ab9c7c 21,24-25
+  s_d0053ecbef7985::t_05835a4fe1103a 26
+Sources/TankfulApp/Components/AndroidFab.swift
+  s_d0053ecbef7985::t_ce2790f4396347 1-38
+Sources/TankfulApp/Components/AppIcon.swift
+  s_d0053ecbef7985::t_73b37ebaa7de87 56
+  s_d0053ecbef7985::t_bc0d9d5716caab 1-33,35-55,58-77,83-84,86,90,92,96-99,101-104
+  s_d0053ecbef7985::t_858e1bcca38c87 57
+  s_d0053ecbef7985::t_0d0dd892b56079 34,78-82,85,87-89,91,93-95,100
+Sources/TankfulApp/Views/VehicleView.swift
+  s_d0053ecbef7985::t_7cd88f8529d952 74
+  s_d0053ecbef7985::t_32244bd22d0ca8 85,90,99
+  s_d0053ecbef7985::t_20e60cb6f40560 72-73,75
+Sources/TankfulApp/Views/FuelLogDetailView.swift
+  s_d0053ecbef7985::t_32244bd22d0ca8 111,116
+  s_d0053ecbef7985::t_2e6c856e8f72f1 53-69
+Sources/TankfulApp/Views/FuelHistoryView.swift
+  s_d0053ecbef7985::t_32244bd22d0ca8 41,92
+Sources/TankfulApp/Views/Home/RecentLogsView.swift
+  h_2463f6ed1216b2 13,21,23,29
+  s_d0053ecbef7985::t_32244bd22d0ca8 1-12,14-20,22,24-28,30-40
+Sources/TankfulApp/Extensions/ViewModifiers/SurfaceContainerBackgroundModifier.swift
+  s_d0053ecbef7985::t_81889caa1bba43 1-20
+Sources/TankfulApp/Views/Home/HomeView.swift
+  s_d0053ecbef7985::t_b7c1573c83f882 89-90,94-95,100-101
+  s_d0053ecbef7985::t_32244bd22d0ca8 105,135,146,157,168
+  s_d0053ecbef7985::t_dc186813bfbb48 76-81
+  s_d0053ecbef7985::t_ce2790f4396347 1-75,82-88,91-93,96-99,102-104,106-134,136-145,147-156,158-167,169-220
+Sources/TankfulApp/Components/FuelLogItem.swift
+  s_d0053ecbef7985::t_32244bd22d0ca8 82-87,91-93
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  s_d0053ecbef7985::t_32244bd22d0ca8 145,153,158
+  s_d0053ecbef7985::t_20e60cb6f40560 136-137,139
+  s_d0053ecbef7985::t_dc186813bfbb48 29-31,40
+  s_d0053ecbef7985::t_7cd88f8529d952 138
+Sources/TankfulApp/App/TankfulFormatter.swift
+  h_2463f6ed1216b2 22,25
+Sources/TankfulApp/Resources/Localizable.xcstrings
+  h_2463f6ed1216b2 610,619-621,689
+Sources/TankfulApp/Resources/Module.xcassets/custom.fuelpump.badge.plus.symbolset/Contents.json
+  h_2463f6ed1216b2 1-16
+Sources/TankfulApp/Resources/Module.xcassets/custom.fuelpump.badge.plus.symbolset/custom.fuelpump.badge.plus.svg
+  h_2463f6ed1216b2 1-121
+Sources/TankfulApp/Views/Home/EconomyChartView.swift
+  h_2463f6ed1216b2 1-61
+Sources/TankfulApp/Views/Home/StatsCardView.swift
+  h_2463f6ed1216b2 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "01d0cf22e8dfdcd6076bda98d7db2cc08929a3bb",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_d0053ecbef7985": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b468-54fd-72d2-94c1-557371c5a234",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
