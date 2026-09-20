@@ -4,7 +4,7 @@ import SwiftUI
 // SKIP @bridge
 enum AppSymbol: String {
     case add, save, delete, more, settings, vehicle, fuel, selected, unselected
-    case back, forward, chevron, sync, syncDisabled
+    case back, forward, chevron, sync, syncDisabled, close
 
     var systemName: String {
         switch self {
@@ -22,6 +22,7 @@ enum AppSymbol: String {
         case .chevron: "chevron.right"
         case .sync: "arrow.trianglehead.2.clockwise.rotate.90"
         case .syncDisabled: "circle.slash"
+        case .close: "xmark"
         }
     }
 }
@@ -68,6 +69,7 @@ extension Button where Label == AppIconLabel {
 #if SKIP
     import androidx.compose.material.icons.__
     import androidx.compose.material.icons.outlined.__
+    import androidx.compose.material3.LocalContentColor
     import androidx.compose.ui.graphics.vector.rememberVectorPainter
 
     struct MaterialIconComposer: ContentComposer {
@@ -94,11 +96,12 @@ extension Button where Label == AppIconLabel {
                 case .chevron: Icons.Outlined.KeyboardArrowRight
                 case .sync: Icons.Outlined.Sync
                 case .syncDisabled: Icons.Outlined.SyncDisabled
+                case .close: Icons.Outlined.Close
                 }
-            // Preserve inherited styling, including destructive and secondary colors.
+            // Honor explicit styles, otherwise inherit the Material container's content color.
             let tint =
                 ForegroundStyle().asColor(opacity: 1.0, animationContext: context)
-                    ?? Color.primary.asComposeColor()
+                    ?? LocalContentColor.current
             Image(painter: rememberVectorPainter(vector), scale: 1.0)
                 .renderingMode(.template)
                 .resizable()

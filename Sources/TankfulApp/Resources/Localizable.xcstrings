@@ -2,6 +2,7 @@
   "sourceLanguage" : "en-GB",
   "strings" : {
     "-" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -13,6 +14,7 @@
       "shouldTranslate" : false
     },
     "%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -24,6 +26,7 @@
       "shouldTranslate" : false
     },
     "%@ · %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -35,6 +38,7 @@
       "shouldTranslate" : false
     },
     "%@/%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -46,6 +50,7 @@
       "shouldTranslate" : false
     },
     "%lld %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -57,6 +62,7 @@
       "shouldTranslate" : false
     },
     "Actions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -67,6 +73,7 @@
       }
     },
     "Add a vehicle before recording fill-ups and tracking fuel economy." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -78,6 +85,7 @@
     },
     "Add Fill-Up" : {
       "comment" : "Add fill-up button",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -88,6 +96,7 @@
       }
     },
     "Add one header per line, for example: `X-API-Key: abcdef`" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -110,6 +119,7 @@
     },
     "Add Vehicle" : {
       "comment" : "Title for creating a vehicle",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -120,6 +130,7 @@
       }
     },
     "Add Your First Vehicle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -130,6 +141,7 @@
       }
     },
     "All fill-ups for this vehicle will also be deleted. This action cannot be undone." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -139,10 +151,8 @@
         }
       }
     },
-    "Avg. Economy" : {
-      "comment" : "Average fuel economy metric label"
-    },
     "Back" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -153,6 +163,7 @@
       }
     },
     "Backend" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -164,6 +175,7 @@
     },
     "Cancel" : {
       "comment" : "Button title indicating that the operation should be cancelled",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -173,20 +185,9 @@
         }
       }
     },
-    "Changes saved." : {
-      "comment" : "Confirmation shown after saving sync settings"
-    },
-    "Configure a sync backend before starting a sync." : {
-      "comment" : "Error shown when sync is started before it is configured"
-    },
-    "Cost" : {
-
-    },
-    "Cost per kilometre" : {
-      "comment" : "Metric label for cost per unit of distance"
-    },
     "Cost per mile" : {
       "comment" : "Metric label for cost per unit of distance",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -196,17 +197,9 @@
         }
       }
     },
-    "Currency" : {
-
-    },
-    "Currency is determined by your device's region settings and is used for new fill-ups." : {
-
-    },
-    "Custom header on line %lld must use \"Name: value\" format." : {
-      "comment" : "Validation error for a malformed custom HTTP header; argument is the line number"
-    },
     "Date" : {
       "comment" : "Fuel economy chart date axis label",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -217,6 +210,7 @@
       }
     },
     "Delete Fill-Up" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -227,6 +221,7 @@
       }
     },
     "Delete this fill-up?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -237,6 +232,7 @@
       }
     },
     "Delete this vehicle?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -247,6 +243,7 @@
       }
     },
     "Delete Vehicle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -257,6 +254,7 @@
       }
     },
     "Discard Changes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -267,6 +265,7 @@
       }
     },
     "Discard unsaved changes?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -278,6 +277,7 @@
     },
     "Distance" : {
       "comment" : "Total distance metric label",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -288,6 +288,7 @@
       }
     },
     "Enable sync" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -297,19 +298,8 @@
         }
       }
     },
-    "Enter a valid HTTP or HTTPS server URL." : {
-      "comment" : "Validation error for an invalid sync server URL"
-    },
-    "Enter both a username and password, or leave both blank." : {
-      "comment" : "Validation error for incomplete sync credentials"
-    },
-    "Failed: %@" : {
-      "comment" : "Sync failure status followed by an error message"
-    },
-    "Fill Type" : {
-
-    },
     "Filled Tank" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -321,6 +311,7 @@
     },
     "Fuel Economy" : {
       "comment" : "Fuel economy chart value label",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -330,10 +321,8 @@
         }
       }
     },
-    "Fuel History" : {
-      "comment" : "Fuel history screen title"
-    },
     "Fuel Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -342,9 +331,6 @@
           }
         }
       }
-    },
-    "Full tank" : {
-
     },
     "Get the average fuel economy for ${vehicle}" : {
       "localizations" : {
@@ -370,6 +356,7 @@
       }
     },
     "Headers" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -380,6 +367,7 @@
       }
     },
     "https://tracktor.example.com" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -391,6 +379,7 @@
     },
     "Imperial Gallons" : {
       "comment" : "Volume unit name",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -401,6 +390,7 @@
       }
     },
     "Keep Editing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -412,6 +402,7 @@
     },
     "Kilometres" : {
       "comment" : "Distance unit name",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -423,6 +414,7 @@
     },
     "Last synced %@" : {
       "comment" : "Sync status followed by the last sync date",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -434,6 +426,7 @@
     },
     "Litres" : {
       "comment" : "Volume unit name",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -442,12 +435,6 @@
           }
         }
       }
-    },
-    "Litres per 100km" : {
-      "comment" : "Fuel economy unit name"
-    },
-    "Loading" : {
-      "comment" : "Title shown while a fill-up is loading"
     },
     "Log ${volume} for ${vehicle}" : {
       "localizations" : {
@@ -460,6 +447,7 @@
       }
     },
     "Make" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -471,6 +459,7 @@
     },
     "Miles" : {
       "comment" : "Distance unit name",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -481,6 +470,7 @@
       }
     },
     "Missed Last" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -491,6 +481,7 @@
       }
     },
     "Model" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -499,18 +490,6 @@
           }
         }
       }
-    },
-    "MPG (Imperial)" : {
-      "comment" : "Fuel economy unit name"
-    },
-    "MPG (US)" : {
-      "comment" : "Fuel economy unit name"
-    },
-    "Name" : {
-
-    },
-    "No fill-ups have been recorded for this vehicle in the last six months." : {
-
     },
     "No Fill-Ups Yet" : {
       "extractionState" : "stale",
@@ -523,14 +502,9 @@
         }
       }
     },
-    "No Recent Fill-Ups" : {
-
-    },
-    "Not recorded" : {
-
-    },
     "Not yet synced" : {
       "comment" : "Sync status when no sync has completed",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -542,6 +516,7 @@
     },
     "Notes" : {
       "comment" : "Item editor form label for the Notes field",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -552,6 +527,7 @@
       }
     },
     "Odometer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -561,10 +537,8 @@
         }
       }
     },
-    "Odometer (%@)" : {
-
-    },
     "OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -585,6 +559,7 @@
       }
     },
     "Partial fill" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -595,6 +570,7 @@
       }
     },
     "Password" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -603,9 +579,6 @@
           }
         }
       }
-    },
-    "Previous Fill-Up" : {
-
     },
     "Recent fill-ups" : {
       "extractionState" : "stale",
@@ -618,11 +591,9 @@
         }
       }
     },
-    "Recent Fill-Ups" : {
-
-    },
     "Save" : {
       "comment" : "Button title indicating that the current contents should be saved",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -633,6 +604,7 @@
       }
     },
     "Save Changes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -643,6 +615,7 @@
       }
     },
     "Save or discard your changes before syncing." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -653,6 +626,7 @@
       }
     },
     "Server" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -663,6 +637,7 @@
       }
     },
     "Server URL" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -674,6 +649,7 @@
     },
     "Settings" : {
       "comment" : "Tab bar item title for the Settings tab",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -682,9 +658,6 @@
           }
         }
       }
-    },
-    "Show Full History" : {
-
     },
     "Show More" : {
       "extractionState" : "stale",
@@ -699,6 +672,7 @@
     },
     "Sync Disabled" : {
       "comment" : "Sync status section heading",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -708,10 +682,8 @@
         }
       }
     },
-    "Sync disabled." : {
-      "comment" : "Confirmation shown after disabling sync"
-    },
     "Sync Now" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -722,6 +694,7 @@
       }
     },
     "Sync Settings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -733,6 +706,7 @@
     },
     "Sync Status" : {
       "comment" : "Sync status section heading",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -742,13 +716,8 @@
         }
       }
     },
-    "Syncing..." : {
-      "comment" : "Sync status while a sync is running"
-    },
-    "The vehicle could not be found." : {
-      "comment" : "Error shown when a vehicle no longer exists"
-    },
     "This action cannot be undone." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -759,6 +728,7 @@
       }
     },
     "Total Cost" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -768,10 +738,8 @@
         }
       }
     },
-    "Total Cost (%@)" : {
-
-    },
     "Tracktor" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -782,6 +750,7 @@
       }
     },
     "Unable to Delete Fill-Up" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -792,6 +761,7 @@
       }
     },
     "Unable to Save Fill-Up" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -802,6 +772,7 @@
       }
     },
     "Unable to Update Vehicle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -812,6 +783,7 @@
       }
     },
     "Unit Cost" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -822,6 +794,7 @@
       }
     },
     "Units" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -833,6 +806,7 @@
     },
     "US Gallons" : {
       "comment" : "Volume unit name",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -843,6 +817,7 @@
       }
     },
     "Username" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -854,6 +829,7 @@
     },
     "Vehicle" : {
       "comment" : "Fallback vehicle screen title",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -865,6 +841,7 @@
     },
     "Vehicle Settings" : {
       "comment" : "Title for editing a vehicle",
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -875,6 +852,7 @@
       }
     },
     "Volume" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -883,9 +861,6 @@
           }
         }
       }
-    },
-    "Volume (%@)" : {
-
     },
     "Volume of Fuel" : {
       "extractionState" : "stale",
@@ -899,6 +874,7 @@
       }
     },
     "Year" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {
@@ -909,6 +885,7 @@
       }
     },
     "Your sync settings will remain unchanged." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en-GB" : {
           "stringUnit" : {

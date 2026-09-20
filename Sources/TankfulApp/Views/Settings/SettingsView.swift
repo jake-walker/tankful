@@ -5,11 +5,14 @@
 //  Created by Jake Walker on 15/09/2026.
 //
 
+import Currency
 import SwiftUI
 import TankfulSync
 
 struct SettingsView: View {
     @Environment(AppEnvironment.self) var env
+
+    @State var selectingCurrency: Bool = false
 
     var body: some View {
         @Bindable var env = env
@@ -34,15 +37,20 @@ struct SettingsView: View {
                     }
                 }
 
-                LabeledContent {
-                    Text(env.currency.name)
-                } label: {
-                    Text("Currency")
+                Button(action: {
+                    selectingCurrency.toggle()
+                }) {
+                    LabeledContent {
+                        Text(env.currency.name)
+                    } label: {
+                        Text("Currency")
+                    }
                 }
+                .buttonStyle(.plain)
             } header: {
                 Text("Units")
             } footer: {
-                Text("Currency is determined by your device's region settings and is used for new fill-ups.")
+                Text("Changing distance, volume and fuel economy units only affects how values are shown and entered in the app - not the units stored in the sync backend (if enabled). The currency setting applies only to future entries.")
             }
 
             Section {
@@ -52,6 +60,16 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+        .sheet(isPresented: $selectingCurrency) {
+            NavigationStack {
+                CurrencyPickerSheet(onSelect: { currency in
+                    if let descriptor = CurrencyMint(defaultCurrency: USD.self).make(identifier: .alphaCode(currency))?.descriptor {
+                        env.currency = descriptor
+                    }
+                })
+            }
+            .presentationDetents([.medium, .large])
+        }
     }
 }
 

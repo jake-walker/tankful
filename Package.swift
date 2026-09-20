@@ -13,7 +13,7 @@ let package = Package(
         .package(url: "https://github.com/skiptools/skip.git", from: "1.9.9"),
         .package(url: "https://github.com/skiptools/skip-fuse-ui.git", from: "1.18.2"),
         .package(url: "https://github.com/skiptools/skip-sql.git", from: "0.16.0"),
-        .package(url: "https://github.com/jake-walker/swift-currency.git", branch: "generated"),
+        .package(url: "https://github.com/jake-walker/swift-currency.git", revision: "b9e594677cf396a9c8169609ac73a33ce3f38d14"),
     ],
     targets: [
         .target(

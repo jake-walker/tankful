@@ -23,6 +23,7 @@ import TankfulSync
     private static let distanceUnitKey = "distanceUnit"
     private static let volumeUnitKey = "volumeUnit"
     private static let fuelEconomyUnitKey = "fuelEconomyUnit"
+    private static let currencyKey = "currency"
     private static let syncConfigurationKey = "syncConfiguration"
     private static let lastSuccessfulSyncKey = "lastSuccessfulSync"
 
@@ -52,14 +53,10 @@ import TankfulSync
         }
     }
 
-    var currency: any CurrencyDescriptor.Type {
-        if let currencyCode = Locale.current.currency?.identifier,
-           let descriptor = CurrencyMint(defaultCurrency: USD.self).make(identifier: .alphaCode(currencyCode))?.descriptor
-        {
-            return descriptor
+    var currency: any CurrencyDescriptor.Type = defaultCurrency() {
+        didSet {
+            UserDefaults.standard.set(currency.alphabeticCode, forKey: Self.currencyKey)
         }
-
-        return USD.self
     }
 
     /// The selected backend configuration, used to create a sync coordinator at launch.
@@ -132,6 +129,12 @@ import TankfulSync
            let fuelEconomyUnit = FuelEconomyUnit(rawValue: rawFuelEconomyUnit)
         {
             self.fuelEconomyUnit = fuelEconomyUnit
+        }
+
+        if let currencyCode = UserDefaults.standard.string(forKey: Self.currencyKey),
+           let descriptor = CurrencyMint(defaultCurrency: USD.self).make(identifier: .alphaCode(currencyCode))?.descriptor
+        {
+            currency = descriptor
         }
 
         if let id = UserDefaults.standard.string(
@@ -220,6 +223,16 @@ import TankfulSync
         } catch {
             print("Failed to sync: \(error.localizedDescription)")
         }
+    }
+
+    private static func defaultCurrency() -> any CurrencyDescriptor.Type {
+        if let currencyCode = Locale.current.currency?.identifier,
+           let descriptor = CurrencyMint(defaultCurrency: USD.self).make(identifier: .alphaCode(currencyCode))?.descriptor
+        {
+            return descriptor
+        }
+
+        return USD.self
     }
 }
 
