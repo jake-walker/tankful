@@ -1,0 +1,24 @@
+Sources/TankfulApp/Components/AppIcon.swift
+  s_d0053ecbef7985::t_fa886391f53e5e 72,99,101,104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "51a687b12ccd35bbbe9aa62316242559e3cebc2e",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_d0053ecbef7985": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b468-54fd-72d2-94c1-557371c5a234",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
