@@ -1,0 +1,46 @@
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerBackend.swift
+  h_2463f6ed1216b2 1-164
+  h_2463f6ed1216b2 165-182
+Sources/TankfulApp/App/AppEnvironment.swift
+  h_2463f6ed1216b2 189-193
+  h_2463f6ed1216b2 101-103,137-139,194-201,246-248
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerGasRecord.swift
+  h_2463f6ed1216b2 1-91
+  h_2463f6ed1216b2 92-97
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerVehicle.swift
+  h_2463f6ed1216b2 1-115
+  h_2463f6ed1216b2 116-129
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerExtraFields.swift
+  h_2463f6ed1216b2 1-11
+Sources/TankfulApp/Views/Settings/SyncSettingsView.swift
+  h_2463f6ed1216b2 15,77-81,193,244,254,313,352
+Sources/TankfulApp/Views/VehicleView.swift
+  h_2463f6ed1216b2 24,67-73,157,180
+Sources/TankfulDomain/Models/Vehicle.swift
+  h_2463f6ed1216b2 16,22,28,73
+Sources/TankfulPersistence/Mapping/VehicleRecord+Domain.swift
+  h_2463f6ed1216b2 19,37
+Sources/TankfulPersistence/Migrations.swift
+  h_2463f6ed1216b2 56-62,65
+Sources/TankfulPersistence/Records/VehicleRecord.swift
+  h_2463f6ed1216b2 26-28,38,46,56,71,83
+Sources/TankfulSync/Backends/LubeLogger/LubeLoggerUnits.swift
+  h_2463f6ed1216b2 1-21
+Sources/TankfulSync/Backends/Tracktor/TracktorBackend.swift
+  h_2463f6ed1216b2 132
+Sources/TankfulSync/Backends/Tracktor/TracktorVehicle.swift
+  h_2463f6ed1216b2 39,105
+Sources/TankfulSync/HTTP/SyncConfiguration.swift
+  h_2463f6ed1216b2 34,36-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "65e18b6cb1233bca9b051cb11fe4b2f1a14b2ba4",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
