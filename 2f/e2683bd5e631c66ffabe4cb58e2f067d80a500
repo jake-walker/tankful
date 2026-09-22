@@ -1,0 +1,23 @@
+Sources/TankfulApp/Views/Settings/SettingsView.swift
+  h_2463f6ed1216b2 15-18,21-26,28-36,68,86-116
+  h_2463f6ed1216b2 27,37,64-67,69,76-78,117-119,125-127
+Package.swift
+  h_2463f6ed1216b2 17,30
+Sources/TankfulApp/App/AppRoute.swift
+  h_2463f6ed1216b2 12
+Sources/TankfulApp/Views/RootView.swift
+  h_2463f6ed1216b2 26-27
+Sources/TankfulApp/Views/Settings/AcknowledgementsView.swift
+  h_2463f6ed1216b2 1-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2fe2683bd5e631c66ffabe4cb58e2f067d80a500",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
