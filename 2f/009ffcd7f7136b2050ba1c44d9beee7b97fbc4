@@ -1,0 +1,14 @@
+website/src/pages/index.astro
+  h_2463f6ed1216b2 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2f009ffcd7f7136b2050ba1c44d9beee7b97fbc4",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
