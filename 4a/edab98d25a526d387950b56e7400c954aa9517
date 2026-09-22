@@ -1,0 +1,20 @@
+.github/workflows/website.yml
+  h_2463f6ed1216b2 8
+website/src/pages/index.astro
+  h_2463f6ed1216b2 44,51
+website/src/pages/privacy.md
+  h_2463f6ed1216b2 8,10,12,14,16,18-92
+website/astro.config.mjs
+  h_2463f6ed1216b2 19-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "4aedab98d25a526d387950b56e7400c954aa9517",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
