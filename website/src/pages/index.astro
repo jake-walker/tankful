@@ -6,9 +6,6 @@ import ScreenshotHome from "../assets/screenshot-home.png";
 import ScreenshotFillUp from "../assets/screenshot-fillup.png";
 import ScreenshotSync from "../assets/screenshot-sync.png";
 
-const iosSignupUrl = "https://testflight.apple.com/join/nJPnQEjj";
-const androidSignupUrl = "https://tally.so/r/5BRKvM";
-
 const screenshots = [
   { label: "Fuel log", src: ScreenshotHome },
   { label: "Add a fill-up", src: ScreenshotFillUp },
@@ -44,14 +41,14 @@ const screenshots = [
       </p>
       <p>
         <a
-          href={iosSignupUrl}
+          href="/ios-beta"
           class="font-medium underline decoration-brand decoration-2 underline-offset-4 me-6 hover:no-underline"
         >
           Join the iOS beta →
         </a>
 
         <a
-          href={androidSignupUrl}
+          href="/android-beta"
           class="font-medium underline decoration-brand decoration-2 underline-offset-4 hover:no-underline"
         >
           Join the Android beta →

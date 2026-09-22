@@ -16,4 +16,9 @@ export default defineConfig({
       runtime: "passthrough",
     },
   }),
+
+  redirects: {
+    "/ios-beta": "https://testflight.apple.com/join/nJPnQEjj",
+    "/android-beta": "https://tally.so/r/5BRKvM",
+  },
 });
