@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-brand: #e87924;
+  --color-cream: #fffaf5;
+  --color-ink: #30251e;
+  --color-muted: #75675c;
+  --font-sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  :root { color-scheme: light; }
+
+  /* Shared Tailwind colours follow the visitor's system appearance. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --color-cream: #1c1917;
+      --color-ink: #f5eee8;
+      --color-muted: #bdb0a5;
+    }
+  }
+
+  ::selection { background: #e8792440; }
+  a:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 5px; border-radius: 2px; }
+}

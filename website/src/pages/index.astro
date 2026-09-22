@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/main.astro";
+import AppIcon from "../../public/app-icon.png";
+import ScreenshotHome from "../assets/screenshot-home.png";
+import ScreenshotFillUp from "../assets/screenshot-fillup.png";
+import ScreenshotSync from "../assets/screenshot-sync.png";
+
+const iosSignupUrl = "https://testflight.apple.com/join/nJPnQEjj";
+const androidSignupUrl = "https://tally.so/r/5BRKvM";
+
+const screenshots = [
+  { label: "Fuel log", src: ScreenshotHome },
+  { label: "Add a fill-up", src: ScreenshotFillUp },
+  { label: "Sync settings", src: ScreenshotSync },
+];
+---
+
+<Layout title="Tankful - Fuel logging for iOS and Android">
+  <main class="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16">
+    <header class="flex items-center gap-4">
+      <div
+        class="flex size-16 shrink-0 items-center justify-center rounded-2xl"
+        aria-hidden="true"
+      >
+        <Image src={AppIcon} alt="Tankful App Icon" />
+      </div>
+      <div>
+        <h1 class="text-3xl font-semibold">Tankful</h1>
+        <p class="mt-1 text-sm text-muted">
+          Fuel logging for iOS and Android · Beta
+        </p>
+      </div>
+    </header>
+
+    <div class="mt-7 space-y-4 leading-relaxed">
+      <p>
+        A simple app for logging your fill-ups. It works offline and keeps your
+        fuel logs on your device.
+      </p>
+      <p>
+        Optionally sync with your own Tracktor or LubeLogger instance. You
+        choose the server and stay in control of your data.
+      </p>
+      <p>
+        <a
+          href={iosSignupUrl}
+          class="font-medium underline decoration-brand decoration-2 underline-offset-4 me-6 hover:no-underline"
+        >
+          Join the iOS beta →
+        </a>
+
+        <a
+          href={androidSignupUrl}
+          class="font-medium underline decoration-brand decoration-2 underline-offset-4 hover:no-underline"
+        >
+          Join the Android beta →
+        </a>
+      </p>
+    </div>
+
+    {
+      screenshots.length > 0 && (
+        <section class="mt-8" aria-label="App screenshots">
+          <div class="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-3 sm:justify-items-start">
+            {screenshots.map(({ label, src }) => (
+              <figure class="w-full max-w-60">
+                <Image
+                  src={src}
+                  alt={label}
+                  width="390"
+                  height="844"
+                  class="h-auto w-full rounded-4xl"
+                />
+                <figcaption class="mt-2 text-sm text-muted text-center">
+                  {label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </main>
+</Layout>
