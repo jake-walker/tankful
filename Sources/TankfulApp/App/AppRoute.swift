@@ -9,6 +9,7 @@ import TankfulDomain
 
 enum AppRoute: Hashable {
     case settings
+    case acknowledgements
     case syncSettings
     case addVehicle
     case addFuelLog
