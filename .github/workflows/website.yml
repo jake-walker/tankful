@@ -1,0 +1,33 @@
+name: Website
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "site/**"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: ./website/package.json
+      - name: Build
+        working-directory: ./website
+        run: |
+          pnpm install
+          pnpm build
+      - name: Deploy
+        working-directory: ./website
+        run: pnpm exec wrangler deploy
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
