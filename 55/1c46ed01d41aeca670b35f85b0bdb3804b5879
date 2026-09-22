@@ -1,0 +1,19 @@
+website/astro.config.mjs
+  h_2463f6ed1216b2 19-23
+website/src/pages/privacy.md
+  h_2463f6ed1216b2 8,10,12,14,16,18-31,33-92
+  h_2463f6ed1216b2 32
+website/src/pages/index.astro
+  h_2463f6ed1216b2 44,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "551c46ed01d41aeca670b35f85b0bdb3804b5879",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
