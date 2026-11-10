@@ -1,0 +1,26 @@
+Sources/TankfulApp/Components/AdaptiveSplitView.swift
+  h_2463f6ed1216b2 1-117
+Sources/TankfulApp/Components/ChartCardView.swift
+  h_2463f6ed1216b2 1-24
+Sources/TankfulApp/Views/Home/EconomyChartView.swift
+  h_2463f6ed1216b2 16
+Sources/TankfulApp/Views/Home/FuelPriceChartView.swift
+  h_2463f6ed1216b2 1-79
+Sources/TankfulApp/Views/Home/HomeView.swift
+  h_2463f6ed1216b2 26-29,31-41,44-52,54-55,57,61
+Sources/TankfulApp/Views/Home/StatsCardView.swift
+  h_2463f6ed1216b2 59
+Sources/TankfulApp/Views/Settings/AcknowledgementsView.swift
+  h_2463f6ed1216b2 22,24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9b77cf511b2e061943e4d07753506be5b451a652",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
