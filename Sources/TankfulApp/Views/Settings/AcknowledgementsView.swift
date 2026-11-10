@@ -19,7 +19,9 @@ struct AcknowledgementsView: View {
                     }) {
                         Text(license.name)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                        #if !os(Android)
                             .contentShape(.rect)
+                        #endif
                     }
                     .buttonStyle(.plain)
                 }

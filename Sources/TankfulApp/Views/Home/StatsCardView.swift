@@ -55,9 +55,8 @@ struct StatsCardView: View {
                     metricView(metric)
                 }
             }
-
-            EconomyChartView(fuelLogs: fuelLogs, unit: env.fuelEconomyUnit)
         }
+        .fixedSize(horizontal: false, vertical: true)
         .cardStyle()
     }
 

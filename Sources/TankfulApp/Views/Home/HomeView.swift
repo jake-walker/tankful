@@ -23,32 +23,42 @@ struct HomeView: View {
     @State var fuelLogs: [CalculatedFuelLog] = []
     @State var isLoading: Bool = true
 
+    var recentFuelLogs: ArraySlice<CalculatedFuelLog> {
+        fuelLogs.prefix(recentFillUpLimit)
+    }
+
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                if isLoading && vehicles.isEmpty {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if vehicles.isEmpty {
-                    noVehiclesView
-                } else if fuelLogs.isEmpty {
-                    noFuelLogsView
-                } else {
-                    Group {
+        Group {
+            if isLoading && vehicles.isEmpty {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if vehicles.isEmpty {
+                noVehiclesView
+            } else if fuelLogs.isEmpty {
+                noFuelLogsView
+            } else {
+                AdaptiveSplitView {
+                    VStack {
                         StatsCardView(fuelLogs: fuelLogs)
 
-                        RecentLogsView(fuelLogs: fuelLogs.prefix(recentFillUpLimit))
+                        #if !os(Android)
+                            ChartCardView(title: "Fuel Economy") {
+                                EconomyChartView(fuelLogs: recentFuelLogs, unit: env.fuelEconomyUnit)
+                            }
+
+                            ChartCardView(title: "Fuel Prices") {
+                                FuelPriceChartView(fuelLogs: recentFuelLogs)
+                            }
+                        #endif
                     }
-                    .vehicleEntity(id: vehicle?.id)
+                } secondary: {
+                    RecentLogsView(fuelLogs: recentFuelLogs)
                 }
+                .vehicleEntity(id: vehicle?.id)
             }
-            .padding()
-            #if os(Android)
-                .padding(.bottom, vehicle == nil ? 0 : 80)
-            #endif
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         }
         #if os(Android)
+        .padding(.bottom, vehicle == nil ? 0 : 80)
         .overlay(alignment: .bottomTrailing) {
             if vehicle != nil {
                 AndroidFab(

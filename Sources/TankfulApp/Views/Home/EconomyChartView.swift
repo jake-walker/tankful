@@ -13,7 +13,7 @@ import TankfulDomain
 #endif
 
 struct EconomyChartView: View {
-    let fuelLogs: [CalculatedFuelLog]
+    let fuelLogs: ArraySlice<CalculatedFuelLog>
     let unit: FuelEconomyUnit
 
     #if canImport(Charts)
