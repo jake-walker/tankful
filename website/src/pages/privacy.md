@@ -3,13 +3,15 @@ title: "Privacy Policy"
 layout: ../layouts/page.astro
 ---
 
-_Last updated 22 September 2026_
+_Last updated 12 November 2026_
 
 This privacy policy explains how the app and its associated beta testing programme handle your information.
 
 ## The short version
 
-The app does not contain advertising, analytics or tracking. Your data is stored on your device unless you choose to connect the app to a supported self-hosted backend.
+The app does not contain advertising or usage analytics, and does not track your activity. Your app data is stored on your device unless you choose to connect to a supported self-hosted backend.
+
+Optional crash reporting and diagnostics are available to help identify and fix problems. This feature is disabled by default and only shares diagnostic information if you explicitly enable it.
 
 I do not operate a server that receives or stores your app data.
 
@@ -32,7 +34,7 @@ Once the closed beta period has finished and signup is no longer required, I wil
 
 Information you enter into or store within the app ("app data") is stored locally on your device. This may include information about your vehicles and their associated records.
 
-App data is used only to provide the app's functionality and is not sent to the developer or any third party by the app unless you choose to configure a supported self-hosted backend.
+App data is used to provide the app's functionality and is not intentionally included in diagnostic reports. It is only transmitted to a supported self-hosted backend when you choose to configure one.
 
 ## Self-hosted backends
 
@@ -48,25 +50,44 @@ This privacy policy and practices of any software or service you connect to are 
 
 ## Analytics, advertising and tracking
 
-The app currencly contains no third-party analytics, advertising SDKs or tracking technologies.
+The app does not contain advertising or usage analytics, and does not track your activity.
 
-The developer does not use the app to collect information about how you use it.
+Optional diagnostic reporting is provided through [Sentry](https://sentry.io), as described below. This is used to identify technical problems rather than analyse how you use the app.
 
 Apple and Google may independently collect information relating to downloads, installations, crashes and use of apps distributed through their platforms. They may provide developers with aggregated or anonymised statistics. This processing is performed by Apple or Google under their respective privacy policies and is not controlled by the app.
 
 ## Crash reporting and diagnostics
 
-The app does not currently send crash reports or diagnostic information directly to the developer.
+Tankful uses [Sentry](https://sentry.io) to provide optional crash reporting and error diagnostics. This helps identify and fix technical problems with the app.
 
-If optional crash reporting, analytics or similar diagnostics are introduced in the future, this privacy policy will be updated before that functionality is introduced. Where such functionality involves sending information from your device to the developer or a third-party service, it will be opt-in.
+Diagnostic reporting is **disabled by default** and is only enabled if you explicitly opt-in through the "Share Diagnostics" setting. You can disable it at any time to stop future reporting.
+
+When enabled, diagnostic reports may include:
+
+- Crash details, error messages and stack traces.
+- Device model, operating system and app version.
+- Technical information about network requests, including server URLs, request and response sizes, and HTTP status codes.
+
+As Tankful supports self-hosted servers, network requests may contain addresses or domain names that could identify you or your server. Sentry is configured to automatically remove URLs from HTTP diagnostic breadcrumbs when reports are received, before they are stored. This filtering takes place on Sentry's servers, so URLs may still be transmitted to Sentry during reporting.
+
+Diagnostic reports are not intended to collect vehicle records, fuel logs or authentication credentials, although other technical information may inadvertently be included.
+
+Diagnostic information is processed by Sentry using its EU data storage region and is subject to [Sentry's privacy policy](https://sentry.io/privacy/).
+
+This information is used solely to investigate and resolve technical problems, not for advertising, marketing or usage analytics.
 
 ## Data sharing
 
 The developer does not sell your personal information.
 
-The app does not share your locally stored vehicle or fuel data with advertisers, analytics providers or other third parties.
+The app does not share your app data with advertisers or analytics providers.
 
-Data is only transmitted to a self-hosted backend when you choose to configure one.
+Information is only transmitted to third parties in the following circumstances:
+
+- **Self-hosted backends:** App data is transmitted to the server you configure when you choose to enable sync.
+- **Optional diagnostics:** Technical error and crash information is transmitted to Sentry when you explicitly enable diagnostic reporting.
+
+The developer does not operate a server that receives or stores your vehicle records or other app data.
 
 ## Data retention and deletion
 
@@ -76,11 +97,25 @@ Data stored by a self-hosted backend is controlled by that backend. You are resp
 
 Because the developer does not receive or store this data, the developer cannot retrieve or delete held data on your device or self-hosted server on your behalf.
 
+Diagnostic reports submitted to Sentry are retained for 30 days. Disabling diagnostic reporting prevents future submissions but does not automatically delete reports previously collected.
+
+## Your data protection rights
+
+Under UK data protection law, you have certain rights regarding your personal information, including the right to access, correct or request deletion of your data, and to withdraw consent where applicable.
+
+You can exercise these rights by contacting me using the details below.
+
+For diagnostic information collected through Sentry, I will make reasonable efforts to identify and delete relevant records upon request. However, as reports are not intentionally linked to your identity, it may not always be possible to identify which records belong to you.
+
+I will respond to requests in accordance with applicable data protection law, normally within one month.
+
+If you have concerns about how your personal information is handled, please contact me using the details below. You also have the right to lodge a complaint with the [Information Commissioner's Office (ICO)](https://ico.org.uk/).
+
 ## Changes to this policy
 
 This privacy policy may be updated as the app develops.
 
-If a change significantly affects how the app collects, uses or shares information, the change will be bought to your attention within the app.
+If a change significantly affects how the app collects, uses or shares information, the change will be brought to your attention within the app.
 
 The date at the top of this policy indicates when it was last updated.
 

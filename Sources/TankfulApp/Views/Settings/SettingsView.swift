@@ -6,6 +6,7 @@
 //
 
 import Currency
+import SkipSentry
 import SwiftUI
 import TankfulSync
 
@@ -82,6 +83,20 @@ struct SettingsView: View {
                 NavigationLink(value: AppRoute.syncSettings) {
                     Text("Sync Settings")
                 }
+            }
+
+            Section {
+                Toggle(isOn: $env.diagnosticsEnabled, label: { Text("Share Diagnostics") })
+                    .onChange(of: env.diagnosticsEnabled) {
+                        if env.diagnosticsEnabled == false {
+                            print("Closing Sentry")
+                            SkipSentry.close()
+                        }
+                    }
+            } header: {
+                Text("Privacy")
+            } footer: {
+                Text("Help improve Tankful by sharing crash reports and technical errors. Reports may include device information and details of connections made by the app. See the privacy policy for details.")
             }
 
             Section {

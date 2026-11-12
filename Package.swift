@@ -15,12 +15,14 @@ let package = Package(
         .package(url: "https://github.com/skiptools/skip-sql.git", from: "0.16.0"),
         .package(url: "https://github.com/jake-walker/swift-currency.git", revision: "b9e594677cf396a9c8169609ac73a33ce3f38d14"),
         .package(url: "https://github.com/maiyama18/LicensesPlugin.git", from: "0.2.0"),
+        .package(url: "https://github.com/skiptools/skip-sentry.git", "0.0.0" ..< "2.0.0"),
     ],
     targets: [
         .target(
             name: "TankfulApp",
             dependencies: [
                 .product(name: "SkipFuseUI", package: "skip-fuse-ui"),
+                .product(name: "SkipSentry", package: "skip-sentry"),
                 "TankfulDomain",
                 "TankfulPersistence",
                 "TankfulSync",

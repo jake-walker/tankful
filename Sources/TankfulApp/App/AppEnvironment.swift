@@ -26,6 +26,7 @@ import TankfulSync
     private static let currencyKey = "currency"
     private static let syncConfigurationKey = "syncConfiguration"
     private static let lastSuccessfulSyncKey = "lastSuccessfulSync"
+    static let diagnosticsEnabledKey = "diagnosticsEnabled"
 
     let router: AppRouter
 
@@ -56,6 +57,12 @@ import TankfulSync
     var currency: any CurrencyDescriptor.Type = defaultCurrency() {
         didSet {
             UserDefaults.standard.set(currency.alphabeticCode, forKey: Self.currencyKey)
+        }
+    }
+
+    var diagnosticsEnabled: Bool = false {
+        didSet {
+            UserDefaults.standard.set(diagnosticsEnabled, forKey: Self.diagnosticsEnabledKey)
         }
     }
 
@@ -140,6 +147,9 @@ import TankfulSync
         {
             currency = descriptor
         }
+
+        // this defaults to false if not set
+        diagnosticsEnabled = UserDefaults.standard.bool(forKey: Self.diagnosticsEnabledKey)
 
         if let id = UserDefaults.standard.string(
             forKey: Self.currentVehicleKey

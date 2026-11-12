@@ -7,6 +7,7 @@ import SkipFuse
 import SwiftUI
 import TankfulPersistence
 import TankfulSync
+import SkipSentry
 
 #if canImport(TankfulIntents)
 import TankfulIntents
@@ -24,6 +25,33 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
     @State internal var env: AppEnvironment
 
     /* SKIP @bridge */public init() {
+        #if DEBUG
+        let isDebug = true
+        #else
+        let isDebug = false
+        #endif
+
+        // Setup Sentry if enabled
+        let diagnosticsEnabled = UserDefaults.standard.bool(forKey: AppEnvironment.diagnosticsEnabledKey)
+//        if diagnosticsEnabled && !isDebug {
+        if diagnosticsEnabled {
+            print("Setting up Sentry...")
+
+            SkipSentry.start { options in
+                options.dsn = "https://2470e2c859ff212f85b62db140b15db9@o4508513026310144.ingest.de.sentry.io/4512420780048464"
+                options.debug = false
+                options.environment = isDebug ? "development" : "production"
+
+                options.sampleRate = 1.0
+                options.enableAutoSessionTracking = false
+                options.attachStacktrace = true
+                options.enableAppHangTracking = true
+            }
+        } else {
+            print("Sentry is disabled (enabled=\(diagnosticsEnabled), debug=\(isDebug))")
+        }
+
+        // Setup database
         let directory = URL.applicationSupportDirectory.appendingPathComponent("Tankful", isDirectory: true)
 
         try! FileManager.default.createDirectory(
@@ -33,6 +61,7 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
 
         let database = try! TankfulDatabase.live(at: directory.appendingPathComponent("Tankful.sqlite"))
 
+        // Create app environment
         let vehicleRepository = SQLiteVehicleRepository(database: database)
         let fuelLogRepository = SQLiteFuelLogRepository(database: database)
         let router = AppRouter()
@@ -45,6 +74,7 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
             )
         )
 
+        // Other setup
         #if os(iOS) || os(macOS)
         TankfulIntentsEnvironment.configure(
             vehicleRepository: vehicleRepository,
