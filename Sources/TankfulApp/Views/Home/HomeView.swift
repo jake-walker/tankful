@@ -8,6 +8,7 @@
 import Currency
 import SwiftUI
 import TankfulDomain
+import TankfulSync
 
 #if canImport(Charts)
     import Charts
@@ -117,17 +118,18 @@ struct HomeView: View {
             }
 
             #if os(iOS)
-                ToolbarItem(placement: .bottomBar) {
-                    Button(action: {
-                        env.router.push(AppRoute.addFuelLog)
-                    }) {
-                        Label {
-                            Text("Add Fill-Up")
-                        } icon: {
-                            Image("custom.fuelpump.badge.plus", bundle: .module)
+                if vehicle != nil {
+                    ToolbarItem(placement: .bottomBar) {
+                        Button(action: {
+                            env.router.push(AppRoute.addFuelLog)
+                        }) {
+                            Label {
+                                Text("Add Fill-Up")
+                            } icon: {
+                                Image("custom.fuelpump.badge.plus", bundle: .module)
+                            }
                         }
                     }
-                    .disabled(vehicle == nil)
                 }
             #endif
         }
@@ -145,11 +147,11 @@ struct HomeView: View {
             AppIcon(symbol: .vehicle, size: 32)
                 .font(.largeTitle)
 
-            Text("Add Your First Vehicle")
+            Text("Get Started with Tankful")
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Text("Add a vehicle before recording fill-ups and tracking fuel economy.")
+            Text("Add a vehicle to start tracking fuel economy, or connect your existing server.")
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
 
@@ -157,6 +159,16 @@ struct HomeView: View {
                 env.router.push(AppRoute.addVehicle)
             }
             .buttonStyle(.borderedProminent)
+
+            Button("Connect to Server", appIcon: .sync) {
+                env.router.push(.syncSettings)
+            }
+            .buttonStyle(.bordered)
+
+            Text("Connect your existing \(BackendType.allCases.map(\.displayName).displayOrList()) server.")
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.secondary)
+                .font(.caption)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
