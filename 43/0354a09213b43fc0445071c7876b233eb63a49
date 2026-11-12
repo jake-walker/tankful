@@ -1,0 +1,18 @@
+Sources/TankfulApp/Components/AppIcon.swift
+  h_2463f6ed1216b2 40
+Sources/TankfulApp/Extensions/Array+Display.swift
+  h_2463f6ed1216b2 1-25
+Sources/TankfulApp/Views/Home/HomeView.swift
+  h_2463f6ed1216b2 11,121-130,150,154,162-171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "430354a09213b43fc0445071c7876b233eb63a49",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
