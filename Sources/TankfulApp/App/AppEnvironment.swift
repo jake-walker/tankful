@@ -191,27 +191,35 @@ import TankfulSync
         vehicleChangeVersion += 1
     }
 
-    func syncNow() async throws {
+    func syncNow(using backendOverride: (any SyncBackend)? = nil) async throws {
+        if case .syncing = syncStatus {
+            throw SyncEngine.Error.syncAlreadyInProgress
+        }
+
         guard let syncConfiguration else {
             throw SyncActionError.configurationMissing
         }
 
         let backend: any SyncBackend
-        switch syncConfiguration.type {
-        case .tracktor:
-            backend = TracktorBackend(
-                client: HTTPClient(configuration: syncConfiguration),
-                credentials: syncConfiguration.authentication
-            )
-        case .lubeLogger:
-            backend = LubeLoggerBackend(
-                client: HTTPClient(configuration: syncConfiguration),
-                units: LubeLoggerUnits(
-                    distance: distanceUnit.unit,
-                    volume: volumeUnit.unit,
-                    currency: currency
+        if let backendOverride {
+            backend = backendOverride
+        } else {
+            switch syncConfiguration.type {
+            case .tracktor:
+                backend = TracktorBackend(
+                    client: HTTPClient(configuration: syncConfiguration),
+                    credentials: syncConfiguration.authentication
                 )
-            )
+            case .lubeLogger:
+                backend = LubeLoggerBackend(
+                    client: HTTPClient(configuration: syncConfiguration),
+                    units: LubeLoggerUnits(
+                        distance: distanceUnit.unit,
+                        volume: volumeUnit.unit,
+                        currency: currency
+                    )
+                )
+            }
         }
 
         let engine = SyncEngine(
