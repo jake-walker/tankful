@@ -1,0 +1,26 @@
+.github/workflows/tests.yml
+  s_53770477370f83::t_afc00358a86e07 19-29
+.gitignore
+  s_53770477370f83::t_86f45d771bcf5e 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f60c7b372cfc70ac9fbe5f2ebc90030b3d5273db",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_53770477370f83": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a212df-928c-7053-8a2a-8e0c778899c5",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
