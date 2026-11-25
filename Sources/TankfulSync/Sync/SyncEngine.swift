@@ -29,18 +29,21 @@ public final class SyncEngine {
     private let backend: any SyncBackend
     private let vehicleRepository: any VehicleRepository
     private let fuelLogRepository: any FuelLogRepository
+    private let snapshotRepository: any SyncSnapshotRepository
     private let now: @Sendable () -> Date
 
     public init(
         backend: any SyncBackend,
         vehicleRepository: any VehicleRepository,
         fuelLogRepository: any FuelLogRepository,
+        snapshotRepository: any SyncSnapshotRepository,
         lastSuccessfulSync: Date? = nil,
         now: @escaping @Sendable () -> Date = Date.init
     ) {
         self.backend = backend
         self.vehicleRepository = vehicleRepository
         self.fuelLogRepository = fuelLogRepository
+        self.snapshotRepository = snapshotRepository
         status = .idle(lastSuccessfulSync: lastSuccessfulSync)
         self.lastSuccessfulSync = lastSuccessfulSync
         self.now = now
@@ -54,7 +57,7 @@ public final class SyncEngine {
             do {
                 try await pushPendingChanges()
                 let snapshot = try await fetchRemoteSnapshot()
-                try await applyRemoteSnapshot(vehicles: snapshot.0, fuelLogs: snapshot.1)
+                try snapshotRepository.replaceSnapshot(vehicles: snapshot.0, fuelLogs: snapshot.1)
                 let completedAt = now()
                 lastSuccessfulSync = completedAt
                 status = .idle(lastSuccessfulSync: completedAt)
@@ -128,50 +131,6 @@ private extension SyncEngine {
         }
 
         return (remoteVehicles, remoteFuelLogs)
-    }
-
-    func applyRemoteSnapshot(vehicles: [Vehicle], fuelLogs: [FuelLog]) async throws {
-        log("Building UUID map")
-        let existingVehicles = try await vehicleRepository.vehicles()
-        let existingFuelLogs = try await fuelLogRepository.fuelLogs()
-
-        let vehicleIDs = [String: UUID](
-            uniqueKeysWithValues: existingVehicles.compactMap { vehicle in
-                guard let remoteID = vehicle.remoteID else {
-                    return nil
-                }
-
-                return (remoteID, vehicle.id)
-            }
-        )
-
-        let fuelLogIDs = [String: UUID](
-            uniqueKeysWithValues: existingFuelLogs.compactMap { fuelLog in
-                guard let remoteID = fuelLog.remoteID else {
-                    return nil
-                }
-
-                return (remoteID, fuelLog.id)
-            }
-        )
-
-        log("Applying remote snapshot (\(vehicles.count) vehicles, \(fuelLogs.count) logs)")
-
-        try await vehicleRepository.deleteAll()
-        try await fuelLogRepository.deleteAll()
-
-        for vehicle in vehicles {
-            try await vehicleRepository.save(vehicle.with(id: vehicleIDs[vehicle.remoteID!] ?? vehicle.id))
-        }
-
-        for fuelLog in fuelLogs {
-            if let vehicle = vehicles.first(where: { $0.id == fuelLog.vehicleID }) {
-                try await fuelLogRepository.save(fuelLog.with(
-                    id: fuelLogIDs[fuelLog.remoteID!] ?? fuelLog.id,
-                    vehicleID: vehicleIDs[vehicle.remoteID!] ?? vehicle.id
-                ))
-            }
-        }
     }
 
     func createBackendVehicle(vehicle: Vehicle) async throws {

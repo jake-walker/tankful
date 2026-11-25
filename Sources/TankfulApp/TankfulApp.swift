@@ -70,7 +70,8 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
             initialValue: AppEnvironment(
                 router: router,
                 vehicleRepository: vehicleRepository,
-                fuelLogRepository: fuelLogRepository
+                fuelLogRepository: fuelLogRepository,
+                snapshotRepository: SQLiteSyncSnapshotRepository(database: database)
             )
         )
 

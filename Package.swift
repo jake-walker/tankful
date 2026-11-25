@@ -64,5 +64,9 @@ let package = Package(
             name: "TankfulDomainTests",
             dependencies: ["TankfulDomain"]
         ),
+        .testTarget(
+            name: "TankfulSyncTests",
+            dependencies: ["TankfulDomain", "TankfulPersistence", "TankfulSync"]
+        ),
     ]
 )

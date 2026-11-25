@@ -71,7 +71,7 @@ struct CurrencyPickerSheet: View {
         .navigationTitle("Currencies")
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                if #available(iOS 26.0, *) {
+                if #available(iOS 26.0, macOS 26.0, *) {
                     Button("Cancel", systemImage: "xmark", role: .close) {
                         dismiss()
                     }

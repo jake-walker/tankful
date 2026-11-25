@@ -32,6 +32,7 @@ import TankfulSync
 
     let vehicleRepository: any VehicleRepository
     let fuelLogRepository: any FuelLogRepository
+    let snapshotRepository: any SyncSnapshotRepository
 
     let vehicleController: VehicleController
     let fuelLogController: FuelLogController
@@ -113,11 +114,13 @@ import TankfulSync
     init(
         router: AppRouter,
         vehicleRepository: any VehicleRepository,
-        fuelLogRepository: any FuelLogRepository
+        fuelLogRepository: any FuelLogRepository,
+        snapshotRepository: any SyncSnapshotRepository
     ) {
         self.router = router
         self.vehicleRepository = vehicleRepository
         self.fuelLogRepository = fuelLogRepository
+        self.snapshotRepository = snapshotRepository
 
         vehicleController = VehicleController(repository: vehicleRepository)
         fuelLogController = FuelLogController(repository: fuelLogRepository)
@@ -215,6 +218,7 @@ import TankfulSync
             backend: backend,
             vehicleRepository: vehicleRepository,
             fuelLogRepository: fuelLogRepository,
+            snapshotRepository: snapshotRepository,
             lastSuccessfulSync: syncStatus.lastSuccessfulSync
         )
 
@@ -329,7 +333,8 @@ private enum SyncActionError: LocalizedError {
             let env = AppEnvironment(
                 router: AppRouter(),
                 vehicleRepository: vehicleRepository,
-                fuelLogRepository: fuelLogRepository
+                fuelLogRepository: fuelLogRepository,
+                snapshotRepository: SQLiteSyncSnapshotRepository(database: database)
             )
 
             env.currentVehicleID = vehicles[0].id

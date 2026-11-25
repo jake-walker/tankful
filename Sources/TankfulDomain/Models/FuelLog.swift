@@ -50,3 +50,20 @@ public struct FuelLog: Identifiable {
         .init(id: newUUID, vehicleID: vehicleID, date: date, odometer: odometer, volume: volume, cost: cost, filled: filled, missedLast: missedLast, notes: notes, remoteID: remoteID, syncState: syncState)
     }
 }
+
+extension FuelLog: Equatable {
+    public static func == (lhs: FuelLog, rhs: FuelLog) -> Bool {
+        lhs.id == rhs.id &&
+            lhs.vehicleID == rhs.vehicleID &&
+            lhs.date == rhs.date &&
+            lhs.odometer == rhs.odometer &&
+            lhs.volume == rhs.volume &&
+            lhs.cost.descriptor == rhs.cost.descriptor &&
+            lhs.cost.exactAmount == rhs.cost.exactAmount &&
+            lhs.filled == rhs.filled &&
+            lhs.missedLast == rhs.missedLast &&
+            lhs.notes == rhs.notes &&
+            lhs.remoteID == rhs.remoteID &&
+            lhs.syncState == rhs.syncState
+    }
+}

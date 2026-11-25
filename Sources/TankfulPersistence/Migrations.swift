@@ -68,6 +68,8 @@ enum Migrations {
 
 extension TankfulDatabase {
     func migrate() throws {
+        print("Database version \(ctx.userVersion)")
+
         for migration in Migrations.all {
             if ctx.userVersion < migration.version {
                 print("Migrating database to \(migration.version)")

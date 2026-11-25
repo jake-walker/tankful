@@ -81,6 +81,10 @@ struct SyncSettingsView: View {
                         }
                     }
                 }
+            } footer: {
+                if syncEnabled {
+                    Text("The server is the source of truth. Entries already on the server that you delete in Tankful will return on the next sync. Changing servers replaces local data with data from the new server, so back up your data before switching.")
+                }
             }
 
             if syncEnabled {

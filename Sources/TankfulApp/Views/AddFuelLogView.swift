@@ -67,7 +67,9 @@ struct AddFuelLogView: View {
                     value: $odometer,
                     format: .number.grouping(.never)
                 )
+                #if os(iOS) || os(Android)
                 .keyboardType(.numberPad)
+                #endif
                 .multilineTextAlignment(.trailing)
             } label: {
                 Text("Odometer (\(env.distanceUnit.unit.symbol))")
@@ -79,7 +81,9 @@ struct AddFuelLogView: View {
                     value: $volume,
                     format: .number.grouping(.never)
                 )
+                #if os(iOS) || os(Android)
                 .keyboardType(.decimalPad)
+                #endif
                 .multilineTextAlignment(.trailing)
             } label: {
                 Text("Volume (\(env.volumeUnit.unit.symbol))")
@@ -91,7 +95,9 @@ struct AddFuelLogView: View {
                     value: $cost,
                     format: .number.grouping(.never)
                 )
+                #if os(iOS) || os(Android)
                 .keyboardType(.decimalPad)
+                #endif
                 .multilineTextAlignment(.trailing)
             } label: {
                 Text("Total Cost (\(currencySymbol))")
