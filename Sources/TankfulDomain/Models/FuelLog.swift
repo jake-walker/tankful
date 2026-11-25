@@ -36,7 +36,7 @@ public struct FuelLog: Identifiable {
         self.syncState = syncState
     }
 
-    public var unitCost: any CurrencyValue? {
+    public var unitCost: (any CurrencyValue)? {
         guard let volume else {
             return nil
         }
