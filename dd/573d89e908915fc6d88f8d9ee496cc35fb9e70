@@ -1,0 +1,29 @@
+.github/workflows/tests.yml
+  s_53770477370f83::t_c1739644972574 14-16
+  s_53770477370f83::t_c2a0632bb7a9da 13,19-20
+  s_53770477370f83::t_790a9acbc196de 1-12,17-18,21,25
+  s_53770477370f83::t_8763d4ba9a9f5d 22-24
+Sources/TankfulDomain/Models/FuelLog.swift
+  s_53770477370f83::t_2e80e04da972a9 39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dd573d89e908915fc6d88f8d9ee496cc35fb9e70",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_53770477370f83": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a212df-928c-7053-8a2a-8e0c778899c5",
+        "model": "gpt-6-sol"
+      },
+      "human_author": null
+    }
+  }
+}
