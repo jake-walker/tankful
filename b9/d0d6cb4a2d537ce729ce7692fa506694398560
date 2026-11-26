@@ -1,0 +1,27 @@
+Skip.env
+  s_53770477370f83::t_bbf3b4eb89d8dd 10-12
+Android/app/src/main/AndroidManifest.xml
+  s_53770477370f83::t_c76ca011e6b879 21-23
+  s_53770477370f83::t_bbf3b4eb89d8dd 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b9d0d6cb4a2d537ce729ce7692fa506694398560",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_53770477370f83": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a212df-928c-7053-8a2a-8e0c778899c5",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
