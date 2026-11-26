@@ -1,0 +1,24 @@
+Sources/TankfulApp/Views/Home/HomeView.swift
+  s_53770477370f83::t_70f56a1cbb8d02 89-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3f87621a486d688f667864a3a870a268fa4e8c10",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_53770477370f83": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a212df-928c-7053-8a2a-8e0c778899c5",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
