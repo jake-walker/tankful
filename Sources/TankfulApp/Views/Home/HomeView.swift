@@ -86,6 +86,10 @@ struct HomeView: View {
                                 } label: {
                                     Label {
                                         Text(vehicle.displayName)
+                                        #if os(Android)
+                                            // Skip reserves a leading selection slot for ForEach menu items.
+                                            .offset(x: -36)
+                                        #endif
                                     } icon: {
                                         AppIcon(symbol: env.currentVehicleID == vehicle.id
                                             ? .selected : .unselected)
