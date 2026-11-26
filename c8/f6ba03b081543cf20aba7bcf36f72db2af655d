@@ -1,0 +1,25 @@
+website/src/pages/index.astro
+  s_53770477370f83::t_5f0c766ac8312c 8-10,12-30,77-80,83-109,111-112,115-133
+  s_53770477370f83::t_1054183b0d6850 81-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c8f6ba03b081543cf20aba7bcf36f72db2af655d",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_53770477370f83": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a212df-928c-7053-8a2a-8e0c778899c5",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
