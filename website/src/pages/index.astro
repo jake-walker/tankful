@@ -2,14 +2,14 @@
 import { Image } from "astro:assets";
 import Layout from "../layouts/main.astro";
 import AppIcon from "../../public/app-icon.png";
-import ScreenshotHome from "../assets/screenshot-home.png";
-import ScreenshotFillUp from "../assets/screenshot-fillup.png";
-import ScreenshotSync from "../assets/screenshot-sync.png";
+import ScreenshotHome from "../../../scripts/screenshots/ios/01-overview.png";
+import ScreenshotLogs from "../../../scripts/screenshots/ios/02-logs.png";
+import ScreenshotAddLog from "../../../scripts/screenshots/ios/03-add-log.png";
 
 const screenshots = [
   { label: "Fuel log", src: ScreenshotHome },
-  { label: "Add a fill-up", src: ScreenshotFillUp },
-  { label: "Sync settings", src: ScreenshotSync },
+  { label: "Add a fill-up", src: ScreenshotAddLog },
+  { label: "View fill-up history", src: ScreenshotLogs },
 ];
 ---
 
@@ -56,27 +56,25 @@ const screenshots = [
       </p>
     </div>
 
-    {
-      screenshots.length > 0 && (
-        <section class="mt-8" aria-label="App screenshots">
-          <div class="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-3 sm:justify-items-start">
-            {screenshots.map(({ label, src }) => (
-              <figure class="w-full max-w-60">
-                <Image
-                  src={src}
-                  alt={label}
-                  width="390"
-                  height="844"
-                  class="h-auto w-full rounded-4xl"
-                />
-                <figcaption class="mt-2 text-sm text-muted text-center">
-                  {label}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-      )
-    }
+    {screenshots.length > 0 && (
+      <section class="mt-8" aria-label="App screenshots">
+        <div class="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-3 sm:justify-items-start">
+          {screenshots.map(({ label, src }) => (
+            <figure class="w-full max-w-60">
+              <Image
+                src={src}
+                alt={label}
+                width="390"
+                height="844"
+                class="h-auto w-full rounded-4xl"
+              />
+              <figcaption class="mt-2 text-sm text-muted text-center">
+                {label}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
   </main>
 </Layout>

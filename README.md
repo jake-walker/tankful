@@ -48,6 +48,17 @@ Logging output for the iOS app can be viewed in the Xcode console, and in
 Android Studio's logcat tab for the transpiled Kotlin app, or
 using `adb logcat` from a terminal.
 
+## Screenshots
+
+Run `./scripts/screenshots.sh` to build the simulator app and Android APK,
+capture portrait screenshots on iPhone 17 and an Android phone emulator,
+capture the iPhone Duo with a landscape overview, and shut down each device afterward.
+Images are saved in `scripts/screenshots/ios`, `scripts/screenshots/ios-duo`,
+and `scripts/screenshots/android`.
+
+For Duo screenshots, install [devicehubctl](https://github.com/ChrisThoma/devicehubctl)
+and make it available on `PATH` (or set `DEVICEHUBCTL` to its executable path).
+
 ## Testing
 
 The module can be tested using the standard `swift test` command

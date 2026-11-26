@@ -1,0 +1,15 @@
+appId: ${APP_ID}
+---
+# yaml-language-server: $schema=https://json.schemastore.org/maestro-flow.json
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          direction: RIGHT
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - back
+- waitForAnimationToEnd

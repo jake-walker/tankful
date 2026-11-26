@@ -1,2 +1,2 @@
 [files]
-extend-exclude = ["*.pbxproj"]
+extend-exclude = ["*.pbxproj", "scripts/screenshots.sh"]

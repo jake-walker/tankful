@@ -114,6 +114,7 @@ struct HomeView: View {
                     }
                 } label: {
                     AppIcon(symbol: .more)
+                        .accessibilityLabel(Text("Menu"))
                 }
             }
 

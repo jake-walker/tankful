@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://json.schemastore.org/maestro-flow.json
+appId: ${APP_ID}
+---
+# yaml-language-server: $schema=https://json.schemastore.org/maestro-flow.json
+- launchApp:
+    clearState: true
+    arguments:
+      previewMode: true
+- runFlow:
+    when:
+      true: ${SET_ORIENTATION == 'true'}
+    commands:
+      - setOrientation: PORTRAIT
+      - waitForAnimationToEnd
+- assertVisible: "My Car"
+- takeScreenshot:
+    path: 01-overview
+- scrollUntilVisible:
+    element: "Recent Fill-Ups"
+- tapOn: "Recent Fill-Ups"
+- waitForAnimationToEnd
+- takeScreenshot:
+    path: 02-logs
+- runFlow: common/back.yaml
+- tapOn: "Add Fill-Up"
+- waitForAnimationToEnd
+- takeScreenshot:
+    path: 03-add-log
+- runFlow: common/back.yaml
+- tapOn: "Menu"
+- tapOn: "Settings"
+- waitForAnimationToEnd
+- takeScreenshot:
+    path: 04-settings
