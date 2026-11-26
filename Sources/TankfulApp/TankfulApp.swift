@@ -25,12 +25,6 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
     @State internal var env: AppEnvironment
 
     /* SKIP @bridge */public init() {
-        #if DEBUG
-        let isDebug = true
-        #else
-        let isDebug = false
-        #endif
-
         // Setup Sentry if enabled
         let diagnosticsEnabled = UserDefaults.standard.bool(forKey: AppEnvironment.diagnosticsEnabledKey)
 //        if diagnosticsEnabled && !isDebug {
@@ -40,7 +34,7 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
             SkipSentry.start { options in
                 options.dsn = "https://2470e2c859ff212f85b62db140b15db9@o4508513026310144.ingest.de.sentry.io/4512420780048464"
                 options.debug = false
-                options.environment = isDebug ? "development" : "production"
+                options.environment = LaunchConfiguration.isDebug ? "development" : "production"
 
                 options.sampleRate = 1.0
                 options.enableAutoSessionTracking = false
@@ -48,7 +42,7 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
                 options.enableAppHangTracking = true
             }
         } else {
-            print("Sentry is disabled (enabled=\(diagnosticsEnabled), debug=\(isDebug))")
+            print("Sentry is disabled (enabled=\(diagnosticsEnabled), debug=\(LaunchConfiguration.isDebug))")
         }
 
         // Setup database
@@ -74,6 +68,15 @@ let logger: Logger = Logger(subsystem: "xyz.jakewalker.tankful", category: "Tank
                 snapshotRepository: SQLiteSyncSnapshotRepository(database: database)
             )
         )
+
+        #if DEBUG
+        if LaunchConfiguration.isPreviewMode {
+            print("Using preview mode")
+            _env = State(
+                initialValue: AppEnvironment.preview()
+            )
+        }
+        #endif
 
         // Other setup
         #if os(iOS) || os(macOS)
