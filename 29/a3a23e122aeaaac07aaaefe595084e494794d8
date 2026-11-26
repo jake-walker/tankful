@@ -1,0 +1,71 @@
+scripts/maestro/common/back.yaml
+  h_2463f6ed1216b2 1-15
+scripts/maestro/screenshots.yaml
+  s_1b910c617cc4e7::t_a6b205f3f07cf5 1-8,15-34
+  s_1b910c617cc4e7::t_ad0e908b8e2755 9-14
+scripts/screenshots.sh
+  s_1b910c617cc4e7::t_09c52a302a3c06 112,119
+  s_1b910c617cc4e7::t_239745fe34cc75 21,36
+  s_1b910c617cc4e7::t_841c949ceed1ab 116
+  s_1b910c617cc4e7::t_823a078b57ff77 173,178-179,194-195
+  s_1b910c617cc4e7::t_09f478ab25c9e7 181-187
+  s_1b910c617cc4e7::t_952dcea82045f5 55,59,64,68
+  s_1b910c617cc4e7::t_96093729af6b43 71,73-74
+  s_1b910c617cc4e7::t_feb82b686c34ca 6,9-13,17-18,26,28,32,35,37-40,42-47,49-52,61-63,69,75-81,83-85,91-92,94-95,97-102,104,110,124-138,140-149,151-152,154-160,165,175-177,180,188,190-191,198-214
+  s_1b910c617cc4e7::t_ab9f3d9ecb78a0 48,57,162,167,218,220
+  s_1b910c617cc4e7::t_7a3b2a69e7d885 19-20
+  s_1b910c617cc4e7::t_1df9485af77254 16
+  s_1b910c617cc4e7::t_d8cb7927ca811b 106,108,118,219
+  s_1b910c617cc4e7::t_a1e6e9d2289903 22
+  h_2463f6ed1216b2 1-5,7-8,14-15,23,27,41,53-54,58,60,70,86-88,122-123,161,166,170-172,174,189,192-193,196-197,215-217,221-224
+  s_1b910c617cc4e7::t_6cdf9b56ede994 24-25,33-34,65-67,121,139,150,168-169
+  s_1b910c617cc4e7::t_3babe24bf2b5de 72
+  s_1b910c617cc4e7::t_101d82ac399841 153,163-164
+  s_1b910c617cc4e7::t_259b703aa02fc4 29-31
+  s_1b910c617cc4e7::t_9cd078f49d5781 56
+  s_1b910c617cc4e7::t_3320c247552361 82
+  s_1b910c617cc4e7::t_1fa54c66c1ab6a 93
+  s_1b910c617cc4e7::t_2103344366b5e8 96
+  s_1b910c617cc4e7::t_3157a8cb1d159b 103
+  s_1b910c617cc4e7::t_7343e291ab0f7a 105
+  s_1b910c617cc4e7::t_cd2e0daab5ebeb 107
+  s_1b910c617cc4e7::t_e0afc5ca17013a 109
+  s_1b910c617cc4e7::t_c875c8fbb50b15 111
+  s_1b910c617cc4e7::t_9c50c6e632e2b4 113-115
+  s_1b910c617cc4e7::t_1bc37cd33f8ec4 117
+  s_1b910c617cc4e7::t_7af42cacb9d35b 120
+  h_2463f6ed1216b2 89-90
+README.md
+  s_1b910c617cc4e7::t_6485ce8377bca1 51-52,58,61
+  s_1b910c617cc4e7::t_8c85c9b929ce24 53-54,56-57
+  s_1b910c617cc4e7::t_27de431b87383a 55
+  s_1b910c617cc4e7::t_4674bc9dff4a2f 59-60
+_typos.toml
+  h_2463f6ed1216b2 2
+website/src/pages/index.astro
+  h_2463f6ed1216b2 5-7,11-12
+  s_1b910c617cc4e7::t_4122fdabbaf7ba 59-78
+Sources/TankfulApp/Views/Home/HomeView.swift
+  h_2463f6ed1216b2 117
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "29a3a23e122aeaaac07aaaefe595084e494794d8",
+  "prompts": {},
+  "humans": {
+    "h_2463f6ed1216b2": {
+      "author": "Jake Walker <hi@jakew.me>"
+    }
+  },
+  "sessions": {
+    "s_1b910c617cc4e7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a2197f-3e77-7f41-bdd7-fde6c1edefbf",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Jake Walker <hi@jakew.me>"
+    }
+  }
+}
